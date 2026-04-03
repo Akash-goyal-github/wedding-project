@@ -252,31 +252,7 @@ ul { list-style: none; }
 .hc-bl::after { left:0; }
 .hc-br::after { right:0; }
 
-/* ── MUSIC TOGGLE BUTTON ────────────────────────────────────── */
-.music-toggle {
-  position:fixed; bottom:clamp(16px,3vh,28px); right:clamp(14px,2.5vw,24px);
-  z-index:8000;
-  width:44px; height:44px;
-  border-radius:50%;
-  border:1.5px solid rgba(201,164,71,.6);
-  background:rgba(255,255,255,.82);
-  backdrop-filter:blur(10px);
-  color:var(--gold-dk);
-  cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:0 4px 20px rgba(139,105,20,.25);
-  transition:all .3s ease;
-  padding:0;
-}
-.music-toggle svg { width:18px; height:18px; }
-.music-toggle:hover {
-  background:var(--gold);
-  color:#fff;
-  border-color:var(--gold);
-  transform:scale(1.1);
-  box-shadow:0 6px 28px rgba(139,105,20,.4);
-}
-.music-toggle.muted { opacity:.6; }
+
 
 /* ── HERO SECTION ───────────────────────────────────────────── */
 .events-section {
