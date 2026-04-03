@@ -129,12 +129,12 @@ npx serve .
 **Bride — Aayushmati Arjoo (Bulbul)**
 - Daughter of Shri Akhlesh Kumar Goyal & Shrimati Lakshmi Devi
 - From Soorat, Jila-Kauli, **Rajasthan**
-- Blessed by Late Shrimati Geeta Devi & Late Shri Murarilal Ji Goyal
+- Eternal Blessings of Late Shrimati Geeta Devi & Shri Murarilal Ji Goyal
 
 **Groom — Aayushman Manish**
 - Son of Shri Pawan Kumar Gupta & Shrimati Bala Devi
 - From Charkhi Dadri, **Haryana**
-- Blessed by Shrimati Sevanti Devi & Shri Jawahar Lal Gupta
+- Blessed by Late Shrimati Sevanti Devi & Late Shri Jawahar Lal Gupta
 
 ---
 
