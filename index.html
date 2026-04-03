@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Manish &amp; Arjoo — A Royal Jaipur Wedding</title>
+  <meta name="description" content="The royal wedding of Manish and Arjoo · 26 April 2026 · Anant Mahal, Patrakar Colony, Jaipur" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&family=Yatra+One&family=Rozha+One&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="css/gate.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/union.css" />
+  <link rel="stylesheet" href="css/effects.css" />
+  <link rel="stylesheet" href="css/gallery.css" />
+</head>
+<body class="locked">
+
+<!-- ===== GATE ENTRANCE (minimal calm redesign) ===== -->
+<div id="gateOverlay" class="gate-overlay" role="dialog" aria-label="Entrance" aria-modal="true">
+
+  <!-- Shehnai — top corners only (SVG injected by gate.js) -->
+  <div class="gate-shehnai gshn-tl" aria-hidden="true"></div>
+  <div class="gate-shehnai gshn-tr" aria-hidden="true"></div>
+
+  <!-- Marigold toran — slides up after doors open (built by gate.js) -->
+  <div id="gateGarland" class="gate-garland" aria-hidden="true"></div>
+
+  <!-- Single centred column: शुभ विवाह → names → Ganesh → date → button -->
+  <div class="gate-top-info">
+    <!-- शुभ विवाह — 3D gold SVG, inline so it inherits page fonts -->
+    <svg class="gate-pre" viewBox="0 0 800 300"
+         width="800" height="300" overflow="hidden"
+         xmlns="http://www.w3.org/2000/svg" aria-label="शुभ विवाह" role="img">
+      <defs>
+        <linearGradient id="svGold" x1="0" y1="72" x2="0" y2="198" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stop-color="#FFFDE0"/>
+          <stop offset="22%"  stop-color="#F5D78E"/>
+          <stop offset="55%"  stop-color="#C9A447"/>
+          <stop offset="80%"  stop-color="#DAA838"/>
+          <stop offset="100%" stop-color="#F5D78E"/>
+        </linearGradient>
+        <linearGradient id="svHigh" x1="0" y1="72" x2="0" y2="150" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"  stop-color="#ffffff" stop-opacity=".55"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="svSparkle" x="-5%" y="-10%" width="110%" height="135%">
+          <feTurbulence type="fractalNoise" baseFrequency=".78 .68" numOctaves="2" seed="7" result="noise"/>
+          <feColorMatrix type="matrix"
+            values="0 0 0 0 1  0 0 0 0 .82  0 0 0 0 .05  0 0 0 10 -6"
+            in="noise" result="glitter"/>
+          <feComposite in="glitter" in2="SourceGraphic" operator="in" result="masked"/>
+          <!-- dim glitter to 28% before blending so it's a subtle sheen not a disco ball -->
+          <feColorMatrix in="masked" type="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.28 0" result="soft"/>
+          <feBlend in="SourceGraphic" in2="soft" mode="screen"/>
+        </filter>
+      </defs>
+
+      <!-- 3D shadow stack (deepest → shallowest) -->
+      <text font-family="'Yatra One','Noto Serif Devanagari',serif" font-size="148" text-anchor="middle" x="406" y="186" fill="#120100" textLength="680" lengthAdjust="spacingAndGlyphs">शुभ विवाह</text>
+      <text font-family="'Yatra One','Noto Serif Devanagari',serif" font-size="148" text-anchor="middle" x="405" y="185" fill="#3D0900" textLength="680" lengthAdjust="spacingAndGlyphs">शुभ विवाह</text>
+      <text font-family="'Yatra One','Noto Serif Devanagari',serif" font-size="148" text-anchor="middle" x="404" y="184" fill="#642000" textLength="680" lengthAdjust="spacingAndGlyphs">शुभ विवाह</text>
+      <text font-family="'Yatra One','Noto Serif Devanagari',serif" font-size="148" text-anchor="middle" x="403" y="183" fill="#8C3C00" textLength="680" lengthAdjust="spacingAndGlyphs">शुभ विवाह</text>
+      <text font-family="'Yatra One','Noto Serif Devanagari',serif" font-size="148" text-anchor="middle" x="402" y="182" fill="#B06200" textLength="680" lengthAdjust="spacingAndGlyphs">शुभ विवाह</text>
+      <text font-family="'Yatra One','Noto Serif Devanagari',serif" font-size="148" text-anchor="middle" x="401" y="181" fill="#CA8020" textLength="680" lengthAdjust="spacingAndGlyphs">शुभ विवाह</text>
+
+      <!-- top layer: gold gradient + glitter -->
+      <text font-family="'Yatra One','Noto Serif Devanagari',serif" font-size="148" text-anchor="middle"
+            x="400" y="180" fill="url(#svGold)" filter="url(#svSparkle)" textLength="680" lengthAdjust="spacingAndGlyphs">शुभ विवाह</text>
+      <!-- bright top-surface highlight -->
+      <text font-family="'Yatra One','Noto Serif Devanagari',serif" font-size="148" text-anchor="middle"
+            x="400" y="180" fill="url(#svHigh)" textLength="680" lengthAdjust="spacingAndGlyphs">शुभ विवाह</text>
+    </svg>
+    <h1 class="gate-title">Manish &amp; Arjoo</h1>
+
+    <!-- Ganesh Ji — SVG injected by gate.js, lives in normal flow on desktop -->
+    <div id="gateGanesh" class="gate-ganesh" role="img" aria-label="Ganesh Ji"></div>
+
+    <p class="gate-date">26th April 2026</p>
+    <p class="gate-place">Anant Mahal, Jaipur</p>
+    <button class="gate-enter-btn" id="gateEnterBtn" aria-label="Enter">
+      <span>Enter the Palace</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    <p class="gate-auto-text" id="gateAutoText">opens in <span id="gateCountdown">5</span>s</p>
+  </div>
+
+  <!-- Two simple door panels -->
+  <div class="gate-stage">
+    <span class="gate-seam-ornament" aria-hidden="true">✦</span>
+    <div class="gate-door gate-left" id="gateLeft" aria-hidden="true">
+      <div class="door-face">
+        <div class="door-frame-deco" aria-hidden="true">
+          <div class="door-hinges">
+            <span class="door-hinge"></span>
+            <span class="door-hinge"></span>
+            <span class="door-hinge"></span>
+          </div>
+          <div class="door-handle"></div>
+        </div>
+        <div class="door-inset">
+          <div class="door-portrait">
+            <img src="assets/images/groom.jpeg" alt="Manish" />
+          </div>
+          <p class="door-name">Manish</p>
+          <div class="door-rule"><span></span><em>&#10022;</em><span></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="gate-door gate-right" id="gateRight" aria-hidden="true">
+      <div class="door-face">
+        <div class="door-frame-deco" aria-hidden="true">
+          <div class="door-hinges">
+            <span class="door-hinge"></span>
+            <span class="door-hinge"></span>
+            <span class="door-hinge"></span>
+          </div>
+          <div class="door-handle"></div>
+        </div>
+        <div class="door-inset">
+          <div class="door-portrait">
+            <img src="assets/images/bride.jpeg" alt="Arjoo" />
+          </div>
+          <p class="door-name">Arjoo</p>
+          <div class="door-rule"><span></span><em>&#10022;</em><span></span></div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /gate-stage -->
+
+  <!-- Couple photo reveal — inside overlay, above doors, petals fall on top -->
+  <div class="gate-couple" id="gateCouple" aria-hidden="true">
+
+    <!-- Left golden botanical branch -->
+    <div class="gate-branch gate-branch--left" aria-hidden="true">
+      <svg viewBox="0 0 80 390" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Stem -->
+        <path d="M68,18 Q71,98 67,195 Q63,292 68,372"
+              stroke="#C9A447" stroke-width="1.2" opacity="0.72"/>
+        <!-- Top ornament -->
+        <circle cx="68" cy="13" r="4" stroke="#C9A447" stroke-width="1" opacity="0.65"/>
+        <circle cx="68" cy="13" r="1.8" fill="#F5D78E" opacity="0.8"/>
+        <!-- Branch 1 -->
+        <path d="M68,58 Q48,52 20,46" stroke="#C9A447" stroke-width="1" opacity="0.70"/>
+        <ellipse cx="17" cy="44" rx="7" ry="3" fill="#C9A447" opacity="0.50" transform="rotate(-14 17 44)"/>
+        <circle cx="38" cy="50" r="1.8" fill="#F5D78E" opacity="0.60"/>
+        <!-- Branch 2 -->
+        <path d="M67,112 Q44,106 10,98" stroke="#C9A447" stroke-width="1" opacity="0.66"/>
+        <ellipse cx="7" cy="96" rx="7" ry="3" fill="#C9A447" opacity="0.46" transform="rotate(-10 7 96)"/>
+        <!-- Branch 3 (main / longest) -->
+        <path d="M68,170 Q44,162 6,154" stroke="#C9A447" stroke-width="1.35" opacity="0.80"/>
+        <ellipse cx="3" cy="152" rx="8" ry="3.5" fill="#C9A447" opacity="0.56" transform="rotate(-12 3 152)"/>
+        <!-- Sub-branch off branch 3 -->
+        <path d="M44,166 Q31,152 18,142" stroke="#C9A447" stroke-width="0.9" opacity="0.56"/>
+        <ellipse cx="16" cy="140" rx="5.5" ry="2.5" fill="#C9A447" opacity="0.42" transform="rotate(-42 16 140)"/>
+        <circle cx="29" cy="160" r="1.8" fill="#F5D78E" opacity="0.65"/>
+        <!-- Diamond mid-stem -->
+        <rect x="64.5" y="187" width="7" height="7" fill="#C9A447" opacity="0.62"
+              transform="rotate(45 68 190.5)"/>
+        <!-- Branch 4 -->
+        <path d="M67,238 Q44,230 10,222" stroke="#C9A447" stroke-width="1.1" opacity="0.68"/>
+        <ellipse cx="7" cy="220" rx="7" ry="3" fill="#C9A447" opacity="0.50" transform="rotate(-10 7 220)"/>
+        <!-- Sub-branch off branch 4 -->
+        <path d="M46,234 Q33,222 20,213" stroke="#C9A447" stroke-width="0.85" opacity="0.53"/>
+        <circle cx="19" cy="212" r="2.2" fill="#C9A447" opacity="0.42"/>
+        <circle cx="33" cy="229" r="1.8" fill="#F5D78E" opacity="0.58"/>
+        <!-- Branch 5 -->
+        <path d="M68,302 Q51,296 24,290" stroke="#C9A447" stroke-width="1" opacity="0.62"/>
+        <ellipse cx="21" cy="288" rx="6.5" ry="3" fill="#C9A447" opacity="0.46" transform="rotate(-9 21 288)"/>
+        <!-- Branch 6 (short / bottom) -->
+        <path d="M68,354 Q57,351 40,348" stroke="#C9A447" stroke-width="0.9" opacity="0.48"/>
+        <circle cx="38" cy="347" r="2.5" fill="#C9A447" opacity="0.40"/>
+        <!-- Bottom ornament -->
+        <circle cx="68" cy="373" r="3.5" stroke="#C9A447" stroke-width="0.9" opacity="0.50"/>
+      </svg>
+    </div>
+
+    <!-- Photo + quote -->
+    <div class="couple-main">
+      <div class="couple-frame">
+        <img src="assets/images/couple1.jpg" alt="Manish and Arjoo" class="couple-img" draggable="false"/>
+      </div>
+      <p class="couple-quote">&#10022;&ensp;Two souls, one eternal journey&ensp;&#10022;</p>
+      <p class="couple-hashtag">#armaan</p>
+    </div>
+
+    <!-- Right branch — same SVG, CSS mirrors it horizontally -->
+    <div class="gate-branch gate-branch--right" aria-hidden="true">
+      <svg viewBox="0 0 80 390" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M68,18 Q71,98 67,195 Q63,292 68,372"
+              stroke="#C9A447" stroke-width="1.2" opacity="0.72"/>
+        <circle cx="68" cy="13" r="4" stroke="#C9A447" stroke-width="1" opacity="0.65"/>
+        <circle cx="68" cy="13" r="1.8" fill="#F5D78E" opacity="0.8"/>
+        <path d="M68,58 Q48,52 20,46" stroke="#C9A447" stroke-width="1" opacity="0.70"/>
+        <ellipse cx="17" cy="44" rx="7" ry="3" fill="#C9A447" opacity="0.50" transform="rotate(-14 17 44)"/>
+        <circle cx="38" cy="50" r="1.8" fill="#F5D78E" opacity="0.60"/>
+        <path d="M67,112 Q44,106 10,98" stroke="#C9A447" stroke-width="1" opacity="0.66"/>
+        <ellipse cx="7" cy="96" rx="7" ry="3" fill="#C9A447" opacity="0.46" transform="rotate(-10 7 96)"/>
+        <path d="M68,170 Q44,162 6,154" stroke="#C9A447" stroke-width="1.35" opacity="0.80"/>
+        <ellipse cx="3" cy="152" rx="8" ry="3.5" fill="#C9A447" opacity="0.56" transform="rotate(-12 3 152)"/>
+        <path d="M44,166 Q31,152 18,142" stroke="#C9A447" stroke-width="0.9" opacity="0.56"/>
+        <ellipse cx="16" cy="140" rx="5.5" ry="2.5" fill="#C9A447" opacity="0.42" transform="rotate(-42 16 140)"/>
+        <circle cx="29" cy="160" r="1.8" fill="#F5D78E" opacity="0.65"/>
+        <rect x="64.5" y="187" width="7" height="7" fill="#C9A447" opacity="0.62"
+              transform="rotate(45 68 190.5)"/>
+        <path d="M67,238 Q44,230 10,222" stroke="#C9A447" stroke-width="1.1" opacity="0.68"/>
+        <ellipse cx="7" cy="220" rx="7" ry="3" fill="#C9A447" opacity="0.50" transform="rotate(-10 7 220)"/>
+        <path d="M46,234 Q33,222 20,213" stroke="#C9A447" stroke-width="0.85" opacity="0.53"/>
+        <circle cx="19" cy="212" r="2.2" fill="#C9A447" opacity="0.42"/>
+        <circle cx="33" cy="229" r="1.8" fill="#F5D78E" opacity="0.58"/>
+        <path d="M68,302 Q51,296 24,290" stroke="#C9A447" stroke-width="1" opacity="0.62"/>
+        <ellipse cx="21" cy="288" rx="6.5" ry="3" fill="#C9A447" opacity="0.46" transform="rotate(-9 21 288)"/>
+        <path d="M68,354 Q57,351 40,348" stroke="#C9A447" stroke-width="0.9" opacity="0.48"/>
+        <circle cx="38" cy="347" r="2.5" fill="#C9A447" opacity="0.40"/>
+        <circle cx="68" cy="373" r="3.5" stroke="#C9A447" stroke-width="0.9" opacity="0.50"/>
+      </svg>
+    </div>
+
+  </div>
+
+  <!-- Petals container — LAST so it renders above everything including the photo -->
+  <div id="petalsContainer" class="petals-container" aria-hidden="true"></div>
+
+</div><!-- /gateOverlay -->
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo" aria-label="Top">M &amp; A</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navMenu" role="list">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#union">The Union</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#venue">Venue</a></li>
+      <li><a href="#family">Family</a></li>
+      <li><a href="#vlog" class="nav-cta">Welcome</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="home" class="hero" role="banner">
+  <!-- Decorative gold corner brackets -->
+  <div class="hero-corners" aria-hidden="true">
+    <span class="hc hc-tl"></span>
+    <span class="hc hc-tr"></span>
+    <span class="hc hc-bl"></span>
+    <span class="hc hc-br"></span>
+  </div>
+  <div class="hero-media">
+    <video id="heroVideo" autoplay muted loop playsinline aria-hidden="true" poster="assets/images/hero-poster.jpg">
+      <source src="assets/videos/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-pre" data-aos="fade-down">✦ A Royal Celebration ✦</p>
+    <h1 class="hero-names" data-aos="zoom-in" data-aos-delay="200">Manish <span class="hero-amp">&amp;</span> Arjoo</h1>
+    <div class="hero-ornament" data-aos="fade-up" data-aos-delay="400" aria-hidden="true">⸻ ✦ ⸻</div>
+    <p class="hero-sub" data-aos="fade-up" data-aos-delay="500">Anant Mahal · Patrakar Colony · Jaipur</p>
+    <p class="hero-date-text" data-aos="fade-up" data-aos-delay="600">26th April 2026</p>
+    <div class="countdown" id="countdown" data-aos="fade-up" data-aos-delay="800" aria-label="Countdown">
+      <div class="c-box"><span id="cDays">00</span><label>Days</label></div>
+      <div class="c-box"><span id="cHours">00</span><label>Hours</label></div>
+      <div class="c-box"><span id="cMins">00</span><label>Minutes</label></div>
+      <div class="c-box"><span id="cSecs">00</span><label>Seconds</label></div>
+    </div>
+    <a href="#events" class="btn-royal" data-aos="zoom-in" data-aos-delay="1000">View Celebrations</a>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span></span></div>
+</section>
+
+<!-- ===== OUR STORY ===== -->
+<section id="story" class="story-section" aria-label="Our Story">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <p class="sec-pre">✦ A New Beginning ✦</p>
+      <h2 class="sec-title">Beginning Forever</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="story-grid">
+      <!-- Mughal Arch Frame -->
+      <div class="royal-frame-wrap" data-aos="fade-right" data-aos-duration="1000">
+        <div style="position:relative;display:inline-block">
+          <div class="royal-arch-frame">
+            <img src="assets/images/together.jpeg" alt="Manish and Arjoo" loading="lazy" />
+          </div>
+          <!-- Gold decorative ornaments beside frame -->
+          <span class="frame-ornament left">❁</span>
+          <span class="frame-ornament right">❁</span>
+        </div>
+        <div class="arch-caption">
+          <span>Manish &amp; Arjoo</span>
+          <small>✦ 26th April 2026 ✦</small>
+        </div>
+      </div>
+
+      <!-- Welcoming / Blessing text -->
+      <div class="story-body" data-aos="fade-left" data-aos-delay="150">
+        <p class="story-welcome">With Joyful Hearts, We Welcome You</p>
+
+        <p>On the auspicious occasion of <strong>26th April 2026</strong>, <strong>Manish</strong> and <strong>Arjoo</strong> are beginning their forever — a sacred journey of love, laughter, and togetherness, blessed under the golden skies of Jaipur.</p>
+
+        <p>They stand at the threshold of a new chapter and wish for nothing more than to celebrate this divine union surrounded by the warmth of their dearest family and friends.</p>
+
+        <div class="blessings-box">
+          <p>“As we take our seven vows and begin this beautiful journey, we seek the loving blessings of each one of you. Your presence will be the greatest gift and the light that guides our forever.”</p>
+        </div>
+
+        <p>We invite you with all our love to join us at <strong>Anant Mahal, Patrakar Colony, Jaipur</strong> — a palace as magnificent as the love that fills our hearts.</p>
+
+        <div style="margin-top:1.6rem;text-align:center">
+          <a href="#events" class="btn-royal">View Celebrations</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TWO STATES ONE LOVE ===== -->
+<section id="union" class="union-section" aria-label="Two States, One Love">
+  <div class="container">
+
+    <div class="union-header" data-aos="fade-up">
+      <p class="union-pre">✦ A Union of Hearts &amp; Homes ✦</p>
+      <h2 class="union-title">Two States, One Love</h2>
+      <p class="union-tagline">Where Rajasthan Meets Haryana &nbsp;·&nbsp; 26th April 2026</p>
+    </div>
+
+    <div class="union-arena" data-aos="zoom-in" data-aos-duration="900">
+
+      <!-- ══ ARJOO — RAJASTHAN ══ -->
+      <div class="union-side rajasthan">
+        <div class="union-state-badge">🪨 Rajasthan</div>
+        <div class="union-motif">🦚</div>
+        <h3 class="union-name">Arjoo</h3>
+        <p class="union-location">📍 Suroth, District-Karauli, Rajasthan</p>
+        <div class="union-rule"></div>
+        <div class="union-parents">
+          <p class="union-parents-label">Daughter of</p>
+          <div class="union-parent-row">
+            <span>Shri Akhlesh Kumar Goyal</span>
+          </div>
+          <div class="union-parent-row">
+            <span class="union-parent-amp">&amp;</span>
+            <span>Shrimati Lakshmi Devi</span>
+          </div>
+        </div>
+        <div class="union-grandparents">
+          <span>Late — Eternal Blessings</span>
+          Shrimati Geeta Devi &amp; Shri Murarilal Ji Goyal
+        </div>
+      </div>
+
+      <!-- ══ CENTER PIN ══ -->
+      <div class="union-pin">
+        <div class="union-pin-dots"><span></span><span></span><span></span></div>
+        <div class="union-pin-ring">💍</div>
+        <div class="union-pin-heart">❤️</div>
+        <div class="union-pin-text">United&nbsp;in&nbsp;Love</div>
+        <div class="union-pin-ring">💍</div>
+        <div class="union-pin-dots"><span></span><span></span><span></span></div>
+      </div>
+
+      <!-- ══ MANISH — HARYANA ══ -->
+      <div class="union-side haryana">
+        <div class="union-state-badge">🌾 Haryana</div>
+        <div class="union-motif">🐎</div>
+        <h3 class="union-name">Manish</h3>
+        <p class="union-location">📍 Charkhi Dadri, Haryana</p>
+        <div class="union-rule"></div>
+        <div class="union-parents">
+          <p class="union-parents-label">Son of</p>
+          <div class="union-parent-row">
+            <span>Shri Pawan Kumar Gupta</span>
+          </div>
+          <div class="union-parent-row">
+            <span class="union-parent-amp">&amp;</span>
+            <span>Shrimati Bala Devi</span>
+          </div>
+        </div>
+        <div class="union-grandparents">
+          <span>Blessings of Elders</span>
+          Shrimati Sevanti Devi &amp; Shri Jawahar Lal Gupta
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom banner -->
+    <div class="union-banner" data-aos="fade-up" data-aos-delay="200">
+      <p class="union-banner-title">Where the Desert Rose meets the Fields of Gold</p>
+      <p class="union-banner-sub">Rajasthan ✦ Haryana &nbsp;&middot;&nbsp; Two families, one destiny &nbsp;&middot;&nbsp; 26th April 2026, Jaipur</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== EVENTS TREE TIMELINE ===== -->
+<section id="events" class="events-section" aria-label="Wedding Events">
+  <div class="events-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <p class="sec-pre">✦ Mark Your Calendar ✦</p>
+      <h2 class="sec-title">The Royal Celebrations</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="tree-timeline" role="list">
+      <div class="tree-root" data-aos="zoom-in"><div class="root-icon">👑</div><p>The Wedding Journey</p></div>
+      <div class="tree-connector"></div>
+      <div class="tree-day-label" data-aos="fade-up"><span>Day 1 · 25th April 2026</span></div>
+      <div class="tree-connector"></div>
+
+      <!-- ① Haldi — LEFT -->
+      <div class="tree-row" role="listitem">
+        <article class="tree-card left haldi" data-aos="fade-right" data-aos-duration="700">
+          <div class="tc-icon">💜</div><div class="tc-body"><h3>Haldi Ceremony</h3>
+          <p class="tc-time">⏰ 12:00 PM – 2:00 PM</p><p class="tc-loc">📍 Anant Mahal Courtyard</p></div>
+        </article>
+        <div class="tree-node"><span>🌸</span></div>
+        <div></div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- ② Mayra Ceremony — RIGHT -->
+      <div class="tree-row" role="listitem">
+        <div></div>
+        <div class="tree-node"><span>🎁</span></div>
+        <article class="tree-card right mayra" data-aos="fade-left" data-aos-duration="700">
+          <div class="tc-body"><h3>Mayra</h3>
+          <p class="tc-time">⏰ 4:00 PM – 5:30 PM</p><p class="tc-loc">📍 Anant Mahal Courtyard</p></div>
+        </article>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- ③ Sangeet — LEFT -->
+      <div class="tree-row" role="listitem">
+        <article class="tree-card left sangeet" data-aos="fade-right" data-aos-duration="800">
+          <div class="tc-icon">🎶</div><div class="tc-body"><h3>Sangeet Night</h3>
+          <p class="tc-time">⏰ 7:00 PM – 1:00 AM</p><p class="tc-loc">📍 Anant Mahal Royal Lawns</p></div>
+        </article>
+        <div class="tree-node"><span>🎶</span></div>
+        <div></div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <div class="tree-day-label" data-aos="fade-up"><span>Day 2 · 26th April 2026 — The Wedding Day</span></div>
+      <div class="tree-connector"></div>
+
+      <!-- ① Pool Party — RIGHT -->
+      <div class="tree-row" role="listitem">
+        <div></div>
+        <div class="tree-node"><span>🌊</span></div>
+        <article class="tree-card right pool-party" data-aos="fade-left" data-aos-duration="700">
+          <div class="tc-body"><h3>Pool Party</h3>
+          <p class="tc-time">⏰ 7:00 AM – 9:00 AM</p><p class="tc-loc">📍 Anant Mahal Poolside</p></div>
+        </article>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- ② Baraat — LEFT -->
+      <div class="tree-row" role="listitem">
+        <article class="tree-card left baraat" data-aos="fade-right" data-aos-duration="700">
+          <div class="tc-icon">🐎</div><div class="tc-body"><h3>Baraat Procession</h3>
+          <p class="tc-time">⏰ 6:15 PM – 7:30 PM</p><p class="tc-loc">📍 Anant Mahal Main Gate</p></div>
+        </article>
+        <div class="tree-node"><span>🐎</span></div>
+        <div></div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- ⑤ Jai Mala — RIGHT -->
+      <div class="tree-row" role="listitem">
+        <div></div>
+        <div class="tree-node featured"><span>💍</span></div>
+        <article class="tree-card right jaimala" data-aos="fade-left" data-aos-duration="700">
+          <div class="tc-icon">💐</div><div class="tc-body"><h3>Jai Mala &amp; Varmala</h3>
+          <p class="tc-time">⏰ 8:00 PM – 11:30 PM</p><p class="tc-loc">📍 Anant Mahal, Mandap</p></div>
+        </article>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- ⑥ Wedding Ceremony — CENTER -->
+      <div class="tree-row single" role="listitem">
+        <article class="tree-card center grand reception" data-aos="zoom-in" data-aos-duration="900">
+          <div class="grand-crown">👑</div>
+          <div class="tc-body"><h3>The Royal Wedding Ceremony</h3>
+          <p class="tc-time">⏰ 11:30 PM Onwards</p><p class="tc-loc">📍 Anant Mahal, Royal Mandap</p></div>
+        </article>
+      </div>
+      <div class="tree-connector"></div>
+
+      <div class="tree-end" data-aos="fade-up"><span>❤️</span><p>Forever begins here</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery" class="gallery-section" aria-label="Gallery">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <p class="sec-pre">✦ Captured in Gold ✦</p>
+      <h2 class="sec-title">Our Gallery</h2><div class="gold-rule"></div>
+    </div>
+    <div class="g-slider" data-aos="fade-up" data-aos-delay="150" aria-label="Wedding photo gallery" role="region">
+
+      <!-- ── Main Stage ── -->
+      <div class="g-stage">
+        <div class="g-slides">
+          <div class="g-slide" data-idx="0"><img class="g-img" src="assets/images/_DSC3765.JPG" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="1"><img class="g-img" src="assets/images/_DSC3966.JPG" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="2"><img class="g-img" src="assets/images/_DSC3973.JPG" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="3"><img class="g-img" src="assets/images/_DSC4015.JPG" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="4"><img class="g-img" src="assets/images/_DSC4029.JPG" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="5"><img class="g-img" src="assets/images/_DSC4085.JPG" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="6"><img class="g-img" src="assets/images/_DSC4062.JPG" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="7"><img class="g-img" src="assets/images/_DSC4058.JPG" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="8"><img class="g-img" src="assets/images/wa01.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="9"><img class="g-img" src="assets/images/wa02.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="10"><img class="g-img" src="assets/images/wa03.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="11"><img class="g-img" src="assets/images/wa04.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="12"><img class="g-img" src="assets/images/wa05.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="13"><img class="g-img" src="assets/images/wa06.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="14"><img class="g-img" src="assets/images/wa07.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="15"><img class="g-img" src="assets/images/wa08.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="16"><img class="g-img" src="assets/images/wa09.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="17"><img class="g-img" src="assets/images/wa10.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="18"><img class="g-img" src="assets/images/wa11.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="19"><img class="g-img" src="assets/images/wa12.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="20"><img class="g-img" src="assets/images/wa13.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="21"><img class="g-img" src="assets/images/wa14.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="22"><img class="g-img" src="assets/images/wa15.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="23"><img class="g-img" src="assets/images/wa16.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="24"><img class="g-img" src="assets/images/wa17.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="25"><img class="g-img" src="assets/images/wa18.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="26"><img class="g-img" src="assets/images/wa19.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="27"><img class="g-img" src="assets/images/wa20.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="28"><img class="g-img" src="assets/images/wa21.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="29"><img class="g-img" src="assets/images/wa22.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="30"><img class="g-img" src="assets/images/wa23.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="31"><img class="g-img" src="assets/images/wa24.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="32"><img class="g-img" src="assets/images/wa25.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="33"><img class="g-img" src="assets/images/wa26.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="34"><img class="g-img" src="assets/images/wa27.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="35"><img class="g-img" src="assets/images/wa28.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="36"><img class="g-img" src="assets/images/wa29.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="37"><img class="g-img" src="assets/images/wa30.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="38"><img class="g-img" src="assets/images/wa31.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="39"><img class="g-img" src="assets/images/wa32.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="40"><img class="g-img" src="assets/images/wa33.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="41"><img class="g-img" src="assets/images/wa34.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="42"><img class="g-img" src="assets/images/wa35.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="43"><img class="g-img" src="assets/images/wa36.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="44"><img class="g-img" src="assets/images/wa37.jpeg" alt="Manish &amp; Arjoo" /></div>
+          <div class="g-slide" data-idx="45"><img class="g-img" src="assets/images/wa38.jpeg" alt="Manish &amp; Arjoo" /></div>
+        </div>
+
+        <!-- Gold corner ornaments -->
+        <div class="g-corners" aria-hidden="true">
+          <span class="gc tl">✦</span><span class="gc tr">✦</span>
+          <span class="gc bl">✦</span><span class="gc br">✦</span>
+        </div>
+
+        <!-- Caption -->
+        <p class="g-caption" aria-hidden="true">Manish &amp; Arjoo &nbsp;·
+bsp; 26 April 2026</p>
+
+        <!-- Counter -->
+        <div class="g-counter" aria-live="polite" aria-label="Photo number">
+          <span class="g-curr">01</span>
+          <span class="g-sep">/</span>
+          <span class="g-total">46</span>
+        </div>
+
+        <!-- Expand -->
+        <button class="g-expand" aria-label="View photo fullscreen">⛶</button>
+
+        <!-- Arrows -->
+        <button class="g-arrow g-prev" aria-label="Previous photo">&#8249;</button>
+        <button class="g-arrow g-next" aria-label="Next photo">&#8250;</button>
+
+        <!-- Progress bar -->
+        <div class="g-progress" aria-hidden="true"><div class="g-progress-bar"></div></div>
+      </div>
+
+      <!-- ── Dot nav ── -->
+      <div class="g-dots" role="tablist" aria-label="Photo navigation">
+        <button class="g-dot" role="tab" aria-label="Photo 1"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 2"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 3"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 4"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 5"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 6"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 7"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 8"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 9"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 10"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 11"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 12"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 13"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 14"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 15"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 16"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 17"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 18"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 19"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 20"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 21"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 22"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 23"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 24"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 25"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 26"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 27"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 28"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 29"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 30"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 31"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 32"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 33"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 34"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 35"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 36"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 37"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 38"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 39"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 40"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 41"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 42"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 43"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 44"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 45"></button>
+        <button class="g-dot" role="tab" aria-label="Photo 46"></button>
+      </div>
+
+      <!-- ── Film strip ── -->
+      <div class="g-strip-wrap">
+        <div class="g-strip">
+          <div class="g-thumb"><img src="assets/images/_DSC3765.JPG" alt="Photo 1" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/_DSC3966.JPG" alt="Photo 3" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/_DSC3973.JPG" alt="Photo 4" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/_DSC4015.JPG" alt="Photo 6" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/_DSC4029.JPG" alt="Photo 7" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/_DSC4085.JPG" alt="Photo 8" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/_DSC4062.JPG" alt="Photo 10" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/_DSC4058.JPG" alt="Photo 11" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa01.jpeg" alt="Photo 13" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa02.jpeg" alt="Photo 14" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa03.jpeg" alt="Photo 15" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa04.jpeg" alt="Photo 16" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa05.jpeg" alt="Photo 17" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa06.jpeg" alt="Photo 18" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa07.jpeg" alt="Photo 19" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa08.jpeg" alt="Photo 20" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa09.jpeg" alt="Photo 21" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa10.jpeg" alt="Photo 22" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa11.jpeg" alt="Photo 23" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa12.jpeg" alt="Photo 24" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa13.jpeg" alt="Photo 25" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa14.jpeg" alt="Photo 26" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa15.jpeg" alt="Photo 27" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa16.jpeg" alt="Photo 28" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa17.jpeg" alt="Photo 29" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa18.jpeg" alt="Photo 30" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa19.jpeg" alt="Photo 31" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa20.jpeg" alt="Photo 32" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa21.jpeg" alt="Photo 33" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa22.jpeg" alt="Photo 34" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa23.jpeg" alt="Photo 35" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa24.jpeg" alt="Photo 36" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa25.jpeg" alt="Photo 37" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa26.jpeg" alt="Photo 38" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa27.jpeg" alt="Photo 39" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa28.jpeg" alt="Photo 40" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa29.jpeg" alt="Photo 41" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa30.jpeg" alt="Photo 42" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa31.jpeg" alt="Photo 43" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa32.jpeg" alt="Photo 44" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa33.jpeg" alt="Photo 45" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa34.jpeg" alt="Photo 46" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa35.jpeg" alt="Photo 47" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa36.jpeg" alt="Photo 48" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa37.jpeg" alt="Photo 49" loading="lazy" /></div>
+          <div class="g-thumb"><img src="assets/images/wa38.jpeg" alt="Photo 50" loading="lazy" /></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== VENUE ===== -->
+<section id="venue" class="venue-section" aria-label="Venue">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <p class="sec-pre">✦ The Royal Setting ✦</p>
+      <h2 class="sec-title">Anant Mahal</h2><div class="gold-rule"></div>
+      <p class="venue-tagline-top">Patrakar Colony, Near Raheja Tower, Mansarovar, Jaipur</p>
+    </div>
+    <div class="venue-grid">
+      <div class="venue-info" data-aos="fade-right">
+        <p>Anant Mahal is one of Jaipur’s finest royal banquet palaces — a regal haven with ornate arches, marble corridors, and lush garden terraces set in the heart of Mansarovar, Jaipur.</p>
+        <p>Our celebration will fill every golden hallway and flower-strewn garden with music, laughter, and the timeless fragrance of marigold.</p>
+        <div class="venue-deets">
+          <div class="vd"><span class="vd-l">📍 Address</span><span>Patrakar Colony, Near Raheja Tower, Mansarovar, Jaipur, Rajasthan</span></div>
+          <div class="vd"><span class="vd-l">✈️ Jaipur Int. Airport</span><span>~15 km · 25–30 minutes by car</span></div>
+          <div class="vd"><span class="vd-l">🚉 Jaipur Junction Rly Stn</span><span>~12 km · 20–25 minutes by car</span></div>
+          <div class="vd"><span class="vd-l">📅 Wedding Dates</span><span>25th &amp; 26th April 2026</span></div>
+        </div>
+        <div class="venue-tip">
+          <strong>🗺 Google Maps Tip:</strong> Search &ldquo;<strong>ANANT MAHAL, PATRAKAR COLONY</strong>&rdquo; to get the direct route.
+        </div>
+      </div>
+      <div class="venue-map" data-aos="fade-left">
+        <div class="venue-map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4107.07084893575!2d75.7337716!3d26.837424499999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db53beb4ab939%3A0x7dc21e9162faf521!2sAnant%20Mahal!5e1!3m2!1sen!2sin!4v1775116371909!5m2!1sen!2sin"
+            width="100%" height="420" style="border:0" allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Anant Mahal, Patrakar Colony, Jaipur" aria-label="Map of Anant Mahal Jaipur">
+          </iframe>
+        </div>
+        <!-- QR Code for Directions -->
+        <div class="venue-qr-block" data-aos="fade-up">
+          <div id="qrCode"></div>
+          <div class="qr-text">
+            <h4>Scan for Directions</h4>
+            <p>Point your camera at this QR code for Google Maps directions to Anant Mahal.</p>
+            <a href="https://maps.app.goo.gl/TnrJqUGxTUnnCfHn9" target="_blank" rel="noopener" class="btn-outline" style="margin-top:.6rem;display:inline-block">Open in Maps ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WELCOME VLOG ===== -->
+<section id="vlog" class="vlog-section" aria-label="Welcome Vlog">
+  <div class="container">
+
+    <div class="section-header" data-aos="fade-up">
+      <p class="sec-pre">✦ खुश आमदीद ✦</p>
+      <h2 class="sec-title">Welcome Vlog</h2>
+      <div class="gold-rule"></div>
+      <p class="vlog-subtitle">यारों, शादी आई है — तो कुछ ज़रूरी बातें पढ़ते जाओ 😄</p>
+    </div>
+
+    <div class="vlog-grid">
+
+      <!-- Opening shayari -->
+      <div class="vlog-card vc-shayari" data-aos="fade-up" data-aos-delay="100">
+        <span class="vc-tag">🌸 शायरी</span>
+        <p class="vc-hindi">फूलों सी महकती रहे ज़िंदगी तुम्हारी,<br>सितारों सी चमकती रहे दुनिया तुम्हारी,<br>शादी का ये बंधन यूँ ही बना रहे,<br>खुशियों से भरी रहे दुनिया तुम्हारी।</p>
+        <p class="vc-trans">May your life bloom fragrant as flowers, may your world shine bright as stars — may this sacred bond of marriage endure always, and may your world stay forever filled with joy. 🌸✨</p>
+      </div>
+
+      <!-- Romantic shayari -->
+      <div class="vlog-card vc-shayari" data-aos="fade-up" data-aos-delay="200">
+        <span class="vc-tag">💛 शायरी</span>
+        <p class="vc-hindi">दो दिलों का ये मिलन है खास,<br>बन गया है एक खूबसूरत एहसास,<br>यूँ ही बना रहे ये रिश्ता हमेशा,<br>भरता रहे इसमें प्यार हर साँस।</p>
+        <p class="vc-trans">This union of two hearts is truly special — it has blossomed into a beautiful feeling. May this bond last forever, filled with love in every breath. ❤️</p>
+      </div>
+
+      <!-- Funny warnings -->
+      <div class="vlog-card vc-shayari" data-aos="fade-up" data-aos-delay="300">
+        <span class="vc-tag">🏡 गोयल परिवार</span>
+        <p class="vc-hindi">गोयल परिवार की ये दिल से गुज़ारिश है,<br>आपकी उपस्थिति ही हमारी ख्वाहिश है,<br>इस खुशी के मौके को यादगार बनाना है,<br>इसलिए आपको तो हर हाल में आना है।</p>
+        <p class="vc-trans">This is the heartfelt request of the Goyal family — your presence is all we wish for. We want to make this joyous occasion truly unforgettable, and for that, you simply must be here. 🏡</p>
+      </div>
+
+      <!-- Shayari 6 -->
+      <div class="vlog-card vc-shayari" data-aos="fade-up" data-aos-delay="400">
+        <span class="vc-tag">💐 हार्दिक अभिनन्दन</span>
+        <p class="vc-hindi">प्यार में बंध रहे हैं, एक प्यारे रिश्ते का बंधन है,<br>पूरे परिवार सहित आपका हार्दिक अभिनन्दन है।</p>
+        <p class="vc-trans">Two hearts are uniting in love, bound by the most beautiful of bonds — we welcome you and your entire family with all our heart and warmth. 💐</p>
+      </div>
+
+      <!-- Couple's note -->
+      <div class="vlog-card vc-note" data-aos="fade-up" data-aos-delay="500">
+        <span class="vc-tag">💌 Manish &amp; Arjoo की तरफ से</span>
+        <p class="vc-hindi">आप आए हमारे आंगन में, ये सौभाग्य हमारा है,<br>आपकी मुस्कान से सजा ये हर नज़ारा है,<br>स्वागत है आपका इस खुशी के मौके पर,<br>आपसे ही ये जश्न और प्यारा है। 💛</p>
+        <p class="vc-trans">Your arrival in our home is our greatest fortune — every sight is adorned by your smile. Welcome to this joyful celebration, for it is your presence that makes this festivity even more beautiful. 🙏</p>
+      </div>
+
+      <!-- Light-hearted shayari -->
+      <div class="vlog-card vc-shayari" data-aos="fade-up" data-aos-delay="600">
+        <span class="vc-tag">😂 हल्की शायरी</span>
+        <p class="vc-hindi">खुशियों की इस महफिल में आपका इंतज़ार रहेगा,<br>आपके बिना ये हर पल अधूरा सा लगेगा,<br>निमंत्रण नहीं ये दिल की गुज़ारिश समझिए,<br>इस खास दिन पर आपको आना ही पड़ेगा। 🙏</p>
+        <p class="vc-trans">We await you at this celebration of joy — every moment feels incomplete without you. Don't take this as a mere invitation, it's a heartfelt request — on this special day, you simply must come. 😊</p>
+      </div>
+
+      <!-- Dance floor rules -->
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAMILY INVITATION ===== -->
+<section id="family" class="family-section" aria-label="Family Invitation">
+  <div class="container">
+
+    <div class="section-header" data-aos="fade-up">
+      <p class="sec-pre" style="color:var(--gold)">✦ With Lord Ganesha's Blessings ✦</p>
+      <h2 class="sec-title" style="color:var(--plum)">Invitation from the Goyal Family</h2>
+      <p class="family-subtitle">With great joy &amp; warm hearts, the Goyal family invites you</p>
+      <div class="gold-rule"></div>
+    </div>
+
+    <div class="family-grid">
+
+      <!-- Request from -->
+      <div class="fam-card fam-vinati" data-aos="fade-up" data-aos-delay="100">
+        <div class="fam-card-header">
+          <span class="fam-icon">🙏</span>
+          <h3 class="fam-cat">Request From</h3>
+        </div>
+        <ul class="fam-names">
+          <li>Shri Murarilal Goyal</li>
+          <li>Shri Harimohan Goyal</li>
+          <li>Shri Akhlesh Kumar Goyal</li>
+          <li>Shri Vineet Kumar Goyal</li>
+          <li>Shri Surendra Kumar Goyal</li>
+        </ul>
+        <p class="fam-location">📍 Residents of Surauth, Distt. Kauli (Raj.)</p>
+      </div>
+
+      <!-- Special Request -->
+      <div class="fam-card fam-aagrah" data-aos="fade-up" data-aos-delay="150">
+        <div class="fam-card-header">
+          <span class="fam-icon">💐</span>
+          <h3 class="fam-cat">Special Request</h3>
+        </div>
+        <ul class="fam-names">
+          <li>Smt. Kusum — Kailash Ji</li>
+          <li>Smt. Sudha — Amit Ji</li>
+          <li>Smt. Babli — Gopal Ji</li>
+          <li>Smt. Sunita — Vineet Ji</li>
+          <li>Smt. Usha — Gopal Ji</li>
+        </ul>
+      </div>
+
+      <!-- Your Hosts -->
+      <div class="fam-card fam-swagat" data-aos="fade-up" data-aos-delay="200">
+        <div class="fam-card-header">
+          <span class="fam-icon">🌸</span>
+          <h3 class="fam-cat">Your Hosts</h3>
+        </div>
+        <ul class="fam-names fam-names--pairs">
+          <li><span>Vineet</span><span class="fam-amp">&amp;</span><span>Shefali</span></li>
+          <li><span>Surendra</span><span class="fam-amp">&amp;</span><span>Sarika</span></li>
+          <li><span>Dinesh</span><span class="fam-amp">&amp;</span><span>Chhama</span></li>
+          <li><span>Satish</span><span class="fam-amp">&amp;</span><span>Sheelu</span></li>
+          <li><span>Ramesh</span><span class="fam-amp">&amp;</span><span>Meenu</span></li>
+          <li><span>Umakant</span><span class="fam-amp">&amp;</span><span>Kavita</span></li>
+          <li><span>Amit</span><span class="fam-amp">&amp;</span><span>Alkesh</span></li>
+        </ul>
+      </div>
+
+      <!-- Maternal Side -->
+      <div class="fam-card fam-nanihal" data-aos="fade-up" data-aos-delay="250">
+        <div class="fam-card-header">
+          <span class="fam-icon">🌺</span>
+          <h3 class="fam-cat">Maternal Side</h3>
+        </div>
+        <ul class="fam-names">
+          <li>Shri Suresh Ji &amp; Smt. Veena</li>
+          <li>Late Shri Hukum Ji &amp; Smt. Sunita</li>
+          <li>Shri Ashok Ji &amp; Smt. Kalpana</li>
+          <li class="fam-note">(Reni Wale) Mandawar</li>
+        </ul>
+      </div>
+
+      <!-- Special Blessings -->
+      <div class="fam-card fam-anugrahi" data-aos="fade-up" data-aos-delay="300">
+        <div class="fam-card-header">
+          <span class="fam-icon">✨</span>
+          <h3 class="fam-cat">Special Blessings</h3>
+        </div>
+        <ul class="fam-names fam-names--stars">
+          <li>Akash Goyal</li>
+          <li>Vishesh Goyal</li>
+          <li>Vaibhav Goyal</li>
+          <li>Bhaumik Goyal</li>
+          <li>Saniya Goyal</li>
+          <li>Akasha</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Dearest Well-wishers — full width -->
+    <div class="fam-darshan" data-aos="fade-up" data-aos-delay="350">
+      <span class="fam-icon">🙌</span>
+      <h3 class="fam-cat">Dearest Well-wishers</h3>
+      <p class="fam-darshan-names">
+        Prahlad &nbsp;·&nbsp; Gopal &nbsp;·&nbsp; Bhagwan &nbsp;·&nbsp; Ashok &nbsp;·&nbsp; Manoj &nbsp;·&nbsp;
+        Rajesh &nbsp;·&nbsp; Vedprakash &nbsp;·&nbsp; Bihari &nbsp;·&nbsp; Arvind &nbsp;·&nbsp;
+        Sanjay &nbsp;·&nbsp; Neeraj &nbsp;·&nbsp; Manish &nbsp;·&nbsp; Divanshu &nbsp;·&nbsp;
+        Harshit &nbsp;·&nbsp; Kanha &nbsp;·&nbsp; Deepak
+      </p>
+      <p class="fam-darshan-closing">&amp; the entire Goyal Family 🏡</p>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-arch" aria-hidden="true">
+    <svg width="72" height="52" viewBox="0 0 72 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="crownGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#F5D78E"/>
+          <stop offset="50%" stop-color="#C9A447"/>
+          <stop offset="100%" stop-color="#8B6914"/>
+        </linearGradient>
+      </defs>
+      <!-- Crown body -->
+      <path d="M6 38 L6 16 L22 30 L36 4 L50 30 L66 16 L66 38 Z"
+            fill="rgba(201,164,71,.12)" stroke="url(#crownGrad)" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Three gem circles -->
+      <circle cx="36" cy="4"  r="4" fill="url(#crownGrad)"/>
+      <circle cx="6"  cy="16" r="3" fill="url(#crownGrad)"/>
+      <circle cx="66" cy="16" r="3" fill="url(#crownGrad)"/>
+      <!-- Base band -->
+      <rect x="3" y="38" width="66" height="6" rx="3" fill="url(#crownGrad)"/>
+      <!-- Base band inner line -->
+      <rect x="3" y="40" width="66" height="1" rx="1" fill="rgba(255,253,224,.5)"/>
+      <!-- Small gem dots on base -->
+      <circle cx="36" cy="41" r="2" fill="#FFFDE0" opacity=".7"/>
+      <circle cx="20" cy="41" r="1.5" fill="#FFFDE0" opacity=".5"/>
+      <circle cx="52" cy="41" r="1.5" fill="#FFFDE0" opacity=".5"/>
+    </svg>
+  </div>
+  <p class="footer-ornament" aria-hidden="true">✦ ✦ ✦</p>
+  <p class="footer-names">Manish &amp; Arjoo</p>
+  <p class="footer-sub"> · 25th & 26th April 2026 · </p>
+  <p class="footer-sub"> · Anant Mahal · Patrakar Colony, Jaipur · </p>
+  <p class="footer-copy">With love from the Pink City 🌹</p>
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" hidden>
+  <button id="lbClose" class="lb-close" aria-label="Close">×</button>
+  <img id="lbImg" src="" alt="" />
+</div>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="js/gate.js"></script>
+<script src="js/main.js"></script>
+<script src="js/music.js"></script>
+<script src="js/effects.js"></script>
+<script src="js/gallery.js"></script>
+<script>
+  /* Inline QR — generates directions QR client-side */
+  (function(){
+    const el = document.getElementById('qrCode');
+    if (!el) return;
+    const url = 'https://maps.app.goo.gl/TnrJqUGxTUnnCfHn9';
+    /* Simple module-7 QR placeholder image via Google Charts-compatible SVG */
+    const img = document.createElement('img');
+    img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=' + encodeURIComponent(url) + '&color=4A1472&bgcolor=FFFFFF';
+    img.alt = 'QR code for Anant Mahal directions';
+    img.width = 130; img.height = 130;
+    img.style.cssText = 'border:3px solid #C9A447;border-radius:4px;display:block';
+    img.onerror = function(){
+      /* If API blocked, show fallback text link */
+      el.innerHTML = '<p style="font-size:.82rem;color:var(--text-mid)">Scan the QR on the invite card above ↑<br/>or use the Maps link below.</p>';
+    };
+    el.appendChild(img);
+  })();
+</script>
+<!-- Sound 1: fanfare — plays when gate opens -->
+<audio id="gateFanfare" preload="auto">
+  <source src="assets/audio/gate-fanfare.mp3" type="audio/mpeg" />
+</audio>
+<!-- Sound 2: soft background loop — starts 5s after fanfare ends -->
+<audio id="weddingMusic" loop preload="none">
+  <source src="assets/audio/wedding-bg.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- Floating music toggle -->
+<button id="musicToggle" class="music-toggle" aria-label="Toggle background music" title="Toggle music">
+  <svg class="music-icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+    <path d="M9 18V5l12-2v13"/>
+    <circle cx="6" cy="18" r="3"/>
+    <circle cx="18" cy="16" r="3"/>
+  </svg>
+  <svg class="music-icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" style="display:none">
+    <path d="M9 18V5l12-2v13"/>
+    <circle cx="6" cy="18" r="3"/>
+    <circle cx="18" cy="16" r="3"/>
+    <line x1="2" y1="2" x2="22" y2="22"/>
+  </svg>
+</button>
+
+</body>
+</html>

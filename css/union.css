@@ -1,0 +1,386 @@
+/* ═══════════════════════════════════════════════════════════
+   UNION SECTION  —  Where Two States Become One
+   Rajasthan  ♥  Haryana  ·  theme: plum + gold
+═══════════════════════════════════════════════════════════ */
+
+/* ── Section wrapper ── */
+.union-section {
+  position: relative;
+  padding: 110px 0 80px;
+  overflow: hidden;
+  background: var(--lav-pale);
+}
+
+/* plum glow wash — matches story / family sections */
+.union-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 55% at 15% 40%, rgba(74, 20, 114, .07) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 55% at 85% 60%, rgba(74, 20, 114, .07) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 35% at 50% 50%, rgba(201,164,71, .06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* diagonal silk-sheen line — same subtle texture as events section */
+.union-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0px, transparent 60px,
+    rgba(201,164,71,.03) 60px, rgba(201,164,71,.03) 61px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.union-section > * { position: relative; z-index: 1; }
+
+/* ── Section header ── */
+.union-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.union-pre {
+  font-family: var(--ff-disp);
+  font-size: .72rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--gold-dk);
+  margin-bottom: .5rem;
+}
+.union-title {
+  font-family: var(--ff-script);
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  color: var(--plum);
+  line-height: 1.15;
+  margin-bottom: .5rem;
+  filter: drop-shadow(0 2px 10px rgba(74,20,114,.18));
+}
+.union-tagline {
+  font-family: var(--ff-disp);
+  font-size: .76rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+}
+
+/* ── Main arena: two sides + center pin ── */
+.union-arena {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  align-items: stretch;
+  max-width: 1100px;
+  margin: 0 auto 3rem;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 20px 60px rgba(42, 8, 69, .28),
+    0 0 0 1px rgba(201,164,71,.3);
+}
+
+/* ── Shared panel base ── */
+.union-side {
+  padding: 3rem 2.4rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: .4rem;
+}
+
+/* Rajasthan — plum-maroon: plum meets saffron warmth */
+.union-side.rajasthan {
+  background: linear-gradient(160deg, #A82060 0%, #D44080 45%, #A82060 100%);
+  box-shadow: inset -6px 0 30px rgba(0,0,0,.08);
+}
+/* Haryana — bright purple */
+.union-side.haryana {
+  background: linear-gradient(160deg, #6535C0 0%, #8F5FE0 45%, #6535C0 100%);
+  box-shadow: inset 6px 0 30px rgba(0,0,0,.08);
+}
+
+/* subtle diagonal weave — same as before */
+.union-side::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0px, transparent 18px,
+    rgba(255,255,255,.025) 18px, rgba(255,255,255,.025) 19px
+  );
+  pointer-events: none;
+}
+
+/* gold radial crown from top */
+.union-side::after {
+  content: '';
+  position: absolute;
+  top: -60px; left: 50%; transform: translateX(-50%);
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.union-side.rajasthan::after {
+  background: radial-gradient(circle, rgba(255,180,200,.22) 0%, transparent 70%);
+}
+.union-side.haryana::after {
+  background: radial-gradient(circle, rgba(200,180,255,.25) 0%, transparent 70%);
+}
+
+/* ── State badge ── */
+.union-state-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .3rem 1rem;
+  border-radius: 50px;
+  font-family: var(--ff-disp);
+  font-size: .62rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: .8rem;
+  position: relative;
+  z-index: 1;
+}
+/* Rajasthan badge — saffron-gold */
+.rajasthan .union-state-badge {
+  background: rgba(201,164,71,.18);
+  border: 1px solid rgba(201,164,71,.45);
+  color: var(--gold-lt);
+}
+/* Haryana badge — lavender */
+.haryana .union-state-badge {
+  background: rgba(155,126,200,.2);
+  border: 1px solid rgba(155,126,200,.45);
+  color: var(--lav-lt);
+}
+
+/* ── Motif icon ── */
+.union-motif {
+  font-size: 3.8rem;
+  margin-bottom: .5rem;
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,.4));
+  position: relative; z-index: 1;
+  line-height: 1;
+}
+
+/* ── Name display ── */
+.union-name {
+  font-family: var(--ff-script);
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  color: var(--gold-lt);
+  line-height: 1.1;
+  font-weight: 700;
+  text-transform: capitalize;
+  position: relative; z-index: 1;
+  filter: drop-shadow(0 2px 14px rgba(0,0,0,.5));
+}
+.union-nickname {
+  font-family: var(--ff-disp);
+  font-size: .78rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  position: relative; z-index: 1;
+}
+.rajasthan .union-nickname { color: rgba(245,215,142,.9); }
+.haryana   .union-nickname { color: rgba(232,223,255,.9); }
+
+/* ── Location ── */
+.union-location {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.75);
+  margin: .3rem 0;
+  position: relative; z-index: 1;
+}
+
+/* ── Divider rule ── */
+.union-rule {
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,164,71,.5), transparent);
+  margin: .6rem auto;
+  position: relative; z-index: 1;
+}
+
+/* ── Parents block ── */
+.union-parents {
+  position: relative; z-index: 1;
+  margin-top: .4rem;
+}
+.union-parents-label {
+  font-family: var(--ff-disp);
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
+.union-parent-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  font-family: var(--ff-serif);
+  font-size: 1.05rem;
+  color: #ffffff;
+  line-height: 1.6;
+  font-weight: 700;
+}
+.union-parent-row + .union-parent-row { margin-top: .15rem; }
+.union-parent-amp {
+  font-family: var(--ff-script);
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--gold);
+}
+
+/* ── Grandparents blessing ── */
+.union-grandparents {
+  margin-top: .9rem;
+  padding: .7rem 1rem;
+  border-radius: 8px;
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: .92rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.7);
+  position: relative; z-index: 1;
+  line-height: 1.65;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.18);
+}
+.union-grandparents span {
+  display: block;
+  font-family: var(--ff-disp);
+  font-size: .62rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+  font-weight: 600;
+  margin-bottom: .3rem;
+  font-style: normal;
+}
+
+/* ── Center connector pin ── */
+.union-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  background: linear-gradient(180deg, var(--lav-pale) 0%, var(--lav-lt) 50%, var(--lav-pale) 100%);
+  border-left:  1px solid rgba(201,164,71,.35);
+  border-right: 1px solid rgba(201,164,71,.35);
+  gap: .6rem;
+  padding: 2rem 0;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 30px rgba(201,164,71,.08);
+}
+.union-pin-heart {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 14px rgba(201,164,71,.7));
+  animation: heartbeat 2.2s ease-in-out infinite;
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.18); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.1); }
+}
+.union-pin-text {
+  font-family: var(--ff-disp);
+  font-size: .48rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--plum);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+.union-pin-ring {
+  font-size: 1.4rem;
+  filter: drop-shadow(0 0 8px rgba(201,164,71,.5));
+}
+.union-pin-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.union-pin-dots span {
+  display: block;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: rgba(74,20,114,.35);
+  margin: 0 auto;
+}
+
+/* ── Bottom banner ── */
+.union-banner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.8rem 2rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg,
+    rgba(74,20,114,.06) 0%,
+    rgba(201,164,71,.1) 50%,
+    rgba(74,20,114,.06) 100%
+  );
+  border: 1px solid rgba(201,164,71,.35);
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(42,8,69,.1), 0 0 0 4px rgba(201,164,71,.05);
+}
+.union-banner-title {
+  font-family: var(--ff-script);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: var(--plum);
+  filter: drop-shadow(0 1px 4px rgba(74,20,114,.15));
+  margin-bottom: .3rem;
+}
+.union-banner-sub {
+  font-family: var(--ff-disp);
+  font-size: .66rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+}
+
+/* ── Responsive ── */
+@media (max-width: 820px) {
+  .union-arena {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .union-pin {
+    width: 100%;
+    flex-direction: row;
+    padding: 1rem 2rem;
+    border-left: none; border-right: none;
+    border-top:    1px solid rgba(201,164,71,.2);
+    border-bottom: 1px solid rgba(201,164,71,.2);
+    justify-content: center;
+  }
+  .union-pin-text { writing-mode: horizontal-tb; }
+  .union-pin-dots { flex-direction: row; }
+  .union-side { padding: 2.4rem 1.6rem; }
+}
+@media (max-width: 480px) {
+  .union-section { padding: 80px 0 60px; }
+  .union-name { font-size: 2.2rem; }
+}
