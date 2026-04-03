@@ -124,13 +124,15 @@ function initLightbox() {
 /* ── RSVP removed — replaced by Welcome Vlog section ──────── */
 function initRSVP() { /* no-op — YAGNI */ }
 
-/* ── Video fallback when no video file present ──────────────── */
+/* ── Video fallback when no video file present ──────────── */
 function initVideoFallback() {
   const v = document.getElementById('heroVideo');
   if (!v) return;
-  v.addEventListener('error', () => {
-    v.style.display = 'none';
-  });
+  /* Only show once browser confirms it can actually play the file.
+     Keeps the element hidden on iOS when hero.mp4 is missing —
+     prevents Safari rendering its native play-button overlay. */
+  v.addEventListener('canplay', () => { v.style.display = ''; }, { once: true });
+  v.addEventListener('error',   () => { v.style.display = 'none'; });
 }
 
 /* ── Highlight active nav link on scroll ─────────────────────── */
