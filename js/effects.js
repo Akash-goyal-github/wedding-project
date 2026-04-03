@@ -64,19 +64,20 @@ class FireworksEngine {
 
   /* Fire a paired left+right salvo */
   fireSalvo(count = 2) {
-    for (let i = 0; i < count; i++) {
+    const isMob = window.matchMedia('(max-width:600px)').matches;
+    const rockets = isMob ? Math.max(1, Math.floor(count / 2)) : count;
+    for (let i = 0; i < rockets; i++) {
       setTimeout(() => {
         this.launchRocket('left');
         this.launchRocket('right');
-        // sometimes add a centre one
-        if (Math.random() > 0.5) this.launchRocket(Math.random() > 0.5 ? 'left' : 'right');
+        // removed random 3rd rocket — was adding too much
       }, i * rand(120, 340));
     }
   }
 
   /* Explode a rocket into particles */
   explode(x, y, color) {
-    const count = randInt(90, 140);
+    const count = randInt(45, 70);  // was 90-140 — halved
     for (let i = 0; i < count; i++) {
       const angle = (i / count) * Math.PI * 2 + rand(-0.2, 0.2);
       const speed = rand(1.5, 9);
@@ -93,9 +94,9 @@ class FireworksEngine {
         twinkle: Math.random() > 0.6,
       });
     }
-    // Gold glitter ring
-    for (let i = 0; i < 30; i++) {
-      const angle = (i / 30) * Math.PI * 2;
+    // Gold glitter ring — reduced from 30 to 12
+    for (let i = 0; i < 12; i++) {
+      const angle = (i / 12) * Math.PI * 2;
       const speed = rand(0.5, 3);
       this.particles.push({
         x, y,
@@ -181,15 +182,15 @@ class FireworksEngine {
 
   /* Schedule automatic periodic salvos */
   scheduleAuto() {
+    const isMob = window.matchMedia('(max-width:600px)').matches;
     // First burst after 1.2s
-    setTimeout(() => { this.start(); this.fireSalvo(3); }, 1200);
-
-    // Then every 6-10 seconds
+    setTimeout(() => { this.start(); this.fireSalvo(isMob ? 1 : 2); }, 1200);
+    // Then every 10-16 seconds — was 6-10s, too frequent
     const repeat = () => {
-      this.fireSalvo(randInt(2, 4));
-      setTimeout(repeat, rand(6000, 10000));
+      this.fireSalvo(isMob ? 1 : randInt(1, 2));
+      setTimeout(repeat, rand(10000, 16000));
     };
-    setTimeout(repeat, rand(7000, 11000));
+    setTimeout(repeat, rand(11000, 16000));
   }
 }
 
@@ -198,6 +199,8 @@ class FireworksEngine {
 ══════════════════════════════════════════════════════════ */
 const PETALS = ['🌸','🌺','🌹','🌼','✿','❀','🌷'];
 const GOLD_SPARKLES = ['✦','✧','⋆','✵','✶'];
+
+const ON_MOBILE_PETALS = window.matchMedia('(max-width:600px)').matches;
 
 function spawnPagePetal() {
   // Skip if gate is still visible
@@ -208,13 +211,17 @@ function spawnPagePetal() {
   const isGold = Math.random() > 0.65;
   el.className = 'page-petal';
   el.textContent = isGold ? pick(GOLD_SPARKLES) : pick(PETALS);
+  /* Mobile: only spawn from left edge (0-10%) or right edge (90-100%) */
+  const leftPos = ON_MOBILE_PETALS
+    ? (Math.random() > 0.5 ? rand(0, 10) : rand(90, 100))
+    : rand(0, 100);
   el.style.cssText = `
-    left: ${rand(0, 100)}vw;
-    font-size: ${rand(0.7, 1.4)}rem;
+    left: ${leftPos}vw;
+    font-size: ${ON_MOBILE_PETALS ? rand(0.5, 0.85) : rand(0.7, 1.4)}rem;
     animation-duration: ${rand(6, 14)}s;
     animation-delay: ${rand(0, 1)}s;
     --drift: ${rand(-80, 80)}px;
-    opacity: ${rand(0.5, 1)};
+    opacity: ${ON_MOBILE_PETALS ? rand(0.2, 0.45) : rand(0.5, 1)};
     color: ${isGold ? pick(GOLD_PALETTE) : ''};
   `;
   document.body.appendChild(el);
@@ -222,10 +229,11 @@ function spawnPagePetal() {
 }
 
 function initPagePetals() {
-  // Spawn a petal every 900ms
-  setInterval(spawnPagePetal, 900);
-  // Seed a few immediately
-  for (let i = 0; i < 6; i++) setTimeout(spawnPagePetal, i * 200);
+  const onMobile = window.matchMedia('(max-width:600px)').matches;
+  setInterval(spawnPagePetal, onMobile ? 5000 : 2500);
+  // Seed just a couple on load
+  const seedCount = onMobile ? 1 : 2;
+  for (let i = 0; i < seedCount; i++) setTimeout(spawnPagePetal, i * 200);
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -380,18 +388,18 @@ class HeroFountain {
 ══════════════════════════════════════════════════════════ */
 function hookGateExit(fw) {
   const btn = document.getElementById('gateEnterBtn');
+  const isMob = window.matchMedia('(max-width:600px)').matches;
   if (!btn) return;
   btn.addEventListener('click', () => {
     fw.start();
-    fw.fireSalvo(4);
+    fw.fireSalvo(isMob ? 1 : 2);  // was 4
   }, { once: true });
-  // Also watch for auto-open (class 'gone' on gateOverlay)
   const overlay = document.getElementById('gateOverlay');
   if (!overlay) return;
   const observer = new MutationObserver(() => {
     if (overlay.classList.contains('gone') || overlay.style.display === 'none') {
       fw.start();
-      fw.fireSalvo(3);
+      fw.fireSalvo(isMob ? 1 : 2);  // was 3
       observer.disconnect();
     }
   });

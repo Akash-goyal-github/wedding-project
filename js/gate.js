@@ -294,8 +294,13 @@
     const dur  = fast ? (1.5+Math.random()*2) : (5+Math.random()*7);
     const dly  = fast ? (Math.random()*1.5)    : (Math.random()*10);
     const sc   = 0.7 + Math.random()*0.8;
+    /* Mobile: petals fall only from left/right edges (0-10% or 90-100%) */
+    const isMob = window.matchMedia('(max-width:600px)').matches;
+    const leftPos = isMob
+      ? (Math.random() > 0.5 ? Math.random()*10 : 90+Math.random()*10)
+      : Math.random()*100;
     el.style.cssText = [
-      `left:${Math.random()*100}%`,
+      `left:${leftPos}%`,
       `width:${v.w*sc}px`, `height:${v.h*sc}px`,
       `background:${v.bg}`, `border-radius:${v.br}`, `opacity:${v.op}`,
       `transform:rotate(${Math.random()*360}deg)`,
@@ -311,7 +316,8 @@
     for(let i=0;i<n;i++) f.appendChild(createPetal(fast));
     petalsCt.appendChild(f);
   }
-  spawnPetals(32, false);
+  const isMobileScreen = window.matchMedia('(max-width:600px)').matches;
+  spawnPetals(isMobileScreen ? 3 : 10, false);
 
   /* ══ OPEN GATES ══════════════════════════════════════════════ */
   let opened = false;
@@ -341,7 +347,7 @@
       topInfo.style.pointerEvents = 'none';
     }
 
-    spawnPetals(48, true);
+    spawnPetals(window.matchMedia('(max-width:600px)').matches ? 5 : 15, true);
 
     /* Garland bounces in after doors half-open */
     setTimeout(() => { if (garlandEl) garlandEl.classList.add('visible'); }, 1800);
