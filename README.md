@@ -1,4 +1,4 @@
-# 👑 Manish & Arjoo — Royal Wedding Website
+# 👑 Arjoo & Manish — Royal Wedding Website
 
 A bespoke, fully hand-crafted wedding website for the royal celebration of **Aayushman Manish** and **Aayushmati Arjoo (Bulbul)** — uniting Haryana and Rajasthan on **26th April 2026** at **Anant Mahal, Jaipur**.
 
@@ -149,4 +149,4 @@ npx serve .
 
 ---
 
-*Crafted with ❤️ for Manish & Arjoo · 26th April 2026 · Anant Mahal, Jaipur*
+*Crafted with ❤️ for Arjoo & Manish · 26th April 2026 · Anant Mahal, Jaipur*

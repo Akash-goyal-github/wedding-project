@@ -1,7 +1,7 @@
 /* ============================================================
    gallery.js — Cinematic slider controller
    Ken Burns · auto-advance · film strip · lightbox
-   Manish & Arjoo · 26 April 2026
+   Arjoo & Manish · 26 April 2026
 ============================================================ */
 
 'use strict';

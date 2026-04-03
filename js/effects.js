@@ -1,7 +1,7 @@
 /* ============================================================
    effects.js — Wedding ambient effects
    Fireworks · Falling petals · Hero sparkles
-   Manish & Arjoo · 26 April 2026
+   Arjoo & Manish · 26 April 2026
 ============================================================ */
 
 'use strict';

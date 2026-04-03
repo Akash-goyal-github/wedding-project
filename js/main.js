@@ -1,5 +1,5 @@
 /* ============================================================
-   main.js — Wedding Site: Manish & Arjoo
+   main.js — Wedding Site: Arjoo & Manish
    Handles: AOS, navbar, countdown, lightbox, RSVP
 ============================================================ */
 
