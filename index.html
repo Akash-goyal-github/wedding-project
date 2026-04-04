@@ -237,8 +237,10 @@
       <li><a href="#events">Events</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#venue">Venue</a></li>
+      <li><a href="#vlog">Welcome</a></li>
       <li><a href="#family">Family</a></li>
-      <li><a href="#vlog" class="nav-cta">Welcome</a></li>
+      <li><a href="#whatsapp" class="nav-wa">📱 Join Us</a></li>
+      <li><a href="#" class="nav-armaan" onclick="event.preventDefault();armaanOpen()" aria-label="Open Ask Armaan assistant">🤵 Ask Armaan</a></li>
     </ul>
   </div>
 </nav>
@@ -288,7 +290,7 @@
       <div class="royal-frame-wrap" data-aos="fade-right" data-aos-duration="1000">
         <div style="position:relative;display:inline-block">
           <div class="royal-arch-frame">
-            <img src="assets/images/together.jpeg" alt="Arjoo and Manish" loading="lazy" />
+            <img src="assets/images/couple-new.jpeg" alt="Arjoo and Manish" loading="lazy" />
           </div>
           <!-- Gold decorative ornaments beside frame -->
           <span class="frame-ornament left">❁</span>
@@ -339,7 +341,7 @@
         <div class="union-state-badge">🪨 Rajasthan</div>
         <div class="union-motif">🦚</div>
         <h3 class="union-name">Arjoo</h3>
-        <p class="union-location">📍 Suroth, District-Karauli, Rajasthan</p>
+        <p class="union-location">📍 Suroth, Dist. Karauli, Rajasthan</p>
         <div class="union-rule"></div>
         <div class="union-parents">
           <p class="union-parents-label">Daughter of</p>
@@ -442,7 +444,7 @@
       <div class="tree-row" role="listitem">
         <article class="tree-card left sangeet" data-aos="fade-right" data-aos-duration="800">
           <div class="tc-icon">🎶</div><div class="tc-body"><h3>Sangeet Night</h3>
-          <p class="tc-time">⏰ 7:00 PM – 1:00 AM</p><p class="tc-loc">📍 Anant Mahal Royal Lawns</p></div>
+          <p class="tc-time">⏰ 7:00 PM – 11:00 PM</p><p class="tc-loc">📍 Anant Mahal Royal Lawns</p></div>
         </article>
         <div class="tree-node"><span>🎶</span></div>
         <div></div>
@@ -703,29 +705,15 @@ bsp; 26 April 2026</p>
       <p class="venue-tagline-top">Patrakar Colony, Near Raheja Tower, Mansarovar, Jaipur</p>
     </div>
     <div class="venue-grid">
+
+      <!-- LEFT: description + quick facts + QR -->
       <div class="venue-info" data-aos="fade-right">
         <p>Anant Mahal is one of Jaipur’s finest royal banquet palaces — a regal haven with ornate arches, marble corridors, and lush garden terraces set in the heart of Mansarovar, Jaipur.</p>
         <p>Our celebration will fill every golden hallway and flower-strewn garden with music, laughter, and the timeless fragrance of marigold.</p>
         <div class="venue-deets">
-          <div class="vd"><span class="vd-l">📍 Address</span><span>Patrakar Colony, Near Raheja Tower, Mansarovar, Jaipur, Rajasthan</span></div>
-          <div class="vd"><span class="vd-l">✈️ Jaipur Int. Airport</span><span>~15 km · 25–30 minutes by car</span></div>
-          <div class="vd"><span class="vd-l">🚉 Jaipur Junction Rly Stn</span><span>~12 km · 20–25 minutes by car</span></div>
+          <div class="vd"><span class="vd-l">📍 Address</span><span>Patrakar Colony, Near Raheja Tower, Mansarovar, Jaipur</span></div>
           <div class="vd"><span class="vd-l">📅 Wedding Dates</span><span>25th &amp; 26th April 2026</span></div>
         </div>
-        <div class="venue-tip">
-          <strong>🗺 Google Maps Tip:</strong> Search &ldquo;<strong>ANANT MAHAL, PATRAKAR COLONY</strong>&rdquo; to get the direct route.
-        </div>
-      </div>
-      <div class="venue-map" data-aos="fade-left">
-        <div class="venue-map-wrap">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4107.07084893575!2d75.7337716!3d26.837424499999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db53beb4ab939%3A0x7dc21e9162faf521!2sAnant%20Mahal!5e1!3m2!1sen!2sin!4v1775116371909!5m2!1sen!2sin"
-            width="100%" height="420" style="border:0" allowfullscreen loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Anant Mahal, Patrakar Colony, Jaipur" aria-label="Map of Anant Mahal Jaipur">
-          </iframe>
-        </div>
-        <!-- QR Code for Directions -->
         <div class="venue-qr-block" data-aos="fade-up">
           <div id="qrCode"></div>
           <div class="qr-text">
@@ -735,7 +723,158 @@ bsp; 26 April 2026</p>
           </div>
         </div>
       </div>
-    </div>
+
+      <!-- RIGHT: tip + map (full height, clean) -->
+      <div class="venue-map" data-aos="fade-left">
+        <div class="venue-tip" style="margin-bottom:1rem">
+          <strong>🗺 Google Maps Tip:</strong> Search “<strong>ANANT MAHAL, PATRAKAR COLONY</strong>” to get the direct route.
+        </div>
+        <div class="venue-map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4107.07084893575!2d75.7337716!3d26.837424499999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db53beb4ab939%3A0x7dc21e9162faf521!2sAnant%20Mahal!5e1!3m2!1sen!2sin!4v1775116371909!5m2!1sen!2sin"
+            width="100%" height="420" style="border:0" allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Anant Mahal, Patrakar Colony, Jaipur" aria-label="Map of Anant Mahal Jaipur">
+          </iframe>
+        </div>
+      </div>
+
+    </div><!-- end venue-grid -->
+
+    <!-- ──── HOW TO REACH US — full-width band below the grid ──── -->
+    <div class="vgh-band" data-aos="fade-up" data-aos-delay="100">
+      <div class="vgh-band-header">
+        <span class="vgh-eyebrow">✨ How to Reach Anant Mahal ✨</span>
+      </div>
+
+      <div class="vgh-cols">
+
+        <!-- LEFT: Bus (2×2 grid) -->
+        <div class="vgh-col">
+          <p class="vgh-col-title">🚌 By Bus</p>
+          <div class="rail-track-wrap" aria-hidden="true">
+            <div class="rail-track"></div>
+            <span class="bus-anim">🚌</span>
+          </div>
+          <div class="bus-stands-list">
+            <div class="bus-card bus-card--nearest">
+              <span class="bus-medal">🥇</span>
+              <p class="bus-name">Bhankrota New Bus Stand</p>
+              <p class="bus-sub">Jaipur Ajmer Road</p>
+              <div class="rail-chips">
+                <span class="chip">⏱ 12 min</span>
+                <span class="chip">📍 7.5 km</span>
+              </div>
+              <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Bhankrota+New+Bus+Stand,+Jaipur" target="_blank" rel="noopener">🗺 Get Route</a>
+            </div>
+            <div class="bus-card">
+              <span class="bus-medal">🥈</span>
+              <p class="bus-name">Civil Lines Bus Stop</p>
+              <p class="bus-sub">Near Metro Station</p>
+              <div class="rail-chips">
+                <span class="chip">⏱ 20 min</span>
+                <span class="chip">📍 12.7 km</span>
+              </div>
+              <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Civil+Lines+Metro+Station,+Jaipur" target="_blank" rel="noopener">🗺 Get Route</a>
+            </div>
+            <div class="bus-card">
+              <span class="bus-medal">🥉</span>
+              <p class="bus-name">Narayan Singh Circle</p>
+              <p class="bus-sub">Foot Over Bridge</p>
+              <div class="rail-chips">
+                <span class="chip">⏱ 24 min</span>
+                <span class="chip">📍 14 km</span>
+              </div>
+              <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Narayan+Singh+Circle,+Jaipur" target="_blank" rel="noopener">🗺 Get Route</a>
+            </div>
+            <div class="bus-card">
+              <span class="bus-medal">🏆</span>
+              <p class="bus-name">Sindhi Camp Bus Station</p>
+              <p class="bus-sub">Central Bus Stand</p>
+              <div class="rail-chips">
+                <span class="chip">⏱ 30 min</span>
+                <span class="chip">📍 17 km</span>
+              </div>
+              <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Sindhi+Camp+Bus+Station,+Jaipur" target="_blank" rel="noopener">🗺 Get Route</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Train (top) + Airport (bottom) stacked -->
+        <div class="vgh-right-stack">
+
+          <!-- Train -->
+          <div class="vgh-col">
+            <p class="vgh-col-title">🚂 By Train</p>
+            <div class="rail-track-wrap" aria-hidden="true">
+              <div class="rail-track"></div>
+              <span class="rail-train">🚂</span>
+            </div>
+            <div class="rail-stations-list">
+              <div class="rail-card rail-card--nearest">
+                <span class="rail-icon">🚉</span>
+                <p class="rail-name">Durgapura</p>
+                <div class="rail-chips">
+                  <span class="chip">⏱ 20 min</span>
+                  <span class="chip">📍 8.3 km</span>
+                </div>
+                <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Durgapura+Railway+Station,+Jaipur" target="_blank" rel="noopener">🗺 Get Route</a>
+              </div>
+              <div class="rail-card">
+                <span class="rail-icon">🚉</span>
+                <p class="rail-name">Gandhinagar</p>
+                <div class="rail-chips">
+                  <span class="chip">⏱ 22 min</span>
+                  <span class="chip">📍 10.3 km</span>
+                </div>
+                <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Gandhinagar+Railway+Station,+Jaipur" target="_blank" rel="noopener">🗺 Get Route</a>
+              </div>
+              <div class="rail-card">
+                <span class="rail-icon">🚉</span>
+                <p class="rail-name">Jaipur Jn</p>
+                <div class="rail-chips">
+                  <span class="chip">⏱ 24 min</span>
+                  <span class="chip">📍 14.2 km</span>
+                </div>
+                <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Jaipur+Junction+Railway+Station" target="_blank" rel="noopener">🗺 Get Route</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subtle rule between train and airport -->
+          <div class="vgh-stack-rule" aria-hidden="true"></div>
+
+          <!-- Airport -->
+          <div class="vgh-col">
+            <p class="vgh-col-title">✈️ By Air</p>
+            <div class="rail-track-wrap" aria-hidden="true">
+              <div class="rail-track"></div>
+              <span class="air-anim">✈️</span>
+            </div>
+            <div class="airport-card">
+              <div class="airport-card-top">
+                <span class="airport-icon">🛬</span>
+                <div>
+                  <p class="airport-name">Jaipur International Airport</p>
+                  <p class="airport-sub">Sanganer, Jaipur &mdash; IATA: JAI</p>
+                </div>
+              </div>
+              <div class="rail-chips" style="justify-content:center;margin:.5rem 0">
+                <span class="chip">⏱ 25–30 min</span>
+                <span class="chip">📍 ~15 km</span>
+                <span class="chip">🚖 Cab available</span>
+              </div>
+              <p class="airport-note">Pre-paid taxis &amp; app cabs (Ola&thinsp;/&thinsp;Uber) available right outside arrivals. No auto-booking needed.</p>
+              <a class="rail-dir-btn airport-dir-btn"
+                 href="https://www.google.com/maps/dir/Jaipur+International+Airport/Anant+Mahal,+Patrakar+Colony,+Jaipur"
+                 target="_blank" rel="noopener">🗺 Get Route</a>
+            </div>
+          </div>
+
+        </div><!-- end vgh-right-stack -->
+
+      </div><!-- end vgh-cols -->
+    </div><!-- end vgh-band -->
   </div>
 </section>
 
@@ -827,7 +966,7 @@ bsp; 26 April 2026</p>
           <li>Shri Vineet Kumar Goyal</li>
           <li>Shri Surendra Kumar Goyal</li>
         </ul>
-        <p class="fam-location">📍 Residents of Surauth, Distt. Kauli (Raj.)</p>
+        <p class="fam-location">📍 Residents of Suroth, Dist. Karauli (Raj.)</p>
       </div>
 
       <!-- Special Request -->
@@ -886,7 +1025,7 @@ bsp; 26 April 2026</p>
           <li>Akash Goyal</li>
           <li>Vishesh Goyal</li>
           <li>Vaibhav Goyal</li>
-          <li>Bhaumik Goyal</li>
+          <li>Bhoumik Goyal</li>
           <li>Saniya Goyal</li>
           <li>Akanksha Goyal</li>
         </ul>
@@ -910,40 +1049,88 @@ bsp; 26 April 2026</p>
   </div>
 </section>
 
+<!-- ===== WHATSAPP COMMUNITY ===== -->
+<section id="whatsapp" class="wa-section" aria-label="WhatsApp Community">
+  <div class="container">
+    <div class="wa-band" data-aos="fade-up">
+
+      <!-- LEFT: text + CTA -->
+      <div class="wa-text">
+        <div class="wa-eyebrow">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.472 2 2 6.477 2 12.01a10 10 0 0 0 1.37 5.104L2 22l5.01-1.35A9.978 9.978 0 0 0 12.004 22C17.535 22 22 17.523 22 12.01 22 6.477 17.535 2 12.004 2zm0 18.18a8.19 8.19 0 0 1-4.187-1.148l-.3-.178-3.113.838.842-3.063-.196-.314A8.2 8.2 0 0 1 3.82 12.01C3.82 7.48 7.48 3.82 12.004 3.82c4.522 0 8.18 3.66 8.18 8.19 0 4.523-3.658 8.17-8.18 8.17z"/></svg>
+          <span>WhatsApp Community</span>
+        </div>
+        <h2 class="wa-title">Arjoo <span class="wa-heart">❤️</span> Manish<br><em>Forever Begins</em> 🥰</h2>
+        <p class="wa-desc">Join our wedding community to get live updates, photos, schedules &amp; all the fun moments — straight to your WhatsApp!</p>
+        <div class="wa-actions">
+          <a href="https://chat.whatsapp.com/CkrAO8cSR8TKoxgeAxbOzB"
+             target="_blank" rel="noopener"
+             class="wa-btn" aria-label="Join WhatsApp Community">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.472 2 2 6.477 2 12.01a10 10 0 0 0 1.37 5.104L2 22l5.01-1.35A9.978 9.978 0 0 0 12.004 22C17.535 22 22 17.523 22 12.01 22 6.477 17.535 2 12.004 2zm0 18.18a8.19 8.19 0 0 1-4.187-1.148l-.3-.178-3.113.838.842-3.063-.196-.314A8.2 8.2 0 0 1 3.82 12.01C3.82 7.48 7.48 3.82 12.004 3.82c4.522 0 8.18 3.66 8.18 8.19 0 4.523-3.658 8.17-8.18 8.17z"/></svg>
+            Join the Community
+          </a>
+          <a href="https://chat.whatsapp.com/CkrAO8cSR8TKoxgeAxbOzB"
+             target="_blank" rel="noopener" class="wa-link">
+            chat.whatsapp.com/CkrAO8cSR8TK&hellip;
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: QR code -->
+      <div class="wa-qr-wrap">
+        <div class="wa-qr-card">
+          <img src="assets/images/whatsapp-qr.jpeg"
+               alt="Scan to join Arjoo &amp; Manish WhatsApp Community"
+               class="wa-qr-img"
+               loading="lazy" />
+          <p class="wa-qr-hint">📷 Scan with your camera to join instantly</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <footer class="site-footer" role="contentinfo">
-  <div class="footer-arch" aria-hidden="true">
-    <svg width="72" height="52" viewBox="0 0 72 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="crownGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"  stop-color="#F5D78E"/>
-          <stop offset="50%" stop-color="#C9A447"/>
-          <stop offset="100%" stop-color="#8B6914"/>
-        </linearGradient>
-      </defs>
-      <!-- Crown body -->
-      <path d="M6 38 L6 16 L22 30 L36 4 L50 30 L66 16 L66 38 Z"
-            fill="rgba(201,164,71,.12)" stroke="url(#crownGrad)" stroke-width="2" stroke-linejoin="round"/>
-      <!-- Three gem circles -->
-      <circle cx="36" cy="4"  r="4" fill="url(#crownGrad)"/>
-      <circle cx="6"  cy="16" r="3" fill="url(#crownGrad)"/>
-      <circle cx="66" cy="16" r="3" fill="url(#crownGrad)"/>
-      <!-- Base band -->
-      <rect x="3" y="38" width="66" height="6" rx="3" fill="url(#crownGrad)"/>
-      <!-- Base band inner line -->
-      <rect x="3" y="40" width="66" height="1" rx="1" fill="rgba(255,253,224,.5)"/>
-      <!-- Small gem dots on base -->
-      <circle cx="36" cy="41" r="2" fill="#FFFDE0" opacity=".7"/>
-      <circle cx="20" cy="41" r="1.5" fill="#FFFDE0" opacity=".5"/>
-      <circle cx="52" cy="41" r="1.5" fill="#FFFDE0" opacity=".5"/>
+
+  <!-- top wave separator -->
+  <div class="footer-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C240,55 480,5 720,30 C960,55 1200,5 1440,30"
+            fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
     </svg>
   </div>
-  <p class="footer-ornament" aria-hidden="true">✦ ✦ ✦</p>
+
+  <!-- bokeh blobs (decorative, CSS-animated) -->
+  <div class="footer-bokeh" aria-hidden="true">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- ornament row -->
+  <div class="footer-orn-row" aria-hidden="true">
+    <span class="footer-orn-line"></span>
+    <span class="footer-orn-gems">✦ ✦ ✦</span>
+    <span class="footer-orn-line"></span>
+  </div>
+
+  <!-- couple names -->
   <p class="footer-names">Arjoo &amp; Manish</p>
-  <p class="footer-sub"> · 25th & 26th April 2026 · </p>
-  <p class="footer-sub"> · Anant Mahal · Patrakar Colony, Jaipur · </p>
-  <!-- ── Contacts ── -->
+
+  <!-- date + venue -->
+  <div class="footer-meta">
+    <span class="footer-meta-item"><span class="footer-meta-icon">📅</span>25th &amp; 26th April 2026</span>
+    <span class="footer-meta-dot" aria-hidden="true">·</span>
+    <span class="footer-meta-item"><span class="footer-meta-icon">📍</span>Anant Mahal, Jaipur</span>
+  </div>
+
+  <!-- contacts -->
   <div class="footer-contacts">
-    <p class="footer-contact-label">✦ For Enquiries ✦</p>
+    <div class="footer-rule" aria-hidden="true">
+      <span class="footer-rule-line"></span>
+      <span class="footer-rule-label">✦ For Enquiries ✦</span>
+      <span class="footer-rule-line"></span>
+    </div>
     <div class="footer-contact-grid">
       <a href="tel:+919414311762" class="footer-contact-card">
         <span class="fc-role">Father of Bride</span>
@@ -958,7 +1145,13 @@ bsp; 26 April 2026</p>
     </div>
   </div>
 
-  <p class="footer-copy">With love from the Pink City 🌹</p>
+  <!-- sign-off -->
+  <div class="footer-signoff">
+    <span class="footer-signoff-line" aria-hidden="true"></span>
+    <p class="footer-copy">With love from the Pink City &nbsp;🌹</p>
+    <span class="footer-signoff-line" aria-hidden="true"></span>
+  </div>
+
 </footer>
 
 <!-- Lightbox -->
@@ -970,6 +1163,7 @@ bsp; 26 April 2026</p>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="js/gate.js"></script>
 <script src="js/main.js"></script>
+<script src="js/armaan.js"></script>
 <script src="js/effects.js"></script>
 <script src="js/gallery.js"></script>
 <script>
