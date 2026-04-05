@@ -38,6 +38,16 @@ ul { list-style: none; }
 .sec-pre { color: var(--gold-dk); font-size: 0.88rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 0.4rem; font-family: var(--ff-serif); }
 .sec-title { font-family: var(--ff-disp); font-size: clamp(1.8rem,5vw,3.2rem); color: var(--plum); font-weight: 700; }
 .gold-rule { width: 110px; height: 2px; background: linear-gradient(90deg,transparent,var(--gold),transparent); margin: 1rem auto 0; }
+.sec-refresh-note {
+  text-align: center;
+  font-size: .78rem;
+  font-style: italic;
+  color: rgba(42,8,69,.52);
+  letter-spacing: .04em;
+  margin: .9rem auto 0;
+  max-width: 480px;
+  line-height: 1.6;
+}
 
 .btn-royal {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -398,12 +408,55 @@ ul { list-style: none; }
 .tree-day-label { background:linear-gradient(135deg,var(--plum),var(--gold-dk),var(--plum)); padding:.5rem 2rem; border-radius:20px; }
 .tree-day-label span { font-family:var(--ff-disp); font-size:.7rem; letter-spacing:.18em; color:#fff; text-transform:uppercase; }
 .tree-connector { width:2px; min-height:38px; background:linear-gradient(to bottom,var(--gold),rgba(201,164,71,.2)); flex-shrink:0; }
+.tree-connector--sm { min-height:14px; }
 .tree-row { width:100%; display:grid; grid-template-columns:1fr 50px 1fr; align-items:center; }
 .tree-row.single { grid-template-columns:1fr; }
 .tree-node { display:flex; flex-direction:column; align-items:center; justify-content:center; }
 .tree-node span { display:flex; align-items:center; justify-content:center; width:44px; height:44px; background:var(--gold); border-radius:50%; font-size:1.2rem; box-shadow:0 0 20px rgba(201,164,71,.6); position:relative; z-index:2; }
 .tree-node.featured span { width:56px; height:56px; font-size:1.6rem; box-shadow:0 0 40px rgba(201,164,71,.95); }
 .tree-node::before, .tree-node::after { content:''; display:block; width:2px; flex:1; min-height:20px; background:rgba(201,164,71,.35); }
+
+/* ── Meal pill — inside event cards ── */
+.tc-meal {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  margin-top: .55rem;
+  padding: .25rem .75rem;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.32);
+  border-radius: 999px;
+  font-size: .82rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: .04em;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-shadow: 0 1px 4px rgba(0,0,0,.5);
+}
+
+/* ── Food break chip — standalone on the timeline spine ── */
+.tree-food-break {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .38rem 1.1rem;
+  background: linear-gradient(135deg,rgba(201,164,71,.18),rgba(201,164,71,.08));
+  border: 1px solid rgba(201,164,71,.45);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--gold-dk, #8B6914);
+  letter-spacing: .05em;
+  white-space: nowrap;
+  align-self: center;
+  width: fit-content;
+  margin: 0 auto;
+  box-shadow: 0 2px 12px rgba(201,164,71,.18);
+}
 .tree-card { background:rgba(255,255,255,.72); border:1px solid rgba(201,164,71,.25); border-radius:6px; padding:1.5rem 1.4rem; transition:all .4s var(--ease); backdrop-filter:blur(4px); }
 .tree-card:hover { border-color:var(--gold); transform:translateY(-4px); box-shadow:0 16px 50px rgba(74,20,114,.15); }
 .tree-card.left  { border-right:3px solid rgba(201,164,71,.28); border-radius:6px 0 0 6px; }
@@ -698,6 +751,66 @@ ul { list-style: none; }
   text-align: center;
 }
 .tree-row .tree-card.pool-party { border-radius:14px; border:none; }
+
+/* ── Lagan at Groom Side — full-image bg, centred white text ── */
+.tree-card.lagan {
+  background: url('../assets/images/lagan.avif') center/cover no-repeat;
+  border: none;
+  border-radius: 14px;
+  padding: 2rem 1.8rem;
+  min-height: 260px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow:
+    0 8px 36px rgba(0,0,0,.35),
+    0 0 0 1px rgba(255,255,255,.12);
+}
+.tree-card.lagan::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.42);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+.tree-card.lagan > * {
+  position: relative;
+  z-index: 1;
+}
+.tree-card.lagan:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 20px 56px rgba(0,0,0,.50),
+    0 0 0 1.5px rgba(255,255,255,.18);
+}
+.tree-card.lagan h3 {
+  color: #ffffff;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-shadow: 0 2px 12px rgba(0,0,0,.85);
+}
+.tree-card.lagan .tc-icon {
+  font-size: 2.2rem;
+  margin-bottom: .4rem;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.5));
+}
+.tree-card.lagan .tc-time,
+.tree-card.lagan .tc-loc {
+  color: #FFE9A0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-shadow: 0 1px 6px rgba(0,0,0,.8);
+}
+.tree-row .tree-card.lagan { border-radius:14px; border:none; }
 
 /* ── Baraat Procession — Full-image bg, centered white bold text ── */
 .tree-card.baraat {
@@ -1923,7 +2036,7 @@ ul { list-style: none; }
   z-index: 9500;
   font-family: var(--ff-disp);
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;   /* toggle stays at BOTTOM; chat grows upward */
   align-items: flex-end;
   gap: .75rem;
 }
@@ -1953,10 +2066,10 @@ ul { list-style: none; }
 
 /* ─ Chat window: hidden by default; visible when widget has .armaan-open ─ */
 #armaan-chat {
-  display: none;                    /* <-- single source of truth, no hidden attr needed */
+  display: none;
   flex-direction: column;
-  width: 340px;
-  max-height: 520px;
+  width: min(340px, calc(100vw - 2rem));          /* never overflow viewport width  */
+  max-height: min(520px, calc(100dvh - 7rem));    /* never overflow viewport height */
   background: #FFFBF0;
   border-radius: 18px;
   box-shadow: 0 8px 40px rgba(201,164,71,.22), 0 2px 12px rgba(74,20,114,.10);
@@ -2092,8 +2205,40 @@ ul { list-style: none; }
   background: #FFFBF0;
   flex-shrink: 0;
 }
-#armaan-input {
+#armaan-input-wrap {
+  position: relative;
   flex: 1;
+  display: flex;
+  align-items: center;
+}
+#armaan-hint {
+  position: absolute;
+  left: .85rem;
+  right: .5rem;
+  top: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  color: rgba(45,27,62,.42);
+  font-size: .76rem;
+  font-family: var(--ff-disp);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  user-select: none;
+}
+#armaan-hint.armaan-hint--anim {
+  animation: armaan-hint-pulse 3.2s ease forwards;
+}
+@keyframes armaan-hint-pulse {
+  0%   { opacity:0; transform:translateY(6px); }
+  12%  { opacity:1; transform:translateY(0);   }
+  78%  { opacity:1; transform:translateY(0);   }
+  100% { opacity:0; transform:translateY(-4px);}
+}
+#armaan-input {
+  width: 100%;
   border: 1.5px solid rgba(201,164,71,.4);
   border-radius: 20px;
   padding: .45rem .85rem;
@@ -2135,8 +2280,15 @@ ul { list-style: none; }
 .nav-armaan:hover { opacity: .88; transform: translateY(-1px); }
 
 /* ─ Mobile ─ */
-@media (max-width: 400px) {
-  #armaan-chat { width: calc(100vw - 2rem); }
+@media (max-width: 480px) {
+  #armaan-widget {
+    bottom: .75rem;
+    right:  .75rem;
+  }
+  #armaan-chat {
+    width:      calc(100vw - 1.5rem);
+    max-height: min(480px, calc(100dvh - 6rem));
+  }
 }
 
 /* ── LIGHTBOX ───────────────────────────────────────────────────── */

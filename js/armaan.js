@@ -23,9 +23,25 @@ const ARMAAN = {
         { day:1, name:'Mayra',                     time:'4:00 PM – 5:30 PM',   loc:'Anant Mahal Courtyard',   emoji:'🎁' },
         { day:1, name:'Sangeet Night',             time:'7:00 PM – 11:00 PM',  loc:'Anant Mahal Royal Lawns', emoji:'🎶' },
         { day:2, name:'Pool Party',                time:'7:00 AM – 9:00 AM',   loc:'Anant Mahal Poolside',    emoji:'🌊' },
+        { day:2, name:'Lagan at Groom Side',       time:'11:00 AM – 1:00 PM',  loc:'Anant Mahal Hall',          emoji:'🪔' },
         { day:2, name:'Baraat Procession',         time:'6:15 PM – 7:30 PM',   loc:'Anant Mahal Main Gate',   emoji:'🐎' },
         { day:2, name:'Jai Mala & Varmala',        time:'8:00 PM – 11:30 PM',  loc:'Anant Mahal, Mandap',     emoji:'💍' },
         { day:2, name:'Royal Wedding Ceremony',    time:'11:30 PM onwards',    loc:'Anant Mahal, Royal Mandap', emoji:'👑' },
+      ],
+    },
+    meals: {
+      always: 'Juices, Cold Drinks, Chaach, Fresh Fruits & Snacks are available throughout all celebrations on both days.',
+      day1: [
+        { meal:'Breakfast',         time:'Morning',             note:'Before Haldi begins',            emoji:'🌅' },
+        { meal:'Lunch',             time:'12:00 PM – 2:00 PM', note:'Served during Haldi Ceremony',   emoji:'🍽️' },
+        { meal:'High Tea & Snacks', time:'2:00 PM Onwards',    note:'Haldi Onwards · During Mayra',   emoji:'☕' },
+        { meal:'Dinner',            time:'7:00 PM – 11:00 PM', note:'Served during Sangeet Night',    emoji:'🌙' },
+      ],
+      day2: [
+        { meal:'Breakfast',         time:'9:00 AM Onwards',    note:'Pool Party Onwards',             emoji:'🍳' },
+        { meal:'Lunch',             time:'11:00 AM – 1:00 PM', note:'Served during Lagan',            emoji:'🍽️' },
+        { meal:'High Tea & Snacks', time:'1:00 PM Onwards',    note:'Lagan Onwards',                  emoji:'☕' },
+        { meal:'Dinner',            time:'7:00 PM Onwards',    note:'Before Jai Mala & Varmala',      emoji:'🌙' },
       ],
     },
     train: [
@@ -54,30 +70,32 @@ const ARMAAN = {
       { role:'Father of Bride', name:'Akhlesh Kumar Goyal', phone:'+91 94143 11762', tel:'tel:+919414311762' },
       { role:'Brother of Bride', name:'Akash Goyal',         phone:'+91 94608 14437', tel:'tel:+919460814437' },
     ],
+    dress: {
+      haldi:  { event:'Haldi Ceremony',    colors:'Lavender / Pink 💜🏽', emoji:'💛' },
+      sangeet:{ event:'Sangeet Night',      colors:'Black & White 👚✨',     emoji:'🎶' },
+      pool:   { event:'Pool Party',          colors:'Floral 🌺',               emoji:'🌊' },
+      wedding:{ event:'Wedding Day',         colors:'Just come and enjoy! 🥰',  emoji:'👑' },
+    },
+    accommodation: {
+      venue:   'Anant Mahal Palace, Patrakar Colony, Jaipur',
+      status:  'Rooms have already been arranged for outstation guests at Anant Mahal Palace itself — right where all the celebrations are happening! 🏡',
+      perks:   'Staying on-site means you won’t miss a single moment — no commuting, no rush, just pure celebration ✨',
+      note:    'Your room allocation will be coordinated by the family. For details, please reach out to the contacts below.',
+      food:    'All meals are included as part of the celebrations. Juices, snacks & refreshments available throughout.',
+    },
     couple: {
       hashtag: '#Arjoo_ka_man',
       bride: {
-        name:         'Arjoo',
-        fullTitle:    'Aayushmati Arjoo',
-        nickname:     'Bulbul',
-        gotra:        'Goyal',
-        from:         'Suroth, Dist. Karauli, Rajasthan',
-        state:        'Rajasthan 🏜️',
-        father:       'Shri Akhlesh Kumar Goyal',
-        mother:       'Shrimati Lakshmi Devi',
-        grandparents: 'Late Shrimati Geeta Devi & Shri Murarilal Ji Goyal',
+        name:'Arjoo', fullTitle:'Aayushmati Arjoo', nickname:'Bulbul', gotra:'Goyal',
+        from:'Suroth, Dist. Karauli, Rajasthan', state:'Rajasthan 🏜️',
+        father:'Shri Akhlesh Kumar Goyal', mother:'Shrimati Lakshmi Devi',
+        grandparents:'Late Shrimati Geeta Devi & Shri Murarilal Ji Goyal',
       },
       groom: {
-        name:         'Manish',
-        fullTitle:    'Aayushman Manish',
-        nickname:     'Monu',
-        surname:      'Gupta',
-        gotra:        'Airan',
-        from:         'Charkhi Dadri, Haryana',
-        state:        'Haryana 🌾',
-        father:       'Shri Pawan Kumar Gupta',
-        mother:       'Shrimati Bala Devi',
-        grandparents: 'Late Shrimati Sevanti Devi & Late Shri Jawahar Lal Gupta',
+        name:'Manish', fullTitle:'Aayushman Manish', nickname:'Monu', surname:'Gupta', gotra:'Airan',
+        from:'Charkhi Dadri, Haryana', state:'Haryana 🌾',
+        father:'Shri Pawan Kumar Gupta', mother:'Shrimati Bala Devi',
+        grandparents:'Late Shrimati Sevanti Devi & Late Shri Jawahar Lal Gupta',
       },
       family: {
         requestFrom:  ['Shri Murarilal Goyal','Shri Harimohan Goyal','Shri Akhlesh Kumar Goyal','Shri Vineet Kumar Goyal','Shri Surendra Kumar Goyal'],
@@ -90,12 +108,16 @@ const ARMAAN = {
   },
 
   /* ── State ─────────────────────────────────────────────── */
-  state: { open: false, greeted: false },
+  state: { open: false, greeted: false, lang: null },
+
+  /* ── i18n helper — falls back to EN if lang not set ─────── */
+  L() { return ARMAAN_STRINGS[this.state.lang] || ARMAAN_STRINGS.en; },
 
   /* ── Init ──────────────────────────────────────────────── */
   init() {
     this.injectHTML();
     this.bindEvents();
+    this.setupViewport();
   },
 
   /* ── DOM helpers ───────────────────────────────────────── */
@@ -132,8 +154,12 @@ const ARMAAN = {
         </div>
         <div id="armaan-messages" role="log" aria-live="polite"></div>
         <div id="armaan-input-row">
-          <input id="armaan-input" type="text" placeholder="Type a question…"
-                 autocomplete="off" aria-label="Type your message"/>
+          <div id="armaan-input-wrap">
+            <span id="armaan-hint" aria-hidden="true"></span>
+            <input id="armaan-input" type="text" inputmode="text" placeholder=""
+                   autocomplete="off" autocorrect="off" autocapitalize="off"
+                   spellcheck="false" aria-label="Type your message"/>
+          </div>
           <button id="armaan-send" aria-label="Send" type="button">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -148,140 +174,231 @@ const ARMAAN = {
   bindEvents() {
     const widget = document.getElementById('armaan-widget');
     const input  = document.getElementById('armaan-input');
-
-    /* Single delegated listener — handles SVG sub-targets & text nodes */
     widget.addEventListener('click', (e) => {
       if (e.target.closest('#armaan-toggle')) { this.toggleChat(); return; }
       if (e.target.closest('#armaan-close'))  { this.closeChat();  return; }
       if (e.target.closest('#armaan-send'))   { this.handleInput(); return; }
     });
+    input.addEventListener('keydown',    e => { if (e.key === 'Enter') this.handleInput(); });
+    input.addEventListener('pointerdown', () => { this.stopHintCycle(); });
+    input.addEventListener('blur',        () => { if (!input.value.trim()) this.startHintCycle(); });
+    input.addEventListener('input',       () => {
+      const el = document.getElementById('armaan-hint');
+      if (el) el.style.opacity = input.value.trim() ? '0' : '';
+    });
+  },
 
-    input.addEventListener('keydown', e => { if (e.key === 'Enter') this.handleInput(); });
+  setupViewport() {
+    if (!window.visualViewport) return;
+    const MARGIN = 12;
+    const reposition = () => {
+      const vv     = window.visualViewport;
+      const widget = document.getElementById('armaan-widget');
+      const chat   = document.getElementById('armaan-chat');
+      if (!widget) return;
+      const keyboardH = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+      widget.style.bottom = (keyboardH + MARGIN) + 'px';
+      if (chat) {
+        const available = vv.height - 90;
+        chat.style.maxHeight = Math.min(520, Math.max(220, available)) + 'px';
+      }
+    };
+    window.visualViewport.addEventListener('resize', reposition);
+    window.visualViewport.addEventListener('scroll', reposition);
   },
 
   /* ── Open / close ──────────────────────────────────────── */
-  toggleChat() {
-    this.state.open ? this.closeChat() : this.openChat();
-  },
+  toggleChat() { this.state.open ? this.closeChat() : this.openChat(); },
   openChat() {
     this.state.open = true;
     document.getElementById('armaan-widget').classList.add('armaan-open');
     document.getElementById('armaan-toggle').setAttribute('aria-expanded', 'true');
-    if (!this.state.greeted) { this.greet(); this.state.greeted = true; }
-    setTimeout(() => document.getElementById('armaan-input').focus(), 50);
+    if (!this.state.greeted) { this.pickLang(); this.state.greeted = true; }
+    setTimeout(() => {
+      document.getElementById('armaan-input').focus();
+      this.startHintCycle();
+    }, 50);
   },
   closeChat() {
     this.state.open = false;
     document.getElementById('armaan-widget').classList.remove('armaan-open');
     document.getElementById('armaan-toggle').setAttribute('aria-expanded', 'false');
+    this.stopHintCycle();
+  },
+
+  /* ── Animated hint cycle ─────────────────────── */
+  _hintTimer: null, _hintIdx: 0,
+  startHintCycle(lang) {
+    this.stopHintCycle();
+    const sets = ARMAAN_STRINGS.hints;
+    const qs   = sets[lang || this.state.lang || 'default'] || sets.default;
+    this._hintIdx = 0;
+    const el = document.getElementById('armaan-hint');
+    if (!el) return;
+    const show = () => {
+      const inp = document.getElementById('armaan-input');
+      if (inp && inp.value.trim()) return;
+      el.textContent = qs[this._hintIdx % qs.length];
+      el.classList.remove('armaan-hint--anim');
+      void el.offsetWidth;
+      el.classList.add('armaan-hint--anim');
+      this._hintIdx++;
+    };
+    show();
+    this._hintTimer = setInterval(show, 3400);
+  },
+  stopHintCycle() {
+    clearInterval(this._hintTimer); this._hintTimer = null;
+    const el = document.getElementById('armaan-hint');
+    if (el) { el.classList.remove('armaan-hint--anim'); el.style.opacity = '0'; }
+  },
+
+  /* ── Language picker — always first message ────────────── */
+  pickLang() {
+    this.addMsg('bot',
+      'Welcome! 👋 &nbsp;·&nbsp; नमस्ते! 🙏<br>' +
+      'Please choose your language &nbsp;·&nbsp; कृपया अपनी भाषा चुनें'
+    );
+    this.addQuickReplies([
+      { label: '🇬🇧 English', action: 'lang-en' },
+      { label: '🇮🇳 हिंदी',   action: 'lang-hi' },
+    ]);
+  },
+
+  setLang(lang) {
+    const switching = this.state.lang !== null;
+    this.state.lang = lang;
+    if (switching) {
+      this.addMsg('bot', lang === 'hi'
+        ? '🇮🇳 भाषा बदल दी गई! मैं अब हिंदी में बात करूँगा। 😊'
+        : '🇬🇧 Language switched to English! Happy to help. 😊'
+      );
+      this.showMainMenu();
+    } else {
+      this.greet();
+    }
+    this.startHintCycle(lang);
   },
 
   /* ── Greeting ──────────────────────────────────────────── */
   greet() {
-    this.addMsg('bot', "Hi! I'm Armaan 🤵✨<br>I'm here to help you with everything about Arjoo & Manish's wedding.<br>How can I help you today?");
+    this.addMsg('bot', this.state.lang === 'hi'
+      ? 'नमस्ते! मैं Armaan हूँ 🤵✨<br>मैं Arjoo & Manish की शादी से जुड़ी हर जानकारी देने के लिए यहाँ हूँ।<br>आज मैं आपकी कैसे मदद कर सकता हूँ?'
+      : "Hi! I'm Armaan 🤵✨<br>I'm here to help you with everything about Arjoo & Manish's wedding.<br>How can I help you today?"
+    );
     this.showMainMenu();
   },
 
   /* ── Main menu ─────────────────────────────────────────── */
   showMainMenu() {
+    const hi = this.state.lang === 'hi';
     this.addQuickReplies([
-      { label:'📍 Venue',          action:'venue'    },
-      { label:'📅 Wedding Dates',  action:'dates'    },
-      { label:'✈️ Travel Info',    action:'travel'   },
-      { label:'💑 The Couple',     action:'couple'   },
-      { label:'💬 WhatsApp Group', action:'whatsapp' },
-      { label:'📞 Contact',        action:'contact'  },
+      { label: hi ? '📍 वेन्यू'            : '📍 Venue',          action: 'venue'    },
+      { label: hi ? '📅 शादी की तारीखें'  : '📅 Wedding Dates',  action: 'dates'    },
+      { label: hi ? '✈️ यात्रा जानकारी'   : '✈️ Travel Info',    action: 'travel'   },
+      { label: hi ? '💑 जोड़ा'             : '💑 The Couple',     action: 'couple'   },
+      { label: hi ? '💬 WhatsApp ग्रुप'    : '💬 WhatsApp Group', action: 'whatsapp' },
+      { label: hi ? '📞 संपर्क'            : '📞 Contact',        action: 'contact'  },
+      { label: hi ? '🍽️ भोजन व नाश्ता'    : '🍽️ Food & Meals',   action: 'meals'         },
+      { label: hi ? '👑 ड्रेस कोड'         : '👑 Dress Code',       action: 'dress'         },
+      { label: hi ? '🏨 ठहरने की जगह'       : '🏨 Where to Stay',    action: 'accommodation' },
+      { label: hi ? '🇬🇧 Switch to English' : '🇮🇳 हिंदी में बदलें', action: hi ? 'lang-en' : 'lang-hi' },
     ]);
   },
 
   /* ── Route action ──────────────────────────────────────── */
   route(action) {
     const handlers = {
+      'lang-en':       () => this.setLang('en'),
+      'lang-hi':       () => this.setLang('hi'),
       venue:           () => this.venueMenu(),
       'venue-address': () => this.venueAddress(),
       'venue-maps':    () => this.venueMaps(),
       'venue-parking': () => this.venueParking(),
-
       dates:           () => this.datesMenu(),
       'dates-all':     () => this.datesAll(),
       'dates-day1':    () => this.datesDay(1),
       'dates-day2':    () => this.datesDay(2),
-
       travel:          () => this.travelMenu(),
       'travel-train':  () => this.travelTrain(),
       'travel-airport':() => this.travelAirport(),
       'travel-bus':    () => this.travelBus(),
-
       whatsapp:        () => this.whatsappInfo(),
       contact:         () => this.contactInfo(),
-
+      meals:           () => this.mealsMenu(),
+      'meals-day1':    () => this.mealsDay(1),
+      'meals-day2':    () => this.mealsDay(2),
+      'meals-always':  () => this.mealsAlways(),
+      dress:           () => this.dressCode(),
+      accommodation:   () => this.accommodationInfo(),
       couple:          () => this.coupleMenu(),
       bride:           () => this.brideInfo(),
       groom:           () => this.groomInfo(),
       hashtag:         () => this.hashtagInfo(),
       family:          () => this.familyInfo(),
-
-      menu:            () => { this.addMsg('bot','Here\'s what I can help with! 😊'); this.showMainMenu(); },
+      menu:            () => { this.addMsg('bot', this.state.lang === 'hi' ? 'मैं किसमें मदद कर सकता हूँ? 😊' : "Here's what I can help with! 😊"); this.showMainMenu(); },
     };
     (handlers[action] || (() => this.fallback()))();
   },
 
   /* ── Venue ─────────────────────────────────────────────── */
   venueMenu() {
-    this.addMsg('bot', '📍 <strong>Anant Mahal</strong> — what would you like to know?');
+    const s = this.L().venue;
+    this.addMsg('bot', s.menu);
     this.addQuickReplies([
-      { label:'🏠 Full Address',    action:'venue-address' },
-      { label:'🗺 Google Maps',     action:'venue-maps'    },
-      { label:'🚗 Parking Info',    action:'venue-parking' },
-      { label:'↩️ Main Menu',       action:'menu'          },
+      { label: s.btnAddr, action: 'venue-address' },
+      { label: s.btnMaps, action: 'venue-maps'    },
+      { label: s.btnPark, action: 'venue-parking' },
+      { label: s.btnBack, action: 'menu'          },
     ]);
   },
   venueAddress() {
-    const v = this.data.venue;
-    this.addMsg('bot', `The wedding will take place at:<br><br>📍 <strong>${v.name}</strong><br>${v.address}`);
+    this.addMsg('bot', this.L().venue.address(this.data.venue));
     this.addBackBtn('venue');
   },
   venueMaps() {
-    this.addMsg('bot', `Here's the Google Maps link to reach us directly! 🗺<br><br><a href="${this.data.venue.maps}" target="_blank" rel="noopener" class="armaan-link">Open in Google Maps ↗</a>`);
+    const s = this.L().venue;
+    this.addMsg('bot', `${s.maps}<a href="${this.data.venue.maps}" target="_blank" rel="noopener" class="armaan-link">${s.mapsLink}</a>`);
     this.addBackBtn('venue');
   },
   venueParking() {
-    this.addMsg('bot', `🚗 <strong>Parking Info</strong><br><br>${this.data.venue.parking}`);
+    this.addMsg('bot', this.L().venue.parking(this.data.venue));
     this.addBackBtn('venue');
   },
 
   /* ── Dates ─────────────────────────────────────────────── */
   datesMenu() {
-    this.addMsg('bot', '📅 The wedding is on <strong>25th & 26th April 2026</strong>. What would you like to know?');
+    const s = this.L().dates;
+    this.addMsg('bot', s.menu);
     this.addQuickReplies([
-      { label:'📋 Full Schedule',   action:'dates-all'  },
-      { label:'🌸 Day 1 Events',    action:'dates-day1' },
-      { label:'💍 Day 2 Events',    action:'dates-day2' },
-      { label:'↩️ Main Menu',       action:'menu'       },
+      { label: s.btnAll,  action: 'dates-all'  },
+      { label: s.btnDay1, action: 'dates-day1' },
+      { label: s.btnDay2, action: 'dates-day2' },
+      { label: s.btnBack, action: 'menu'        },
     ]);
   },
   datesAll() {
+    const s  = this.L().dates;
     const ev = this.data.dates.events;
-    let html = '📅 <strong>Complete Wedding Schedule</strong><br><br>';
-    html += `<em>Day 1 — ${this.data.dates.day1}</em><br>`;
+    let html = s.allTitle + '<br><br>';
+    html += `<em>${s.day1Lbl(this.data.dates.day1)}</em><br>`;
     ev.filter(e => e.day === 1).forEach(e => {
-      html += `<br>${e.emoji} <strong>${e.name}</strong><br>⏰ ${e.time}<br>📍 ${e.loc}<br>`;
+      html += `<br>${e.emoji} <strong>${s.events[e.name] || e.name}</strong><br>${s.t} ${e.time}<br>${s.l} ${e.loc}<br>`;
     });
-    html += `<br><em>Day 2 — ${this.data.dates.day2} (Wedding Day)</em><br>`;
+    html += `<br><em>${s.day2Lbl(this.data.dates.day2)}</em><br>`;
     ev.filter(e => e.day === 2).forEach(e => {
-      html += `<br>${e.emoji} <strong>${e.name}</strong><br>⏰ ${e.time}<br>📍 ${e.loc}<br>`;
+      html += `<br>${e.emoji} <strong>${s.events[e.name] || e.name}</strong><br>${s.t} ${e.time}<br>${s.l} ${e.loc}<br>`;
     });
     this.addMsg('bot', html);
     this.addBackBtn('dates');
   },
   datesDay(day) {
-    const ev = this.data.dates.events.filter(e => e.day === day);
-    const label = day === 1
-      ? `Day 1 — ${this.data.dates.day1}`
-      : `Day 2 — ${this.data.dates.day2} (Wedding Day)`;
-    let html = `📅 <strong>${label}</strong><br>`;
+    const s   = this.L().dates;
+    const ev  = this.data.dates.events.filter(e => e.day === day);
+    const lbl = day === 1 ? s.day1Lbl(this.data.dates.day1) : s.day2Lbl(this.data.dates.day2);
+    let html  = `📅 <strong>${lbl}</strong><br>`;
     ev.forEach(e => {
-      html += `<br>${e.emoji} <strong>${e.name}</strong><br>⏰ ${e.time}<br>📍 ${e.loc}<br>`;
+      html += `<br>${e.emoji} <strong>${s.events[e.name] || e.name}</strong><br>${s.t} ${e.time}<br>${s.l} ${e.loc}<br>`;
     });
     this.addMsg('bot', html);
     this.addBackBtn('dates');
@@ -289,37 +406,41 @@ const ARMAAN = {
 
   /* ── Travel ────────────────────────────────────────────── */
   travelMenu() {
-    this.addMsg('bot', 'How are you planning to travel? 🧳');
+    const s = this.L().travel;
+    this.addMsg('bot', s.menu);
     this.addQuickReplies([
-      { label:'🚂 Railway Station', action:'travel-train'   },
-      { label:'✈️ Airport',         action:'travel-airport' },
-      { label:'🚌 By Bus',          action:'travel-bus'     },
-      { label:'↩️ Main Menu',       action:'menu'           },
+      { label: s.btnTrain,   action: 'travel-train'   },
+      { label: s.btnAirport, action: 'travel-airport' },
+      { label: s.btnBus,     action: 'travel-bus'     },
+      { label: s.btnBack,    action: 'menu'           },
     ]);
   },
   travelTrain() {
-    const nearest = this.data.train.find(s => s.nearest);
-    let html = `🚂 <strong>Nearest Railway Station</strong><br><br>`;
+    const s      = this.L().travel;
+    const nearest = this.data.train.find(t => t.nearest);
+    let html = `${s.nearStn}<br><br>`;
     html += `⭐ <strong>${nearest.name}</strong> — ${nearest.dist} · ~${nearest.time}<br>`;
-    html += `<a href="${nearest.maps}" target="_blank" rel="noopener" class="armaan-link">🗺 Get Route ↗</a><br>`;
-    html += `<br><em>Other stations nearby:</em><br>`;
-    this.data.train.filter(s => !s.nearest).forEach(s => {
-      html += `🚉 ${s.name} — ${s.dist} · ~${s.time}<br>`;
+    html += `<a href="${nearest.maps}" target="_blank" rel="noopener" class="armaan-link">${s.routeLink}</a><br>`;
+    html += `<br><em>${s.otherStn}</em><br>`;
+    this.data.train.filter(t => !t.nearest).forEach(t => {
+      html += `🚉 ${t.name} — ${t.dist} · ~${t.time}<br>`;
     });
     this.addMsg('bot', html);
     this.addBackBtn('travel');
   },
   travelAirport() {
+    const s = this.L().travel;
     const a = this.data.airport;
-    const html = `✈️ <strong>${a.name}</strong><br>${a.sub}<br><br>⏱ ${a.time} &nbsp;|&nbsp; 📍 ${a.dist}<br><br>${a.note}<br><br><a href="${a.maps}" target="_blank" rel="noopener" class="armaan-link">🗺 Get Route ↗</a>`;
+    const html = `✈️ <strong>${a.name}</strong><br>${a.sub}<br><br>⏱ ${a.time} &nbsp;|&nbsp; 📍 ${a.dist}<br><br>${a.note}<br><br><a href="${a.maps}" target="_blank" rel="noopener" class="armaan-link">${s.routeLink}</a>`;
     this.addMsg('bot', html);
     this.addBackBtn('travel');
   },
   travelBus() {
+    const s      = this.L().travel;
     const nearest = this.data.bus.find(b => b.nearest);
-    let html = `🚌 <strong>Nearest Bus Stand</strong><br><br>`;
+    let html = `${s.nearBus}<br><br>`;
     html += `⭐ <strong>${nearest.name}</strong><br>${nearest.sub}<br>⏱ ${nearest.time} · 📍 ${nearest.dist}<br>`;
-    html += `<br><em>Other bus stops:</em><br>`;
+    html += `<br><em>${s.otherBus}</em><br>`;
     this.data.bus.filter(b => !b.nearest).forEach(b => {
       html += `🚌 ${b.name} — ${b.dist} · ~${b.time}<br>`;
     });
@@ -329,125 +450,203 @@ const ARMAAN = {
 
   /* ── WhatsApp ──────────────────────────────────────────── */
   whatsappInfo() {
+    const s  = this.L();
     const wa = this.data.whatsapp;
-    this.addMsg('bot', `Join our wedding WhatsApp community to get live updates, photos & all the fun moments! 🎉<br><br>💬 <strong>${wa.name}</strong><br><br><a href="${wa.link}" target="_blank" rel="noopener" class="armaan-link armaan-link--wa">Join Community ↗</a>`);
+    this.addMsg('bot', `${s.whatsapp(wa)}<a href="${wa.link}" target="_blank" rel="noopener" class="armaan-link armaan-link--wa">${s.waLink}</a>`);
     this.addBackBtn('menu');
   },
 
   /* ── Contact ───────────────────────────────────────────── */
   contactInfo() {
-    let html = '📞 <strong>For Enquiries</strong><br><br>';
+    const s = this.L().contact;
+    let html = `${s.title}<br><br>`;
     this.data.contacts.forEach(c => {
-      html += `👤 <strong>${c.name}</strong><br><em>${c.role}</em><br><a href="${c.tel}" class="armaan-link">${c.phone}</a><br><br>`;
+      html += `👤 <strong>${c.name}</strong><br><em>${s.roles[c.role] || c.role}</em><br><a href="${c.tel}" class="armaan-link">${c.phone}</a><br><br>`;
     });
     this.addMsg('bot', html.trim());
     this.addBackBtn('menu');
   },
 
-  /* ── Couple ────────────────────────────────────────────── */
-  coupleMenu() {
-    this.addMsg('bot', '💑 <strong>About Arjoo & Manish</strong><br>What would you like to know?');
+  /* ── Meals ──────────────────────────────────────── */
+  mealsMenu() {
+    const s = this.L().meals;
+    this.addMsg('bot', s.menu);
     this.addQuickReplies([
-      { label:'👰 About Arjoo (Bulbul)', action:'bride'   },
-      { label:'🤵 About Manish',         action:'groom'   },
-      { label:'#️⃣ Wedding Hashtag',      action:'hashtag' },
-      { label:'🏡 Family Details',       action:'family'  },
-      { label:'🏠 Main Menu',            action:'menu'    },
+      { label: s.btnDay1,   action: 'meals-day1'   },
+      { label: s.btnDay2,   action: 'meals-day2'   },
+      { label: s.btnAlways, action: 'meals-always' },
+      { label: this.L().backMain, action: 'menu'   },
     ]);
   },
+  mealsDay(day) {
+    const s    = this.L().meals;
+    const list = day === 1 ? this.data.meals.day1 : this.data.meals.day2;
+    const date = day === 1 ? this.data.dates.day1 : this.data.dates.day2;
+    const lbl  = day === 1 ? s.day1Lbl(date) : s.day2Lbl(date);
+    let html   = `🍽️ <strong>${lbl}</strong><br><br>`;
+    list.forEach(({ meal, time, note, emoji }) => {
+      html += `${emoji} <strong>${s.mealNames[meal] || meal}</strong><br>⏰ ${time}<br><em>📝 ${s.mealNotes[note] || note}</em><br><br>`;
+    });
+    html += `✨ ${s.alwaysShort}`;
+    this.addMsg('bot', html);
+    this.addBackBtn('meals');
+  },
+  mealsAlways() {
+    const s = this.L().meals;
+    this.addMsg('bot', `🥤 <strong>${s.alwaysTitle}</strong><br><br>${s.alwaysBody}`);
+    this.addBackBtn('meals');
+  },
+  dressCode() {
+    const hi = this.state.lang === 'hi';
+    const d  = this.data.dress;
+    this.addMsg('bot', hi
+      ? `👗 <strong>ड्रेस कोड</strong><br><br>` +
+        `${d.haldi.emoji} <strong>हल्दी:</strong> ${d.haldi.colors}<br>` +
+        `${d.sangeet.emoji} <strong>संगीत:</strong> ${d.sangeet.colors}<br>` +
+        `${d.pool.emoji} <strong>पूल पार्टी:</strong> ${d.pool.colors}<br>` +
+        `${d.wedding.emoji} <strong>शाدी का दिन:</strong> ${d.wedding.colors}<br><br>` +
+        `<em>बस खुशियों के साथ आइए — यही सबसे बड़ी खूबसूरती है! 🥰</em>`
+      : `👗 <strong>Dress Code</strong><br><br>` +
+        `${d.haldi.emoji} <strong>Haldi:</strong> ${d.haldi.colors}<br>` +
+        `${d.sangeet.emoji} <strong>Sangeet:</strong> ${d.sangeet.colors}<br>` +
+        `${d.pool.emoji} <strong>Pool Party:</strong> ${d.pool.colors}<br>` +
+        `${d.wedding.emoji} <strong>Wedding Day:</strong> ${d.wedding.colors}<br><br>` +
+        `<em>No stress, just show up with good energy and warm smiles — that’s all we need! 🥰</em>`);
+    this.addBackBtn('menu');
+  },
+  accommodationInfo() {
+    const hi = this.state.lang === 'hi';
+    this.addMsg('bot', hi
+      ? `🏡 <strong>ठहरने की व्यवस्था</strong><br><br>` +
+        `अच्छी खबर! बाहर से आने वाले मेहमानों के लिए अनंत महल में ही रहने की व्यवस्था की गई है — आपको कहीं जाने की ज़रूरत नहीं! 🙏<br><br>` +
+        `🍽️ खाना-पीना सब उत्सव का हिस्सा है — जूस, छाछ व नाश्ता हर वक्त मॉजूद रहेगा।<br><br>` +
+        `📞 कमरा आवंटन के लिए परिवार से संपर्क करें — वे आपकी पूरी मदद करेंगे!`
+      : `🏡 <strong>Accommodation</strong><br><br>` +
+        `Good news! Outstation guests will be staying right here at Anant Mahal — no need to worry about going anywhere. 🙏<br><br>` +
+        `🍽️ Meals are taken care of as part of the celebrations — juices, chaach & snacks available throughout.<br><br>` +
+        `📞 For room details, just get in touch with the family — they’ll sort everything out for you!`);
+    this.addBackBtn('menu');
+  },
 
+  /* ── Couple ─────────────────────────────────────── */
+  coupleMenu() {
+    const s = this.L().couple;
+    this.addMsg('bot', s.menu);
+    this.addQuickReplies([
+      { label: s.btnBride,  action: 'bride'   },
+      { label: s.btnGroom,  action: 'groom'   },
+      { label: s.btnHash,   action: 'hashtag' },
+      { label: s.btnFamily, action: 'family'  },
+      { label: s.btnBack,   action: 'menu'    },
+    ]);
+  },
   brideInfo() {
+    const s = this.L().couple;
     const b = this.data.couple.bride;
     this.addMsg('bot',
       `👰 <strong>${b.fullTitle}</strong><br>
-       🐦 Lovingly called <strong>${b.nickname}</strong><br>
-       🔱 Gotra: <strong>${b.gotra}</strong><br><br>
-       📍 From: <strong>${b.from}</strong><br>
-       🏜️ State: ${b.state}<br><br>
-       👨‍👩‍👧 <strong>Daughter of</strong><br>
+       🐦 ${s.lovelyCall} <strong>${b.nickname}</strong><br>
+       🔱 ${s.gotra}: <strong>${b.gotra}</strong><br><br>
+       📍 ${s.from}: <strong>${b.from}</strong><br>
+       🏜️ ${s.stateLabel}: ${b.state}<br><br>
+       👨‍👩‍👧 <strong>${s.daughterOf}</strong><br>
        &nbsp;&nbsp;&nbsp;${b.father}<br>
        &nbsp;&nbsp;&nbsp;${b.mother}<br><br>
-       🙏 <strong>Eternal Blessings of</strong><br>
+       🙏 <strong>${s.eternalOf}</strong><br>
        &nbsp;&nbsp;&nbsp;${b.grandparents}`);
     this.addBackBtn('couple');
   },
-
   groomInfo() {
+    const s = this.L().couple;
     const g = this.data.couple.groom;
     this.addMsg('bot',
       `🤵 <strong>${g.fullTitle} ${g.surname}</strong><br>
-       💪 Lovingly called <strong>${g.nickname}</strong><br>
-       🔱 Gotra: <strong>${g.gotra}</strong><br><br>
-       📍 From: <strong>${g.from}</strong><br>
-       🌾 State: ${g.state}<br><br>
-       👨‍👩‍👦 <strong>Son of</strong><br>
+       💪 ${s.lovelyCall} <strong>${g.nickname}</strong><br>
+       🔱 ${s.gotra}: <strong>${g.gotra}</strong><br><br>
+       📍 ${s.from}: <strong>${g.from}</strong><br>
+       🌾 ${s.stateLabel}: ${g.state}<br><br>
+       👨‍👩‍👦 <strong>${s.sonOf}</strong><br>
        &nbsp;&nbsp;&nbsp;${g.father}<br>
        &nbsp;&nbsp;&nbsp;${g.mother}<br><br>
-       🙏 <strong>Eternal Blessings of</strong><br>
+       🙏 <strong>${s.eternalOf}</strong><br>
        &nbsp;&nbsp;&nbsp;${g.grandparents}`);
     this.addBackBtn('couple');
   },
-
   hashtagInfo() {
+    const s = this.L().couple;
     const h = this.data.couple.hashtag;
     this.addMsg('bot',
-      `#️⃣ <strong>Official Wedding Hashtag</strong><br><br>
+      `${s.hashTitle}<br><br>
        🎉 <strong style="font-size:1.05em">${h}</strong><br><br>
-       Use it on Instagram, Facebook & everywhere to share
-       your moments from the celebrations! 📸✨`);
+       ${s.hashNote}`);
     this.addBackBtn('couple');
   },
-
   familyInfo() {
+    const s = this.L().couple;
     const f = this.data.couple.family;
-    let html = '🏡 <strong>The Goyal Family</strong><br>';
-    html += `📍 ${f.location}<br><br>`;
-    html += `🙏 <strong>Request From</strong><br>${f.requestFrom.join('<br>')}<br><br>`;
-    html += `🌸 <strong>Your Hosts</strong><br>${f.hosts.join(' &nbsp;·&nbsp; ')}<br><br>`;
-    html += `✨ <strong>Special Blessings</strong><br>${f.blessings.join(' · ')}<br><br>`;
-    html += `🌺 <strong>Maternal Side</strong><br>${f.maternal.join('<br>')}`;
+    let html = `${s.famTitle}<br>📍 ${f.location}<br><br>`;
+    html += `${s.reqFrom}<br>${f.requestFrom.join('<br>')}<br><br>`;
+    html += `${s.hosts}<br>${f.hosts.join(' &nbsp;·&nbsp; ')}<br><br>`;
+    html += `${s.blessings}<br>${f.blessings.join(' · ')}<br><br>`;
+    html += `${s.maternal}<br>${f.maternal.join('<br>')}`;
     this.addMsg('bot', html);
     this.addBackBtn('couple');
   },
 
-  /* ── Free text handler ─────────────────────────────────── */
+  /* ── Free-text handler ─────────────────────────────────── */
   handleInput() {
     const input = this.$('#armaan-input');
     const text  = input.value.trim();
     if (!text) return;
     this.addMsg('user', text);
     input.value = '';
+    if (!this.state.lang) this.state.lang = 'en';   /* default if typed before picking */
     setTimeout(() => this.parseText(text.toLowerCase()), 400);
   },
 
   parseText(t) {
-    if (/(venue|where|address|location|place|mahal|anant)/.test(t))        return this.route('venue');
-    if (/(train|railway|station|rail|durgapura|jaipur jn|gandhi)/.test(t)) return this.route('travel-train');
-    if (/(airport|fly|flight|air|plane|jai|sanganer)/.test(t))             return this.route('travel-airport');
-    if (/(bus|stand|sindhi|bhankrota|civil lines)/.test(t))                return this.route('travel-bus');
-    if (/(travel|reach|how to get|direction|commute|from)/.test(t))        return this.route('travel');
-    if (/(haldi|sangeet|baraat|varmala|jaimala|pool|mayra|ceremony|royal)/.test(t)) return this.route('dates-all');
-    if (/(day 1|first day|25 april|25th)/.test(t))                         return this.route('dates-day1');
-    if (/(day 2|second day|26 april|26th|wedding day)/.test(t))            return this.route('dates-day2');
-    if (/(date|when|schedule|event|time|program|timing|function)/.test(t)) return this.route('dates');
-    if (/(whatsapp|group|community|join|chat)/.test(t))                    return this.route('whatsapp');
-    if (/(contact|call|phone|number|enquir|help|ask)/.test(t))             return this.route('contact');
-    if (/(parking|car|park|valet)/.test(t))                                return this.route('venue-parking');
-    if (/(map|maps|navigate|navigation|gps|directions|route)/.test(t))     return this.route('venue-maps');
-    if (/(bulbul|bride|arjoo|dulhan|girl|she|goyal gotra)/.test(t))        return this.route('bride');
-    if (/(monu|manish|groom|dulha|boy|he|husband|gupta|airan)/.test(t))     return this.route('groom');
-    if (/(hashtag|tag|instagram|insta|#)/.test(t))                         return this.route('hashtag');
-    if (/(family|goyal|gupta|parent|father|mother|dad|mom|grandfather|grandmother|grandparent|gotra)/.test(t)) return this.route('couple');
-    if (/(couple|love story|about them|who are|who is)/.test(t))           return this.route('couple');
-    if (/(hi|hello|hey|namaste|hii|helo)/.test(t)) {
-      this.addMsg('bot', "Hello! 😊 Great to see you here! How can I help you today?");
+    /* ─ Name-specific checks first — before generic venue/where catch ─ */
+    if (/(bride|bulbul|arjoo|dulhan|दुल्हन|अर्जू|बुलबुल|suroth|karauli|सुरोठ|करौली|akhlesh|lakshmi|goyal gotra)/.test(t)) return this.route('bride');
+    if (/(monu|manish|groom|dulha|दूल्हा|मनीष|मोनू|charkhi|dadri|haryana|हरियाणा|pawan|bala devi|gupta|airan)/.test(t)) return this.route('groom');
+    if (/(venue|where|address|location|place|mahal|anant|स्थान|जगह|पता|महल)/.test(t))              return this.route('venue');
+    if (/(train|railway|station|rail|durgapura|jaipur jn|gandhi|रेल|ट्रेन|स्टेशन)/.test(t))        return this.route('travel-train');
+    if (/(airport|fly|flight|air|plane|jai|sanganer|हवाई|एयरपोर्ट)/.test(t))                       return this.route('travel-airport');
+    if (/(bus|stand|sindhi|bhankrota|civil lines|बस स्टैंड)/.test(t))                              return this.route('travel-bus');
+    if (/(travel|reach|how to get|direction|commute|यात्रा|कैसे आएं|रास्ता)/.test(t))              return this.route('travel');
+    if (/(haldi|sangeet|baraat|varmala|jaimala|pool|mayra|ceremony|royal|lagan|हल्दी|संगीत|बारात|लग्न)/.test(t)) return this.route('dates-all');
+    if (/(breakfast|नाश्ता|morning meal|subah ka khana)/.test(t))                      return this.route('meals-day1');
+    if (/(lunch|दोपहर का खाना|dopahar|dopaher|afternoon meal)/.test(t))             return this.route('meals-day1');
+    if (/(dinner|रात का खाना|raat ka khana|night meal)/.test(t))                        return this.route('meals-day1');
+    if (/(high tea|snack|refreshment|चाय|नाश्ता|chaach|juice|cold drink)/.test(t))           return this.route('meals');
+    if (/(food|meal|eat|khana|khaana|खाना|भोजन|menu|catering)/.test(t))                       return this.route('meals');
+    if (/(day 1|first day|25 april|25th|पहला दिन)/.test(t))                                        return this.route('dates-day1');
+    if (/(day 2|second day|26 april|26th|wedding day|दूसरा दिन|शाدी का दिन)/.test(t))              return this.route('dates-day2');
+    if (/(date|when|schedule|event|time|program|timing|function|तारीख|कब|कार्यक्रम|समय)/.test(t))  return this.route('dates');
+    if (/(whatsapp|group|community|join|chat|व्हाट्सएप|ग्रुप)/.test(t))                 return this.route('whatsapp');
+    if (/(contact|call|phone|number|enquir|help|ask|संपर्क|फ़ोन|मदद)/.test(t))                    return this.route('contact');
+    if (/(parking|car|park|valet|पार्किंग|गाड़ी)/.test(t))                                        return this.route('venue-parking');
+    if (/(map|maps|navigate|navigation|gps|directions|route|नक्शा|दिशा)/.test(t))                  return this.route('venue-maps');
+    if (/(dress|wear|attire|outfit|clothes|what to wear|पहनावा|कपड़े|ड्रेस)/.test(t))              return this.route('dress');
+    if (/(hotel|stay|accommodation|room|lodge|oyo|where to stay|रुकना|होटल|ठहरना)/.test(t))          return this.route('accommodation');
+    if (/(love story|how.*meet|about them|two states|rajasthan.*haryana|haryana.*rajasthan|story|प्रेम कहानी|कैसे मिले)/.test(t)) return this.route('couple');
+    if (/(hashtag|tag|instagram|insta|#|हैशटैग)/.test(t))                                         return this.route('hashtag');
+    if (/(family|goyal|parent|dad|mom|grandparent|gotra|परिवार|माता|पिता|गोत्र)/.test(t)) return this.route('couple');
+    if (/(couple|who are|who is|जोड़ा|दोनों)/.test(t))                                    return this.route('couple');
+    if (/(hi|hello|hey|namaste|hii|helo|नमस्ते|राम राम)/.test(t)) {
+      this.addMsg('bot', this.state.lang === 'hi'
+        ? 'नमस्ते! 😊 आपसे मिलकर अच्छा लगा! आज मैं आपकी कैसे मदद कर सकता हूँ?'
+        : 'Hello! 😊 Great to see you here! How can I help you today?'
+      );
       return this.showMainMenu();
     }
     this.fallback();
   },
 
   fallback() {
-    this.addMsg('bot', "I'm sorry, I couldn't find that information. 🙏<br>Would you like details about the <strong>venue, dates, travel,</strong> or <strong>contact person</strong>?");
+    this.addMsg('bot', this.state.lang === 'hi'
+      ? 'माफ़ करें, मुझे यह जानकारी नहीं मिली। 🙏<br>क्या आप <strong>वेन्यू, तारीखें, यात्रा</strong> या <strong>संपर्क</strong> के बारे में जानना चाहते हैं?'
+      : "I'm sorry, I couldn't find that information. 🙏<br>Would you like details about the <strong>venue, dates, travel,</strong> or <strong>contact person</strong>?"
+    );
     this.showMainMenu();
   },
 
@@ -481,18 +680,15 @@ const ARMAAN = {
   },
 
   addBackBtn(parent = 'menu') {
+    const s    = this.L();
     const btns = parent !== 'menu'
-      ? [
-          { label: '↩️ Previous Menu', action: parent },
-          { label: '🏠 Main Menu',     action: 'menu' },
-        ]
-      : [{ label: '🏠 Main Menu', action: 'menu' }];
+      ? [{ label: s.backPrev, action: parent }, { label: s.backMain, action: 'menu' }]
+      : [{ label: s.backMain, action: 'menu' }];
     this.addQuickReplies(btns);
   },
 };
 
 document.addEventListener('DOMContentLoaded', () => {
   ARMAAN.init();
-  /* Global hook for the navbar link */
   window.armaanOpen = () => ARMAAN.openChat();
 });
