@@ -31,7 +31,8 @@ A bespoke, hand-crafted wedding website for the celebration of
 | 8 | 💌 **Welcome Vlog** | Shayari scroll cards + WhatsApp photo carousel + video films |
 | 9 | 🏡 **Family Invitation** | Full Goyal family listing — 6 categories from the invite card |
 | 10 | 💬 **WhatsApp Community** | Join community CTA with QR code |
-| 11 | 📎 **Footer** | Couple names, date, social links |
+| 11 | 📸 **Instagram Community** | Follow CTA, `@arjoo.ka.man` handle, QR scan card — Instagram brand gradient styling |
+| 12 | 📎 **Footer** | Couple names, date, social links |
 
 ---
 
@@ -112,6 +113,8 @@ A fully custom bilingual wedding assistant built in pure vanilla JS.
 | 🏡 Family | Complete Goyal family listing (request from, hosts, blessings, maternal side) |
 | #️⃣ Hashtag | `#Arjoo_ka_man` |
 | 💬 WhatsApp | Community join link |
+| 📸 Instagram | Follow link + handle — `@arjoo.ka.man` |
+| 🎉 Communities | Shows **both** WhatsApp & Instagram with one-tap pill buttons |
 | 📞 Contact | Click-to-call for Father of Bride & Brother of Bride |
 
 ### Chatbot features
@@ -119,6 +122,7 @@ A fully custom bilingual wedding assistant built in pure vanilla JS.
 - 🌐 **Bilingual** — full EN & हिंदी support; language switcher lives in every session
 - 💬 **Animated hint questions** — 4 rotating questions fade in/out in the input placeholder, language-aware
 - 🔍 **Smart free-text** — 30+ keyword patterns covering names, nicknames, Hindi terms, locations (`suroth`, `karauli`, `charkhi dadri`, `haryana`) and natural questions
+- 🎉 **Communities routing** — `community`/`join us`/`social` → shows both WA + IG; `whatsapp`/`group` → WA only; `instagram`/`insta`/`follow` → IG only
 - 🧭 **Priority routing** — bride/groom name checks run before generic `where` catch, so "where is Arjoo from?" routes correctly to bride info
 - 🏠 **Hierarchical menus** — every response has `[↩️ Previous Menu]` + `[🏠 Main Menu]`
 - 🤝 **Graceful fallback** — unknown queries get a friendly nudge back to the menu
@@ -211,6 +215,7 @@ Wedding-Project/
     │   ├── reception.jpg   ← Wedding ceremony event card background
     │   ├── invite-card.jpg ← Physical invite card scan
     │   ├── whatsapp-qr.jpeg← WhatsApp community QR
+    │   ├── instagram-qr.jpeg← Instagram community QR
     │   ├── wa01–wa38.jpeg  ← WhatsApp carousel photos
     │   └── hero-poster.jpg ← Hero video fallback poster
     │
@@ -288,6 +293,7 @@ Then visit `http://localhost:8000` in your browser.
 | Venue map embed | `index.html` → `#venue` section `<iframe>` src |
 | Countdown target date | `js/main.js` → `weddingDate` variable |
 | WhatsApp community link | `js/armaan.js` → `ARMAAN.data.whatsapp.link` |
+| Instagram link / handle | `js/armaan.js` → `ARMAAN.data.instagram` |
 | Contact numbers | `js/armaan.js` → `ARMAAN.data.contacts` array |
 | Colour theme | `css/styles.css` → `:root` variables |
 

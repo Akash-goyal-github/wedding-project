@@ -227,6 +227,44 @@ ul { list-style: none; }
   .wa-eyebrow { justify-content: center; }
 }
 
+/* ── INSTAGRAM SECTION ─────────────────────────────────────── */
+.ig-section {
+  padding: 70px 0;
+  background: linear-gradient(135deg,
+    rgba(225,48,108,.06) 0%,
+    rgba(255,255,255,1) 40%,
+    rgba(131,58,180,.05) 100%);
+  border-top: 1px solid rgba(225,48,108,.15);
+}
+.ig-eyebrow { color: #833AB4; }
+.ig-icon    { color: #E1306C; }
+.ig-btn {
+  background: linear-gradient(90deg, #833AB4 0%, #E1306C 55%, #FCAF45 100%);
+  box-shadow: 0 4px 18px rgba(225,48,108,.35);
+}
+.ig-btn:hover {
+  background: linear-gradient(90deg, #6e2fa0 0%, #c01d54 55%, #e09d30 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(225,48,108,.45);
+}
+.ig-link       { color: #833AB4; }
+.ig-qr-card    {
+  background: linear-gradient(145deg, #fce8f3 0%, #ede8ff 100%);
+  border-color: rgba(225,48,108,.28);
+  box-shadow: 0 8px 36px rgba(225,48,108,.14), 0 2px 16px rgba(131,58,180,.16);
+}
+.ig-qr-img     { box-shadow: 0 2px 12px rgba(225,48,108,.18); }
+.ig-qr-hint    { color: #833AB4; }
+@media (max-width: 700px) {
+  .ig-section .wa-band    { grid-template-columns: 1fr; text-align: center; }
+  .ig-section .wa-actions { align-items: center; }
+  .ig-section .wa-desc    { max-width: 100%; margin-left: auto; margin-right: auto; }
+  .ig-section .wa-qr-wrap { display: flex; justify-content: center; }
+  .ig-section .ig-qr-card { max-width: 240px; }
+  .ig-section .ig-qr-img  { width: 200px; height: 200px; }
+  .ig-section .ig-eyebrow { justify-content: center; }
+}
+
 /* ── FOOTER ────────────────────────────────────────────────── */
 .story-section { padding: 90px 0; background: var(--white); }
 .story-grid { display: grid; grid-template-columns: 420px 1fr; gap: 4.5rem; align-items: center; }
@@ -2177,6 +2215,15 @@ ul { list-style: none; }
   font-size: .74rem;
 }
 .armaan-link--wa:hover { background: #128C3E; }
+.armaan-link--ig {
+  background: linear-gradient(90deg, #833AB4, #E1306C, #FCAF45);
+  color: #fff !important;
+  text-decoration: none;
+  padding: .3rem .8rem;
+  border-radius: 20px;
+  font-size: .74rem;
+}
+.armaan-link--ig:hover { opacity: .88; }
 
 /* ─ Quick replies ─ */
 .armaan-qr-row { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0 .1rem; }

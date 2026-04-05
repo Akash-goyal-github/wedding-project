@@ -66,6 +66,10 @@ const ARMAAN = {
       link: 'https://chat.whatsapp.com/CkrAO8cSR8TKoxgeAxbOzB',
       name: 'Arjoo ❤️ Manish Forever Begins 🥰',
     },
+    instagram: {
+      link: 'https://www.instagram.com/arjoo.ka.man',
+      handle: '@arjoo.ka.man',
+    },
     contacts: [
       { role:'Father of Bride', name:'Akhlesh Kumar Goyal', phone:'+91 94143 11762', tel:'tel:+919414311762' },
       { role:'Brother of Bride', name:'Akash Goyal',         phone:'+91 94608 14437', tel:'tel:+919460814437' },
@@ -295,10 +299,10 @@ const ARMAAN = {
     this.addQuickReplies([
       { label: hi ? '📍 वेन्यू'            : '📍 Venue',          action: 'venue'    },
       { label: hi ? '📅 शादी की तारीखें'  : '📅 Wedding Dates',  action: 'dates'    },
-      { label: hi ? '✈️ यात्रा जानकारी'   : '✈️ Travel Info',    action: 'travel'   },
-      { label: hi ? '💑 जोड़ा'             : '💑 The Couple',     action: 'couple'   },
-      { label: hi ? '💬 WhatsApp ग्रुप'    : '💬 WhatsApp Group', action: 'whatsapp' },
-      { label: hi ? '📞 संपर्क'            : '📞 Contact',        action: 'contact'  },
+      { label: hi ? '✌️ यात्रा जानकारी'   : '✌️ Travel Info',    action: 'travel'    },
+      { label: hi ? '💑 जोड़ा'             : '💑 The Couple',     action: 'couple'    },
+      { label: hi ? '🎉 कम्युनिटी जोइन करें'  : '🎉 Join Communities',  action: 'communities' },
+      { label: hi ? '📞 संपर्क'            : '📞 Contact',        action: 'contact'   },
       { label: hi ? '🍽️ भोजन व नाश्ता'    : '🍽️ Food & Meals',   action: 'meals'         },
       { label: hi ? '👑 ड्रेस कोड'         : '👑 Dress Code',       action: 'dress'         },
       { label: hi ? '🏨 ठहरने की जगह'       : '🏨 Where to Stay',    action: 'accommodation' },
@@ -324,6 +328,8 @@ const ARMAAN = {
       'travel-airport':() => this.travelAirport(),
       'travel-bus':    () => this.travelBus(),
       whatsapp:        () => this.whatsappInfo(),
+      instagram:        () => this.instagramInfo(),
+      communities:      () => this.communitiesInfo(),
       contact:         () => this.contactInfo(),
       meals:           () => this.mealsMenu(),
       'meals-day1':    () => this.mealsDay(1),
@@ -453,6 +459,39 @@ const ARMAAN = {
     const s  = this.L();
     const wa = this.data.whatsapp;
     this.addMsg('bot', `${s.whatsapp(wa)}<a href="${wa.link}" target="_blank" rel="noopener" class="armaan-link armaan-link--wa">${s.waLink}</a>`);
+    this.addBackBtn('menu');
+  },
+
+  instagramInfo() {
+    const hi = this.state.lang === 'hi';
+    const ig = this.data.instagram;
+    this.addMsg('bot', hi
+      ? `📸 <strong>Instagram फ़ॉलो करें!</strong><br><br>` +
+        `हल्दी से शाدी तक — हर ख़ूबसूरत पल को कैमरे में कैتा हुआ है! ✨<br><br>` +
+        `📍 <strong>${ig.handle}</strong><br><br>` +
+        `<a href="${ig.link}" target="_blank" rel="noopener" class="armaan-link armaan-link--ig">📸 Instagram पर फ़ॉलो करें</a>`
+      : `📸 <strong>Follow us on Instagram!</strong><br><br>` +
+        `Every candid moment from Haldi to the Big Day — all in one place. Come follow along! ✨<br><br>` +
+        `📍 <strong>${ig.handle}</strong><br><br>` +
+        `<a href="${ig.link}" target="_blank" rel="noopener" class="armaan-link armaan-link--ig">📸 Follow on Instagram</a>`);
+    this.addBackBtn('menu');
+  },
+
+  communitiesInfo() {
+    const hi = this.state.lang === 'hi';
+    const wa = this.data.whatsapp;
+    const ig = this.data.instagram;
+    this.addMsg('bot', hi
+      ? `🎉 <strong>हमारे साथ जुड़ें!</strong><br><br>` +
+        `💬 <strong>WhatsApp</strong> — लाइव अपडेट, फोटो और सारी खुशियाँ सीधे आपके WhatsApp पर!<br>` +
+        `<a href="${wa.link}" target="_blank" rel="noopener" class="armaan-link armaan-link--wa">💬 WhatsApp ग्रुप जोइन करें</a><br><br>` +
+        `📸 <strong>Instagram</strong> — हल्दी से शाدी तक हर पल की ख़ूबसूरत तस्वीरें — सब एक जगह!<br>` +
+        `<a href="${ig.link}" target="_blank" rel="noopener" class="armaan-link armaan-link--ig">📸 Instagram पर फ़ॉलो करें</a>`
+      : `🎉 <strong>Join us on both communities!</strong><br><br>` +
+        `💬 <strong>WhatsApp</strong> — Live updates, photos, schedules & all the fun — straight to your WhatsApp!<br>` +
+        `<a href="${wa.link}" target="_blank" rel="noopener" class="armaan-link armaan-link--wa">💬 Join WhatsApp Group</a><br><br>` +
+        `📸 <strong>Instagram</strong> — Every beautiful moment from Haldi to the Big Day, all in one feed!<br>` +
+        `<a href="${ig.link}" target="_blank" rel="noopener" class="armaan-link armaan-link--ig">📸 Follow on Instagram</a>`);
     this.addBackBtn('menu');
   },
 
@@ -622,14 +661,16 @@ const ARMAAN = {
     if (/(day 1|first day|25 april|25th|पहला दिन)/.test(t))                                        return this.route('dates-day1');
     if (/(day 2|second day|26 april|26th|wedding day|दूसरा दिन|शाدी का दिन)/.test(t))              return this.route('dates-day2');
     if (/(date|when|schedule|event|time|program|timing|function|तारीख|कब|कार्यक्रम|समय)/.test(t))  return this.route('dates');
-    if (/(whatsapp|group|community|join|chat|व्हाट्सएप|ग्रुप)/.test(t))                 return this.route('whatsapp');
+    if (/(community|communities|social|join us|both|सामुदाय|join.*us)/.test(t))        return this.route('communities');
+    if (/(whatsapp|व्हाट्सएप|group|ग्रुप|chat|wapp)/.test(t))            return this.route('whatsapp');
+    if (/(instagram|insta|ig|follow|reel|arjoo.ka.man|इंस्टाग्राम)/.test(t))  return this.route('instagram');
     if (/(contact|call|phone|number|enquir|help|ask|संपर्क|फ़ोन|मदद)/.test(t))                    return this.route('contact');
     if (/(parking|car|park|valet|पार्किंग|गाड़ी)/.test(t))                                        return this.route('venue-parking');
     if (/(map|maps|navigate|navigation|gps|directions|route|नक्शा|दिशा)/.test(t))                  return this.route('venue-maps');
     if (/(dress|wear|attire|outfit|clothes|what to wear|पहनावा|कपड़े|ड्रेस)/.test(t))              return this.route('dress');
     if (/(hotel|stay|accommodation|room|lodge|oyo|where to stay|रुकना|होटल|ठहरना)/.test(t))          return this.route('accommodation');
     if (/(love story|how.*meet|about them|two states|rajasthan.*haryana|haryana.*rajasthan|story|प्रेम कहानी|कैसे मिले)/.test(t)) return this.route('couple');
-    if (/(hashtag|tag|instagram|insta|#|हैशटैग)/.test(t))                                         return this.route('hashtag');
+    if (/(hashtag|tag|#|हैशटैग)/.test(t))                                         return this.route('hashtag');
     if (/(family|goyal|parent|dad|mom|grandparent|gotra|परिवार|माता|पिता|गोत्र)/.test(t)) return this.route('couple');
     if (/(couple|who are|who is|जोड़ा|दोनों)/.test(t))                                    return this.route('couple');
     if (/(hi|hello|hey|namaste|hii|helo|नमस्ते|राम राम)/.test(t)) {
