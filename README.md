@@ -1,8 +1,8 @@
-# 👑 Arjoo & Manish — Royal Jaipur Wedding Website
+# 👑 Arjoo & Manish — Wedding Website
 
-A bespoke, hand-crafted wedding website for the royal celebration of
-**Aayushmati Arjoo (Bulbul)** & **Aayushman Manish Gupta (Monu)**  
-📅 **26th April 2026** &nbsp;·&nbsp; 📍 **Anant Mahal, Patrakar Colony, Jaipur**
+A bespoke, hand-crafted wedding website for the celebration of
+**Aayushmati Arjoo (Bulbul)** & **Aayushman Manish Gupta (Monu)**
+📅 **26th April 2026** · 📍 **Anant Mahal, Patrakar Colony, Jaipur**
 
 > Pure HTML · CSS · Vanilla JS — zero frameworks, zero build tools.
 
@@ -25,10 +25,10 @@ A bespoke, hand-crafted wedding website for the royal celebration of
 | 2 | 🏠 **Hero** | Full-screen video/image background, live golden countdown timer, wedding hashtag |
 | 3 | 📖 **Our Story** | Mughal arch photo frame, blessing text, seven-vows quote |
 | 4 | 🤝 **Two States, One Love** | Split card — Rajasthan (Arjoo) vs Haryana (Manish), parents, grandparents, hometowns |
-| 5 | 📅 **Royal Celebrations** | Vertical tree timeline — all 7 events across 2 days with styled event cards |
+| 5 | 📅 **Royal Celebrations** | Vertical tree timeline — all 8 events across 2 days with styled image-bg cards, meal chips & food-break markers |
 | 6 | 🖼️ **Gallery** | Mosaic photo grid with lightbox viewer |
 | 7 | 🏛️ **Venue** | Anant Mahal details, Google Maps embed, parking info, QR code |
-| 8 | 💌 **Welcome Vlog** | Shayari scroll cards + WhatsApp photo carousel (38 photos) + video films |
+| 8 | 💌 **Welcome Vlog** | Shayari scroll cards + WhatsApp photo carousel + video films |
 | 9 | 🏡 **Family Invitation** | Full Goyal family listing — 6 categories from the invite card |
 | 10 | 💬 **WhatsApp Community** | Join community CTA with QR code |
 | 11 | 📎 **Footer** | Couple names, date, social links |
@@ -38,6 +38,7 @@ A bespoke, hand-crafted wedding website for the royal celebration of
 ## 📅 Event Schedule
 
 ### Day 1 — 25th April 2026
+
 | Event | Time | Venue |
 |---|---|---|
 | 🌸 Haldi Ceremony | 12:00 PM – 2:00 PM | Anant Mahal Courtyard |
@@ -45,48 +46,96 @@ A bespoke, hand-crafted wedding website for the royal celebration of
 | 🎶 Sangeet Night | 7:00 PM – 11:00 PM | Anant Mahal Royal Lawns |
 
 ### Day 2 — 26th April 2026 (Wedding Day)
+
 | Event | Time | Venue |
 |---|---|---|
 | 🌊 Pool Party | 7:00 AM – 9:00 AM | Anant Mahal Poolside |
+| 🪔 Lagan at Groom Side | 11:00 AM – 1:00 PM | Anant Mahal Hall |
 | 🐎 Baraat Procession | 6:15 PM – 7:30 PM | Anant Mahal Main Gate |
 | 💐 Jai Mala & Varmala | 8:00 PM – 11:30 PM | Anant Mahal, Mandap |
 | 👑 Royal Wedding Ceremony | 11:30 PM onwards | Anant Mahal, Royal Mandap |
+
+### 🍽️ Meal Plan
+
+**Day 1**
+
+| Meal | Timing | Tied to |
+|---|---|---|
+| 🌅 Breakfast | Morning | Before Haldi |
+| 🍽️ Lunch | 12:00 PM – 2:00 PM | During Haldi |
+| ☕ High Tea & Snacks | 2:00 PM onwards | Haldi onwards / Mayra |
+| 🌙 Dinner | 7:00 PM – 11:00 PM | During Sangeet |
+
+**Day 2**
+
+| Meal | Timing | Tied to |
+|---|---|---|
+| 🍳 Breakfast | 9:00 AM onwards | After Pool Party |
+| 🍽️ Lunch | 11:00 AM – 1:00 PM | During Lagan |
+| ☕ High Tea & Snacks | 1:00 PM onwards | After Lagan |
+| 🌙 Dinner | 7:00 PM onwards | Before Jai Mala |
+
+> 🥤 Juices · Cold Drinks · Chaach · Fresh Fruits & Snacks available throughout both days.
+
+---
+
+## 👗 Dress Code (per event)
+
+| Event | Suggested Colours |
+|---|---|
+| 🌸 Haldi | Lavender / Pink |
+| 🎶 Sangeet | Black & White |
+| 🌊 Pool Party | Floral |
+| 👑 Wedding Day | Just come and enjoy! 🥰 |
 
 ---
 
 ## 🤵 Ask Armaan — Wedding Chatbot
 
-A fully custom AI-style wedding assistant built in pure vanilla JS.
+A fully custom bilingual wedding assistant built in pure vanilla JS.
 
 **Entry points**
 - Floating `[💬 Ask]` pill button — fixed bottom-right on every page
 - `[🤵 Ask Armaan]` link in the navbar
 
-**What Armaan knows**
+### What Armaan knows
 
 | Topic | Details served |
 |---|---|
 | 📍 Venue | Full address, Google Maps link, parking info |
-| 📅 Events | All 7 events with timings & locations |
-| ✈️ Travel | 3 railway stations, airport (JAI), 4 bus stands — all with distances & route links |
-| 💑 The Couple | Arjoo & Manish — full profiles, nicknames, gotras, hometowns, parents, grandparents |
-| 🏡 Family | Complete Goyal family listing (6 categories) |
+| 📅 Events | All 8 events with timings & locations |
+| 🍽️ Meals | Breakfast, Lunch, High Tea & Dinner for both days, tied to events |
+| ✈️ Travel | 3 railway stations, airport (JAI), 4 bus stands — distances & route links |
+| 👗 Dress Code | Per-event colours: Haldi · Sangeet · Pool Party · Wedding Day |
+| 🏡 Accommodation | Rooms arranged at Anant Mahal — outstation guests stay on-site |
+| 💑 The Couple | Arjoo & Manish — profiles, nicknames, gotras, hometowns, parents, grandparents |
+| 🏡 Family | Complete Goyal family listing (request from, hosts, blessings, maternal side) |
 | #️⃣ Hashtag | `#Arjoo_ka_man` |
 | 💬 WhatsApp | Community join link |
 | 📞 Contact | Click-to-call for Father of Bride & Brother of Bride |
 
-**Navigation**
-- Hierarchical menus with `[↩️ Previous Menu]` + `[🏠 Main Menu]` on every response
-- Free-text input with 25+ keyword patterns (hindi names, nicknames, English all work)
-- Graceful fallback for unknown queries
+### Chatbot features
 
-**Source file:** `js/armaan.js` — all data lives in `ARMAAN.data` at the top of the file.
+- 🌐 **Bilingual** — full EN & हिंदी support; language switcher lives in every session
+- 💬 **Animated hint questions** — 4 rotating questions fade in/out in the input placeholder, language-aware
+- 🔍 **Smart free-text** — 30+ keyword patterns covering names, nicknames, Hindi terms, locations (`suroth`, `karauli`, `charkhi dadri`, `haryana`) and natural questions
+- 🧭 **Priority routing** — bride/groom name checks run before generic `where` catch, so "where is Arjoo from?" routes correctly to bride info
+- 🏠 **Hierarchical menus** — every response has `[↩️ Previous Menu]` + `[🏠 Main Menu]`
+- 🤝 **Graceful fallback** — unknown queries get a friendly nudge back to the menu
+
+### Source files
+
+| File | Purpose |
+|---|---|
+| `js/armaan.js` | All logic, data (`ARMAAN.data`), methods, routes |
+| `js/armaan-strings.js` | All EN/HI UI copy + animated hint questions (i18n without touching armaan.js) |
 
 ---
 
 ## 👨‍👩‍👧‍👦 The Couple
 
 ### 👰 Bride — Aayushmati Arjoo (Bulbul)
+
 | | |
 |---|---|
 | Nickname | Bulbul 🐦 |
@@ -97,6 +146,7 @@ A fully custom AI-style wedding assistant built in pure vanilla JS.
 | Grandparents | Late Shrimati Geeta Devi & Shri Murarilal Ji Goyal |
 
 ### 🤵 Groom — Aayushman Manish Gupta (Monu)
+
 | | |
 |---|---|
 | Nickname | Monu 💪 |
@@ -128,7 +178,8 @@ Wedding-Project/
 │
 ├── js/
 │   ├── main.js             ← Countdown timer, AOS init, scroll effects
-│   ├── armaan.js           ← Ask Armaan chatbot (all data + logic)
+│   ├── armaan.js           ← Ask Armaan chatbot (all data + logic + routes)
+│   ├── armaan-strings.js   ← EN/HI UI copy + animated hint questions
 │   ├── gate.js             ← Gate open/close animation
 │   ├── gallery.js          ← Gallery lightbox & mosaic
 │   ├── effects.js          ← Fireworks, petals, shimmer burst
@@ -150,16 +201,17 @@ Wedding-Project/
     │   ├── couple-new.jpeg ← Our Story section
     │   ├── couple-gate.jpeg← Gate reveal photo
     │   ├── together.jpeg   ← River page together photo
-    │   ├── haldi-bg.png    ← Haldi event card bg
-    │   ├── mayra.png       ← Mayra event card bg
-    │   ├── sangeet.avif    ← Sangeet event card bg
-    │   ├── barat.jpeg      ← Baraat event card bg
-    │   ├── party.avif      ← Pool party event card bg
-    │   ├── varmala.jpg     ← Jai Mala event card bg
-    │   ├── reception.jpg   ← Royal Wedding event card bg
+    │   ├── lagan.avif      ← Lagan event card background
+    │   ├── haldi-bg.png    ← Haldi event card background
+    │   ├── mayra.png       ← Mayra event card background
+    │   ├── sangeet.avif    ← Sangeet event card background
+    │   ├── barat.jpeg      ← Baraat event card background
+    │   ├── party.avif      ← Pool party event card background
+    │   ├── varmala.jpg     ← Jai Mala event card background
+    │   ├── reception.jpg   ← Wedding ceremony event card background
     │   ├── invite-card.jpg ← Physical invite card scan
     │   ├── whatsapp-qr.jpeg← WhatsApp community QR
-    │   ├── wa01–wa38.jpeg  ← WhatsApp carousel photos (38 images)
+    │   ├── wa01–wa38.jpeg  ← WhatsApp carousel photos
     │   └── hero-poster.jpg ← Hero video fallback poster
     │
     └── videos/
@@ -223,8 +275,13 @@ Then visit `http://localhost:8000` in your browser.
 | What to change | Where |
 |---|---|
 | Chatbot knowledge (venue, events, travel, couple) | `js/armaan.js` → `ARMAAN.data` object at top of file |
+| Chatbot UI copy / translations | `js/armaan-strings.js` → `ARMAAN_STRINGS.en` / `.hi` |
+| Animated hint questions | `js/armaan-strings.js` → `ARMAAN_STRINGS.hints` |
+| Dress code per event | `js/armaan.js` → `ARMAAN.data.dress` |
+| Accommodation message | `js/armaan.js` → `ARMAAN.accommodationInfo()` |
 | Couple details on page | `index.html` → `#union` section |
-| Event timings | `index.html` → `#events` section |
+| Event timings | `index.html` → `#events` section + `js/armaan.js` → `ARMAAN.data.dates` |
+| Meal timings | `index.html` → food-break chips + `js/armaan.js` → `ARMAAN.data.meals` |
 | Family member names | `index.html` → `#family` section |
 | Gallery photos | Drop JPGs in `assets/images/`, update `#gallery` grid in `index.html` |
 | Hero video | Replace `assets/videos/film1.mp4` |
@@ -245,5 +302,5 @@ Then visit `http://localhost:8000` in your browser.
 
 ---
 
-*Crafted with ❤️ for Arjoo & Manish · 26th April 2026 · Anant Mahal, Jaipur*  
+*Crafted with ❤️ for Arjoo & Manish · 26th April 2026 · Anant Mahal, Jaipur*
 *#Arjoo_ka_man*
