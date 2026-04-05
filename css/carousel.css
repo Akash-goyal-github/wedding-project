@@ -1,0 +1,134 @@
+/* ══════════════════════════════════════════════════════════
+   carousel.css — Horizontal snap carousel
+   Used by: Vlog (shayari cards) + Family Invitation cards
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Outer wrapper ──────────────────────────────────────── */
+.carousel-wrap {
+  position: relative;
+  margin-top: 3rem;
+}
+
+/* ── Scrollable track ───────────────────────────────────── */
+.carousel-track {
+  display: flex !important;           /* override grid */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: 1.6rem;
+  padding: 1rem 0.5rem 2rem;         /* bottom pad for shadow */
+  cursor: grab;
+}
+.carousel-track:active   { cursor: grabbing; }
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-track { scrollbar-width: none; }
+
+/* ── Each card becomes a fixed-width flex child ─────────── */
+.carousel-track > * {
+  flex: 0 0 calc(50% - 0.8rem);      /* 2 visible on desktop */
+  min-width: 260px;
+  max-width: 380px;
+  scroll-snap-align: start;
+}
+
+/* ── Fade-hint at right edge ────────────────────────────── */
+.carousel-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 2rem; right: 0;
+  width: 60px;
+  background: linear-gradient(to left, rgba(253,248,239,.9) 0%, transparent 100%);
+  pointer-events: none;
+  border-radius: 0 16px 16px 0;
+  z-index: 1;
+}
+/* vlog has lavender bg */
+.vlog-section .carousel-wrap::after {
+  background: linear-gradient(to left, rgba(243,239,255,.9) 0%, transparent 100%);
+}
+
+/* ── Navigation arrows ──────────────────────────────────── */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);       /* account for bottom padding */
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201,164,71,.55);
+  background: rgba(255,255,255,.92);
+  color: var(--plum);
+  font-size: 1.3rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, box-shadow .2s;
+  box-shadow: 0 3px 14px rgba(74,20,114,.12);
+  padding: 0;
+}
+.carousel-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(201,164,71,.38);
+}
+.carousel-btn:disabled {
+  opacity: .3;
+  pointer-events: none;
+}
+.carousel-prev { left:  -18px; }
+.carousel-next { right: -18px; }
+
+/* ── Dot indicators ─────────────────────────────────────── */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: .5rem;
+}
+.carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(201,164,71,.28);
+  transition: background .3s, transform .3s;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+.carousel-dot.active {
+  background: var(--gold);
+  transform: scale(1.35);
+}
+
+/* ── Mobile ─────────────────────────────────────────────── */
+@media (max-width: 700px) {
+
+  /* Give the wrap side-padding so the 40px buttons live
+     in that gutter and never overlap the track cards.    */
+  .carousel-wrap {
+    padding-left:  44px;
+    padding-right: 44px;
+  }
+
+  /* Buttons sit flush inside the gutter — no overflow     */
+  .carousel-prev { left:  2px; }
+  .carousel-next { right: 2px; }
+
+  /* Cards fill the full track width (viewport - gutters)  */
+  .carousel-track > * {
+    flex: 0 0 100%;
+    min-width: 0;
+    max-width: none;
+  }
+
+  /* Remove the right fade-hint — pointless when 1 card fills the view */
+  .carousel-wrap::after { display: none; }
+
+  /* Tighten track padding so cards centre nicely          */
+  .carousel-track { padding: 1rem 0 2rem; gap: 0; }
+}

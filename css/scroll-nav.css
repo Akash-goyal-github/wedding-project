@@ -1,0 +1,206 @@
+/* ══════════════════════════════════════════════════════════
+   scroll-nav.css  –  Floating icons + centre line only
+   No card background · icons on a thin vertical gold line
+   ══════════════════════════════════════════════════════════ */
+
+:root {
+  --sn-item-h: 60px;
+  --sn-show:   4;
+  --sn-card-w: 54px;
+  --sn-hl-h:   50px;
+  --sn-vp-h:   calc(var(--sn-item-h) * var(--sn-show));
+}
+
+/* ── Fixed wrapper ──────────────────────────────────────── */
+#scroll-nav {
+  position: fixed;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4000;
+  pointer-events: none;
+}
+
+body.locked #scroll-nav { display: none; }
+
+/* ── Card — transparent positioning shell only ──────────── */
+.sn-card {
+  position: relative;
+  width: var(--sn-card-w);
+  height: var(--sn-vp-h);
+  pointer-events: auto;
+}
+
+/* ── Thin vertical line (rail) through icon centres ─────── */
+.sn-rail {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top:    calc(var(--sn-item-h) / 2);   /* start at first dot centre  */
+  bottom: calc(var(--sn-item-h) / 2);   /* end   at last dot centre   */
+  width: 1.5px;
+  background: rgba(201,164,71,.22);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Gold fill (scroll progress) ────────────────────────── */
+.sn-fill {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top:   calc(var(--sn-item-h) / 2);
+  width: 1.5px;
+  height: 0%;
+  background: linear-gradient(to bottom,
+    #8B6914, #C9A447, #F5D78E, #C9A447);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 1;
+  transition: height .1s linear;
+}
+
+/* ── Viewport — slot-machine clip ───────────────────────── */
+.sn-viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.sn-track {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  transition: transform .38s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+}
+
+/* ── Dot (48 × 60 touch target) ─────────────────────────── */
+.sn-dot {
+  width: var(--sn-card-w);
+  height: var(--sn-item-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  transition: opacity .3s ease;
+  pointer-events: auto;
+}
+
+.sn-dot          { opacity: .35; }
+.sn-dot.d-1      { opacity: .65; }
+.sn-dot.sn-active{ opacity: 1;   }
+
+/* ── Icon circle ─────────────────────────────────────────── */
+.sn-dot-inner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(42,8,69,.82);      /* dark fill breaks the rail line cleanly */
+  border: 1.5px solid rgba(201,164,71,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .3s, box-shadow .3s, transform .3s, background .3s;
+  transform: scale(.8);
+  position: relative;
+  z-index: 1;
+}
+
+.sn-dot.d-1 .sn-dot-inner {
+  border-color: rgba(201,164,71,.58);
+  transform: scale(.9);
+}
+
+.sn-dot.sn-active .sn-dot-inner {
+  background: rgba(42,8,69,.95);
+  border-color: #C9A447;
+  transform: scale(1);
+  box-shadow:
+    0 0 0 3px rgba(201,164,71,.15),
+    0 0 16px rgba(201,164,71,.5);
+}
+
+/* ── SVG icon ────────────────────────────────────────────── */
+.sn-dot svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: rgba(245,215,142,.6);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+  pointer-events: none;
+  transition: stroke .3s, filter .3s;
+}
+
+.sn-dot.d-1 svg       { stroke: rgba(245,215,142,.82); }
+.sn-dot.sn-active svg {
+  stroke: #C9A447;
+  filter: drop-shadow(0 0 4px rgba(201,164,71,.7));
+}
+
+/* ── Section label — tiny italic text between active & next */
+.sn-label {
+  position: absolute;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: .58rem;
+  letter-spacing: .05em;
+  color: rgba(245,215,142,.75);
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 4px;
+  z-index: 5;
+  transition: top .38s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── Tooltip (desktop hover only) ───────────────────────── */
+.sn-tip {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: rgba(30,5,55,.95);
+  border: 1px solid rgba(201,164,71,.45);
+  color: #F5D78E;
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: .8rem;
+  padding: .25rem .75rem;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .22s ease, transform .22s ease;
+  z-index: 20;
+  box-shadow: 0 4px 14px rgba(0,0,0,.55);
+}
+
+@media (hover: hover) {
+  .sn-dot:hover .sn-tip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* ── Focus ring ──────────────────────────────────────────── */
+.sn-dot:focus-visible { outline: none; }
+.sn-dot:focus-visible .sn-dot-inner {
+  border-color: #C9A447;
+  box-shadow: 0 0 0 3px rgba(201,164,71,.4);
+}
+
+/* ── Mobile ──────────────────────────────────────────────── */
+@media (max-width: 600px) { #scroll-nav { right: 6px; } }
+@media (max-height: 480px){ #scroll-nav { display: none; } }

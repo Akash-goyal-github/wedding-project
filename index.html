@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="css/union.css" />
   <link rel="stylesheet" href="css/effects.css" />
   <link rel="stylesheet" href="css/gallery.css" />
+  <link rel="stylesheet" href="css/scroll-nav.css" />
+  <link rel="stylesheet" href="css/carousel.css" />
+  <link rel="stylesheet" href="css/directions.css" />
 </head>
 <body class="locked">
 
@@ -744,139 +747,279 @@ bsp; 26 April 2026</p>
     </div><!-- end venue-grid -->
 
     <!-- ──── HOW TO REACH US — full-width band below the grid ──── -->
+    <!-- ════ HOW TO REACH — 3 unique route cards ════ -->
     <div class="vgh-band" data-aos="fade-up" data-aos-delay="100">
-      <div class="vgh-band-header">
-        <span class="vgh-eyebrow">✨ How to Reach Anant Mahal ✨</span>
+
+      <!-- Decorative header -->
+      <div class="vgh-header">
+        <div class="vgh-header-rule" aria-hidden="true"></div>
+        <div class="vgh-title-wrap">
+          <p class="vgh-title">How to Reach Anant Mahal</p>
+          <p class="vgh-sub">✦ Choose your journey ✦</p>
+        </div>
+        <div class="vgh-header-rule" aria-hidden="true"></div>
       </div>
 
-      <div class="vgh-cols">
+      <div class="route-cards">
 
-        <!-- LEFT: Bus (2×2 grid) -->
-        <div class="vgh-col">
-          <p class="vgh-col-title">🚌 By Bus</p>
-          <div class="rail-track-wrap" aria-hidden="true">
-            <div class="rail-track"></div>
-            <span class="bus-anim">🚌</span>
-          </div>
-          <div class="bus-stands-list">
-            <div class="bus-card bus-card--nearest">
-              <span class="bus-medal">🥇</span>
-              <p class="bus-name">Bhankrota New Bus Stand</p>
-              <p class="bus-sub">Jaipur Ajmer Road</p>
-              <div class="rail-chips">
-                <span class="chip">⏱ 12 min</span>
-                <span class="chip">📍 7.5 km</span>
-              </div>
-              <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Bhankrota+New+Bus+Stand,+Jaipur" target="_blank" rel="noopener">🗺 Get Route</a>
-            </div>
-            <div class="bus-card">
-              <span class="bus-medal">🥈</span>
-              <p class="bus-name">Civil Lines Bus Stop</p>
-              <p class="bus-sub">Near Metro Station</p>
-              <div class="rail-chips">
-                <span class="chip">⏱ 20 min</span>
-                <span class="chip">📍 12.7 km</span>
-              </div>
-              <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Civil+Lines+Metro+Station,+Jaipur" target="_blank" rel="noopener">🗺 Get Route</a>
-            </div>
-            <div class="bus-card">
-              <span class="bus-medal">🥉</span>
-              <p class="bus-name">Narayan Singh Circle</p>
-              <p class="bus-sub">Foot Over Bridge</p>
-              <div class="rail-chips">
-                <span class="chip">⏱ 24 min</span>
-                <span class="chip">📍 14 km</span>
-              </div>
-              <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Narayan+Singh+Circle,+Jaipur" target="_blank" rel="noopener">🗺 Get Route</a>
-            </div>
-            <div class="bus-card">
-              <span class="bus-medal">🏆</span>
-              <p class="bus-name">Sindhi Camp Bus Station</p>
-              <p class="bus-sub">Central Bus Stand</p>
-              <div class="rail-chips">
-                <span class="chip">⏱ 30 min</span>
-                <span class="chip">📍 17 km</span>
-              </div>
-              <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Sindhi+Camp+Bus+Station,+Jaipur" target="_blank" rel="noopener">🗺 Get Route</a>
+        <!-- ═══════════════════════════════════════
+             🚌  BUS — Rajasthan road route board
+             ═══════════════════════════════════════ -->
+        <div class="route-card route-bus" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="route-head">
+            <span class="route-head-icon">🚌</span>
+            <div class="route-head-text">
+              <span class="route-mode">By Road</span>
+              <span class="route-title">Bus Route</span>
             </div>
           </div>
+
+          <!-- animated bus on dashed road -->
+          <div class="route-track-wrap" aria-hidden="true">
+            <div class="route-vehicle-rail"></div>
+            <span class="route-vehicle-icon">🚌</span>
+          </div>
+
+          <div class="route-body">
+            <div class="bus-timeline">
+
+              <div class="bus-stop nearest">
+                <div class="bus-dot">★</div>
+                <div class="bus-stop-info">
+                  <p class="bus-stop-name">Bhankrota New Bus Stand <span class="nearest-badge">Nearest</span></p>
+                  <p class="bus-stop-sub">Jaipur–Ajmer Road</p>
+                  <div class="bus-chips">
+                    <span class="bus-chip">⏱ 12 min</span>
+                    <span class="bus-chip">📍 7.5 km</span>
+                  </div>
+                  <a class="stop-map-link" href="https://www.google.com/maps/dir/Bhankrota+New+Bus+Stand,+Jaipur/Anant+Mahal,+Patrakar+Colony,+Jaipur" target="_blank" rel="noopener">🗺 Get Directions</a>
+                </div>
+              </div>
+
+              <div class="bus-stop">
+                <div class="bus-dot">2</div>
+                <div class="bus-stop-info">
+                  <p class="bus-stop-name">Civil Lines Bus Stop</p>
+                  <p class="bus-stop-sub">Near Metro Station</p>
+                  <div class="bus-chips">
+                    <span class="bus-chip">⏱ 20 min</span>
+                    <span class="bus-chip">📍 12.7 km</span>
+                  </div>
+                  <a class="stop-map-link" href="https://www.google.com/maps/dir/Civil+Lines+Metro+Station,+Jaipur/Anant+Mahal,+Patrakar+Colony,+Jaipur" target="_blank" rel="noopener">🗺 Get Directions</a>
+                </div>
+              </div>
+
+              <div class="bus-stop">
+                <div class="bus-dot">3</div>
+                <div class="bus-stop-info">
+                  <p class="bus-stop-name">Narayan Singh Circle</p>
+                  <p class="bus-stop-sub">Foot Over Bridge</p>
+                  <div class="bus-chips">
+                    <span class="bus-chip">⏱ 24 min</span>
+                    <span class="bus-chip">📍 14 km</span>
+                  </div>
+                  <a class="stop-map-link" href="https://www.google.com/maps/dir/Narayan+Singh+Circle,+Jaipur/Anant+Mahal,+Patrakar+Colony,+Jaipur" target="_blank" rel="noopener">🗺 Get Directions</a>
+                </div>
+              </div>
+
+              <div class="bus-stop">
+                <div class="bus-dot">4</div>
+                <div class="bus-stop-info">
+                  <p class="bus-stop-name">Sindhi Camp Bus Station</p>
+                  <p class="bus-stop-sub">Central Bus Stand</p>
+                  <div class="bus-chips">
+                    <span class="bus-chip">⏱ 30 min</span>
+                    <span class="bus-chip">📍 17 km</span>
+                  </div>
+                  <a class="stop-map-link" href="https://www.google.com/maps/dir/Sindhi+Camp+Bus+Station,+Jaipur/Anant+Mahal,+Patrakar+Colony,+Jaipur" target="_blank" rel="noopener">🗺 Get Directions</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <a class="route-cta"
+             href="https://www.google.com/maps/place/Anant+Mahal,+Patrakar+Colony,+Jaipur"
+             target="_blank" rel="noopener" aria-label="View Anant Mahal on Google Maps">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            View Anant Mahal on Maps
+          </a>
         </div>
 
-        <!-- RIGHT: Train (top) + Airport (bottom) stacked -->
-        <div class="vgh-right-stack">
+        <!-- ═══════════════════════════════════════
+             🚂  TRAIN — Indian Railways ticket
+             ═══════════════════════════════════════ -->
+        <div class="route-card route-train" data-aos="fade-up" data-aos-delay="200">
 
-          <!-- Train -->
-          <div class="vgh-col">
-            <p class="vgh-col-title">🚂 By Train</p>
-            <div class="rail-track-wrap" aria-hidden="true">
-              <div class="rail-track"></div>
-              <span class="rail-train">🚂</span>
-            </div>
-            <div class="rail-stations-list">
-              <div class="rail-card rail-card--nearest">
-                <span class="rail-icon">🚉</span>
-                <p class="rail-name">Durgapura</p>
-                <div class="rail-chips">
-                  <span class="chip">⏱ 20 min</span>
-                  <span class="chip">📍 8.3 km</span>
-                </div>
-                <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Durgapura+Railway+Station,+Jaipur" target="_blank" rel="noopener">🗺 Get Route</a>
-              </div>
-              <div class="rail-card">
-                <span class="rail-icon">🚉</span>
-                <p class="rail-name">Gandhinagar</p>
-                <div class="rail-chips">
-                  <span class="chip">⏱ 22 min</span>
-                  <span class="chip">📍 10.3 km</span>
-                </div>
-                <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Gandhinagar+Railway+Station,+Jaipur" target="_blank" rel="noopener">🗺 Get Route</a>
-              </div>
-              <div class="rail-card">
-                <span class="rail-icon">🚉</span>
-                <p class="rail-name">Jaipur Jn</p>
-                <div class="rail-chips">
-                  <span class="chip">⏱ 24 min</span>
-                  <span class="chip">📍 14.2 km</span>
-                </div>
-                <a class="rail-dir-btn" href="https://www.google.com/maps/dir/Anant+Mahal,+Patrakar+Colony,+Jaipur/Jaipur+Junction+Railway+Station" target="_blank" rel="noopener">🗺 Get Route</a>
-              </div>
+          <div class="route-head">
+            <span class="route-head-icon">🚂</span>
+            <div class="route-head-text">
+              <span class="route-mode">Indian Railways</span>
+              <span class="route-title">By Train</span>
             </div>
           </div>
 
-          <!-- Subtle rule between train and airport -->
-          <div class="vgh-stack-rule" aria-hidden="true"></div>
+          <div class="route-track-wrap" aria-hidden="true">
+            <div class="route-vehicle-rail"></div>
+            <span class="route-vehicle-icon">🚂</span>
+          </div>
 
-          <!-- Airport -->
-          <div class="vgh-col">
-            <p class="vgh-col-title">✈️ By Air</p>
-            <div class="rail-track-wrap" aria-hidden="true">
-              <div class="rail-track"></div>
-              <span class="air-anim">✈️</span>
-            </div>
-            <div class="airport-card">
-              <div class="airport-card-top">
-                <span class="airport-icon">🛬</span>
-                <div>
-                  <p class="airport-name">Jaipur International Airport</p>
-                  <p class="airport-sub">Sanganer, Jaipur &mdash; IATA: JAI</p>
+          <div class="route-body">
+            <p class="ir-ticket-no">PNR · JAI → AMH · 26 APR 2026</p>
+
+            <div class="station-list">
+
+              <div class="station-row nearest-station">
+                <span class="station-icon">🚉</span>
+                <div class="station-info">
+                  <p class="station-name">Durgapura <span class="nearest-badge">Nearest</span></p>
+                  <div class="station-chips">
+                    <span class="station-chip">⏱ 20 min</span>
+                    <span class="station-chip">📍 8.3 km</span>
+                  </div>
+                </div>
+                <div class="station-right">
+                  <span class="station-pf">PF 1</span>
+                  <a class="stop-map-link stop-map-link--train" href="https://www.google.com/maps/dir/Durgapura+Railway+Station,+Jaipur/Anant+Mahal,+Patrakar+Colony,+Jaipur" target="_blank" rel="noopener">🗺 Route</a>
                 </div>
               </div>
-              <div class="rail-chips" style="justify-content:center;margin:.5rem 0">
-                <span class="chip">⏱ 25–30 min</span>
-                <span class="chip">📍 ~15 km</span>
-                <span class="chip">🚖 Cab available</span>
+
+              <div class="station-row">
+                <span class="station-icon">🚉</span>
+                <div class="station-info">
+                  <p class="station-name">Gandhinagar Jaipur</p>
+                  <div class="station-chips">
+                    <span class="station-chip">⏱ 22 min</span>
+                    <span class="station-chip">📍 10.3 km</span>
+                  </div>
+                </div>
+                <div class="station-right">
+                  <span class="station-pf">PF 2</span>
+                  <a class="stop-map-link stop-map-link--train" href="https://www.google.com/maps/dir/Gandhinagar+Railway+Station,+Jaipur/Anant+Mahal,+Patrakar+Colony,+Jaipur" target="_blank" rel="noopener">🗺 Route</a>
+                </div>
               </div>
-              <p class="airport-note">Pre-paid taxis &amp; app cabs (Ola&thinsp;/&thinsp;Uber) available right outside arrivals. No auto-booking needed.</p>
-              <a class="rail-dir-btn airport-dir-btn"
-                 href="https://www.google.com/maps/dir/Jaipur+International+Airport/Anant+Mahal,+Patrakar+Colony,+Jaipur"
-                 target="_blank" rel="noopener">🗺 Get Route</a>
+
+              <div class="station-row">
+                <span class="station-icon">🏛️</span>
+                <div class="station-info">
+                  <p class="station-name">Jaipur Junction</p>
+                  <div class="station-chips">
+                    <span class="station-chip">⏱ 24 min</span>
+                    <span class="station-chip">📍 14.2 km</span>
+                  </div>
+                </div>
+                <div class="station-right">
+                  <span class="station-pf">PF 1–6</span>
+                  <a class="stop-map-link stop-map-link--train" href="https://www.google.com/maps/dir/Jaipur+Junction+Railway+Station/Anant+Mahal,+Patrakar+Colony,+Jaipur" target="_blank" rel="noopener">🗺 Route</a>
+                </div>
+              </div>
+
             </div>
           </div>
 
-        </div><!-- end vgh-right-stack -->
+          <a class="route-cta"
+             href="https://www.google.com/maps/place/Anant+Mahal,+Patrakar+Colony,+Jaipur"
+             target="_blank" rel="noopener" aria-label="View Anant Mahal on Google Maps">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            View Anant Mahal on Maps
+          </a>
+        </div>
 
-      </div><!-- end vgh-cols -->
-    </div><!-- end vgh-band -->
+        <!-- ═══════════════════════════════════════
+             ✈️  AIR — Boarding pass design
+             ═══════════════════════════════════════ -->
+        <div class="route-card route-air" data-aos="fade-up" data-aos-delay="300">
+
+          <div class="route-head">
+            <span class="route-head-icon">✈️</span>
+            <div class="route-head-text">
+              <span class="route-mode">Flight · JAI</span>
+              <span class="route-title">By Air</span>
+            </div>
+          </div>
+
+          <div class="route-track-wrap" aria-hidden="true">
+            <div class="route-vehicle-rail"></div>
+            <span class="route-vehicle-icon">✈️</span>
+          </div>
+
+          <!-- Boarding pass split -->
+          <div class="bp-main">
+
+            <!-- Main ticket side -->
+            <div class="bp-left">
+              <!-- FROM → TO -->
+              <div class="bp-route">
+                <div class="bp-airport">
+                  <span class="bp-iata">JAI</span>
+                  <span class="bp-city">Jaipur International</span>
+                </div>
+                <span class="bp-arrow">✈</span>
+                <div class="bp-airport">
+                  <span class="bp-iata">AMH</span>
+                  <span class="bp-city">Anant Mahal, Jaipur</span>
+                </div>
+              </div>
+
+              <!-- flight details -->
+              <div class="bp-details">
+                <div class="bp-row">
+                  <div class="bp-field">
+                    <span class="bp-label">Distance</span>
+                    <span class="bp-value">~15 km</span>
+                  </div>
+                  <div class="bp-field">
+                    <span class="bp-label">Travel Time</span>
+                    <span class="bp-value">25–30 min</span>
+                  </div>
+                </div>
+                <div class="bp-row">
+                  <div class="bp-field">
+                    <span class="bp-label">Via</span>
+                    <span class="bp-value">Cab / Ola / Uber</span>
+                  </div>
+                  <div class="bp-field">
+                    <span class="bp-label">Gate</span>
+                    <span class="bp-value">Arrivals</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="bp-cab-note">Pre-paid taxis &amp; app cabs available right outside arrivals — no booking needed. 🚖</p>
+            </div>
+
+            <!-- perforation -->
+            <div class="bp-perf" aria-hidden="true"></div>
+
+            <!-- Stub -->
+            <div class="bp-stub">
+              <span class="bp-stub-iata">JAI</span>
+              <span class="bp-stub-label">Boarding<br>Pass</span>
+              <span class="bp-stub-label">26 Apr 2026</span>
+              <!-- CSS barcode -->
+              <div class="bp-barcode" aria-hidden="true">
+                <span style="height:80%"></span><span style="height:60%"></span>
+                <span style="height:95%"></span><span style="height:50%"></span>
+                <span style="height:75%"></span><span style="height:100%"></span>
+                <span style="height:60%"></span><span style="height:85%"></span>
+                <span style="height:45%"></span><span style="height:90%"></span>
+                <span style="height:70%"></span><span style="height:55%"></span>
+              </div>
+            </div>
+
+          </div><!-- /bp-main -->
+
+          <a class="route-cta"
+             href="https://www.google.com/maps/dir/Jaipur+International+Airport/Anant+Mahal,+Patrakar+Colony,+Jaipur"
+             target="_blank" rel="noopener" aria-label="Get airport route to Anant Mahal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Open in Maps
+          </a>
+        </div>
+
+      </div><!-- /route-cards -->
+    </div><!-- /vgh-band -->
   </div>
 </section>
 
@@ -891,7 +1034,10 @@ bsp; 26 April 2026</p>
       <p class="vlog-subtitle">यारों, शादी आई है — तो कुछ ज़रूरी बातें पढ़ते जाओ 😄</p>
     </div>
 
-    <div class="vlog-grid">
+    <div class="carousel-wrap">
+      <button class="carousel-btn carousel-prev" aria-label="Previous shayari">&#8249;</button>
+      <button class="carousel-btn carousel-next" aria-label="Next shayari">&#8250;</button>
+      <div class="vlog-grid carousel-track">
 
       <!-- Opening shayari -->
       <div class="vlog-card vc-shayari" data-aos="fade-up" data-aos-delay="100">
@@ -938,7 +1084,9 @@ bsp; 26 April 2026</p>
       <!-- Dance floor rules -->
 
 
-    </div>
+      </div><!-- /.carousel-track -->
+      <div class="carousel-dots" role="tablist" aria-label="Shayari slides"></div>
+    </div><!-- /.carousel-wrap -->
   </div>
 </section>
 
@@ -953,7 +1101,10 @@ bsp; 26 April 2026</p>
       <div class="gold-rule"></div>
     </div>
 
-    <div class="family-grid">
+    <div class="carousel-wrap">
+      <button class="carousel-btn carousel-prev" aria-label="Previous family card">&#8249;</button>
+      <button class="carousel-btn carousel-next" aria-label="Next family card">&#8250;</button>
+      <div class="family-grid carousel-track">
 
       <!-- Request from -->
       <div class="fam-card fam-vinati" data-aos="fade-up" data-aos-delay="100">
@@ -1033,7 +1184,9 @@ bsp; 26 April 2026</p>
         </ul>
       </div>
 
-    </div>
+      </div><!-- /.carousel-track -->
+      <div class="carousel-dots" role="tablist" aria-label="Family slides"></div>
+    </div><!-- /.carousel-wrap -->
 
     <!-- Dearest Well-wishers — full width -->
     <div class="fam-darshan" data-aos="fade-up" data-aos-delay="350">
@@ -1214,11 +1367,13 @@ bsp; 26 April 2026</p>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="js/gate.js"></script>
+<script src="js/carousel.js"></script>
 <script src="js/main.js"></script>
 <script src="js/armaan-strings.js"></script>
 <script src="js/armaan.js"></script>
 <script src="js/effects.js"></script>
 <script src="js/gallery.js"></script>
+<script src="js/scroll-nav.js"></script>
 <script>
   /* Inline QR — generates directions QR client-side */
   (function(){

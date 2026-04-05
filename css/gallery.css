@@ -221,10 +221,15 @@
    FILM STRIP
 ══════════════════════════════════════ */
 .g-strip-wrap {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;          /* Firefox */
   padding: 0 0 48px;
   position: relative;
 }
+.g-strip-wrap::-webkit-scrollbar { display: none; }
 .g-strip-wrap::before,
 .g-strip-wrap::after {
   content: '';
@@ -247,8 +252,8 @@
   display: flex;
   gap: 10px;
   padding: 4px 60px;
-  transition: transform .5s cubic-bezier(.4,0,.2,1);
-  will-change: transform;
+  /* transform removed — now using scrollLeft on the wrapper */
+  will-change: scroll-position;
 }
 
 .g-thumb {
@@ -280,23 +285,41 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
+  /* Stage: taller ratio suits portrait wedding photos */
   .g-stage {
     height: auto;
     min-height: unset;
     max-height: unset;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
     border-radius: 10px;
   }
   .g-img { object-fit: contain; }
-  .g-arrow { width: 40px; height: 40px; font-size: 1.4rem; }
-  .g-curr { font-size: 1.5rem; }
-  .g-thumb { width: 68px; height: 52px; }
+
+  /* Smaller arrows but keep them — don't hide */
+  .g-arrow  { width: 38px; height: 38px; font-size: 1.3rem; }
+  .g-prev   { left:  8px; }
+  .g-next   { right: 8px; }
+
+  .g-curr   { font-size: 1.5rem; }
+  .g-thumb  { width: 68px; height: 52px; }
+
+  /* Film strip — these are set globally now; just tighten padding */
+  .g-strip { padding: 4px 24px; }
+
+  /* narrower fade hints on mobile */
+  .g-strip-wrap::before,
+  .g-strip-wrap::after { width: 32px; }
 }
+
 @media (max-width: 480px) {
-  .g-stage { aspect-ratio: 3 / 2; }
-  .g-counter { bottom: 14px; right: 14px; }
-  .g-caption { display: none; }
-  .g-arrow { display: none; }
+  /* slightly squarer on very small screens */
+  .g-stage  { aspect-ratio: 3 / 4; }
+  .g-arrow  { width: 32px; height: 32px; font-size: 1.1rem; }
+  .g-prev   { left:  6px; }
+  .g-next   { right: 6px; }
+  .g-counter{ bottom: 14px; right: 14px; }
+  .g-caption{ display: none; }
+  .g-expand { top: 10px; right: 10px; }
 }
 
 /* ── Reduced motion ── */

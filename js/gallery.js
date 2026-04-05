@@ -75,16 +75,17 @@ class GallerySlider {
     this._resetBar();
   }
 
-  /* ── Film strip centering ── */
+  /* ── Film strip centering ──
+     Uses scrollLeft on the wrapper so the browser handles
+     edge clamping naturally (first/last thumbs, any width). */
   _scrollStrip(n) {
-    if (!this.strip) return;
+    const wrap  = this.strip?.parentElement;
     const thumb = this.thumbs[n];
-    if (!thumb) return;
-    const stripW   = this.strip.parentElement.offsetWidth;
-    const thumbL   = thumb.offsetLeft;
-    const thumbW   = thumb.offsetWidth;
-    const target   = thumbL - (stripW / 2) + (thumbW / 2) - 60;
-    this.strip.style.transform = `translateX(${-Math.max(0, target)}px)`;
+    if (!wrap || !thumb) return;
+
+    /* centre the thumb in the visible strip area */
+    const target = thumb.offsetLeft + thumb.offsetWidth / 2 - wrap.clientWidth / 2;
+    wrap.scrollLeft = Math.max(0, target);
   }
 
   /* ── Progress bar ── */

@@ -1,0 +1,613 @@
+/* ══════════════════════════════════════════════════════════════
+   directions.css  —  "How to Reach Anant Mahal"
+   3 unique route cards: Bus · Train · Boarding Pass
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Band reset ─────────────────────────────────────────────── */
+.vgh-band {
+  margin-top: 2.8rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.vgh-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.2rem;
+  justify-content: center;
+}
+.vgh-header-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,164,71,.55), transparent);
+  max-width: 200px;
+}
+.vgh-title-wrap { text-align: center; flex-shrink: 0; }
+.vgh-title {
+  font-family: var(--ff-script);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--plum);
+  margin: 0 0 .2rem;
+  font-weight: 400;
+}
+.vgh-sub {
+  font-family: var(--ff-disp);
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold-dk);
+  margin: 0;
+}
+
+/* ── 3-column route card grid ───────────────────────────────── */
+.route-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  align-items: stretch;
+}
+
+/* ══ BASE ROUTE CARD ════════════════════════════════════════ */
+.route-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transition: transform .3s, box-shadow .3s;
+  box-shadow: 0 6px 28px rgba(0,0,0,.10);
+}
+.route-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ── Animated vehicle track ─────────────────────────────────── */
+.route-vehicle-track {
+  position: relative;
+  height: 28px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.route-vehicle-rail {
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+}
+.route-vehicle-icon {
+  position: absolute;
+  font-size: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  will-change: left;
+  line-height: 1;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   🚌  BUS CARD — Rajasthan Road vibes, warm saffron/ochre
+   ══════════════════════════════════════════════════════════════ */
+.route-bus {
+  background: linear-gradient(165deg, #FFF8EE 0%, #FEF3DC 100%);
+  border: 1.5px solid #F2C56E;
+}
+.route-bus:hover { box-shadow: 0 12px 36px rgba(226,143,30,.22); }
+
+/* header bar */
+.route-bus .route-head {
+  background: linear-gradient(90deg, #E07B2A, #F2A83C);
+  padding: .9rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+}
+.route-head-icon {
+  font-size: 2rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.2));
+}
+.route-head-text { color: #fff; }
+.route-mode {
+  display: block;
+  font-family: var(--ff-disp);
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  opacity: .82;
+}
+.route-title {
+  display: block;
+  font-family: var(--ff-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* bus vehicle track */
+.route-bus .route-vehicle-rail {
+  background: repeating-linear-gradient(to right,
+    #E07B2A 0, #E07B2A 6px, transparent 6px, transparent 14px);
+  opacity: .4;
+}
+.route-bus .route-vehicle-icon {
+  animation: busRideNew 5s linear infinite;
+}
+@keyframes busRideNew {
+  from { left: -1.8rem; }
+  to   { left: calc(100% + .4rem); }
+}
+
+/* body */
+.route-body { padding: .8rem 1.2rem 1.2rem; flex: 1; display: flex; flex-direction: column; gap: .6rem; }
+
+/* bus stop timeline */
+.bus-timeline { display: flex; flex-direction: column; gap: 0; flex: 1; }
+.bus-stop {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  position: relative;
+  padding-bottom: .85rem;
+}
+.bus-stop:last-child { padding-bottom: 0; }
+
+/* vertical connecting line */
+.bus-stop::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 18px;
+  bottom: 0;
+  width: 2px;
+  background: rgba(224,123,42,.25);
+}
+.bus-stop:last-child::before { display: none; }
+
+.bus-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #E07B2A;
+  background: #fff;
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .6rem;
+  color: #E07B2A;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+.bus-stop.nearest .bus-dot {
+  background: #E07B2A;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(224,123,42,.2);
+}
+.bus-stop-info { flex: 1; min-width: 0; }
+.bus-stop-name {
+  font-family: var(--ff-disp);
+  font-size: .82rem;
+  font-weight: 600;
+  color: #7B3A0A;
+  line-height: 1.2;
+  margin: 0 0 .12rem;
+}
+.bus-stop-sub { font-size: .7rem; color: #A0601A; margin: 0 0 .22rem; }
+.bus-chips { display: flex; gap: .3rem; flex-wrap: wrap; }
+.bus-chip {
+  font-size: .62rem;
+  padding: .08rem .38rem;
+  background: rgba(224,123,42,.12);
+  border: 1px solid rgba(224,123,42,.3);
+  border-radius: 20px;
+  color: #8B4500;
+}
+.nearest-badge {
+  font-size: .55rem;
+  padding: .06rem .35rem;
+  background: #2a8703;
+  color: #fff;
+  border-radius: 20px;
+  font-family: var(--ff-disp);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  margin-left: .3rem;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   🚂  TRAIN CARD — Indian Railways reservation slip aesthetic
+   ══════════════════════════════════════════════════════════════ */
+.route-train {
+  background: linear-gradient(165deg, #F2F8F4 0%, #E8F5EE 100%);
+  border: 1.5px solid #7DBE9A;
+}
+.route-train:hover { box-shadow: 0 12px 36px rgba(45,106,79,.2); }
+
+.route-train .route-head {
+  background: linear-gradient(90deg, #1B5E37, #2D7A4F);
+  padding: .9rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+}
+
+.route-train .route-vehicle-rail {
+  background: repeating-linear-gradient(to right,
+    #2D6A4F 0, #2D6A4F 8px, transparent 8px, transparent 18px);
+  opacity: .35;
+}
+.route-train .route-vehicle-icon {
+  animation: trainRideNew 4.5s linear infinite;
+}
+@keyframes trainRideNew {
+  from { left: -1.8rem; }
+  to   { left: calc(100% + .4rem); }
+}
+
+/* IR-style ticket body */
+.ir-ticket-no {
+  font-family: monospace;
+  font-size: .7rem;
+  color: #2D6A4F;
+  opacity: .6;
+  text-align: right;
+  letter-spacing: .06em;
+  margin-bottom: .4rem;
+}
+
+.station-list { display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+.station-row {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .55rem .7rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,.7);
+  border: 1px solid rgba(125,190,154,.35);
+  transition: border-color .2s, box-shadow .2s;
+  position: relative;
+  overflow: hidden;
+}
+.station-row:hover {
+  border-color: #2D6A4F;
+  box-shadow: 0 3px 12px rgba(45,106,79,.12);
+}
+.station-row.nearest-station {
+  border-color: rgba(42,135,3,.5);
+  background: linear-gradient(135deg, rgba(42,135,3,.06) 0%, rgba(255,255,255,.7) 100%);
+}
+/* left accent bar on nearest */
+.station-row.nearest-station::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: #2a8703;
+  border-radius: 3px 0 0 3px;
+}
+.station-icon { font-size: 1.4rem; line-height: 1; flex-shrink: 0; }
+.station-info { flex: 1; min-width: 0; }
+.station-name {
+  font-family: var(--ff-disp);
+  font-size: .84rem;
+  font-weight: 700;
+  color: #1B5E37;
+  margin: 0 0 .15rem;
+  line-height: 1.2;
+}
+.station-chips { display: flex; gap: .3rem; flex-wrap: wrap; }
+.station-chip {
+  font-size: .62rem;
+  padding: .08rem .38rem;
+  background: rgba(45,106,79,.1);
+  border: 1px solid rgba(45,106,79,.25);
+  border-radius: 20px;
+  color: #1B5E37;
+}
+.station-pf {
+  font-family: var(--ff-disp);
+  font-size: .6rem;
+  color: #2D6A4F;
+  opacity: .65;
+  text-align: right;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ✈️  AIR CARD — Boarding pass split design
+   ══════════════════════════════════════════════════════════════ */
+.route-air {
+  background: linear-gradient(165deg, #EDF3FC 0%, #E0ECFF 100%);
+  border: 1.5px solid #7AAAE8;
+}
+.route-air:hover { box-shadow: 0 12px 36px rgba(27,79,138,.2); }
+
+.route-air .route-head {
+  background: linear-gradient(90deg, #0F3460, #1B4F8A);
+  padding: .9rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+}
+
+.route-air .route-vehicle-rail {
+  background: repeating-linear-gradient(to right,
+    #1B4F8A 0, #1B4F8A 4px, transparent 4px, transparent 12px);
+  opacity: .3;
+}
+.route-air .route-vehicle-icon {
+  animation: planeRide 6s ease-in-out infinite;
+}
+@keyframes planeRide {
+  0%   { left: -1.8rem; transform: translateY(-50%) rotate(0deg); }
+  80%  { left: calc(100% + .4rem); transform: translateY(-50%) rotate(0deg); }
+  100% { left: calc(100% + .4rem); transform: translateY(-50%) rotate(0deg); }
+}
+
+/* boarding pass layout */
+.bp-main {
+  display: flex;
+  gap: 0;
+  flex: 1;
+}
+.bp-left {
+  flex: 1;
+  padding: 1rem 1rem 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* dashed perforation line */
+.bp-perf {
+  width: 1px;
+  background: repeating-linear-gradient(to bottom,
+    rgba(27,79,138,.35) 0, rgba(27,79,138,.35) 5px,
+    transparent 5px, transparent 11px);
+  margin: .6rem 0;
+  flex-shrink: 0;
+  position: relative;
+}
+/* tear circles top & bottom */
+.bp-perf::before,
+.bp-perf::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--lav-pale, #f3f0ff);
+  border: 1.5px solid rgba(27,79,138,.2);
+}
+.bp-perf::before { top: -7px; }
+.bp-perf::after  { bottom: -7px; }
+
+.bp-stub {
+  width: 90px;
+  flex-shrink: 0;
+  padding: 1rem .8rem 1rem .65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+}
+
+/* route FROM → TO display */
+.bp-route {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  margin-bottom: .7rem;
+}
+.bp-airport {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bp-iata {
+  font-family: var(--ff-disp);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0F3460;
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+.bp-city {
+  font-size: .6rem;
+  color: #4A7AB8;
+  text-align: center;
+  line-height: 1.3;
+  max-width: 70px;
+}
+.bp-arrow {
+  font-size: .9rem;
+  color: #7AAAE8;
+  flex-shrink: 0;
+}
+
+/* flight info rows */
+.bp-details { display: flex; flex-direction: column; gap: .4rem; }
+.bp-row {
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+}
+.bp-field { display: flex; flex-direction: column; }
+.bp-label {
+  font-family: var(--ff-disp);
+  font-size: .52rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #6A90BF;
+}
+.bp-value {
+  font-family: var(--ff-disp);
+  font-size: .82rem;
+  font-weight: 700;
+  color: #0F3460;
+}
+
+/* stub side */
+.bp-stub-iata {
+  font-family: var(--ff-disp);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0F3460;
+  letter-spacing: -.02em;
+  text-align: center;
+}
+.bp-stub-label {
+  font-size: .58rem;
+  color: #4A7AB8;
+  text-align: center;
+  line-height: 1.4;
+}
+.bp-barcode {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 36px;
+  margin-top: auto;
+}
+.bp-barcode span {
+  display: block;
+  width: 2.5px;
+  background: #1B4F8A;
+  opacity: .7;
+  border-radius: 1px;
+}
+.bp-cab-note {
+  font-size: .7rem;
+  color: #4A7AB8;
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: .6rem;
+}
+
+/* ══ Per-stop / per-station map link ════════════════════════ */
+.stop-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  margin-top: .35rem;
+  font-size: .67rem;
+  font-family: var(--ff-disp);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #E07B2A;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(224,123,42,.4);
+  padding-bottom: 1px;
+  transition: color .2s, border-color .2s;
+}
+.stop-map-link:hover {
+  color: #8B4500;
+  border-bottom-style: solid;
+}
+
+/* train station variant — green */
+.stop-map-link--train {
+  color: #2D6A4F;
+  border-bottom-color: rgba(45,106,79,.4);
+  margin-top: 0;
+}
+.stop-map-link--train:hover { color: #1B5E37; }
+
+/* right col in station row: PF label stacked above route link */
+.station-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .3rem;
+  flex-shrink: 0;
+}
+
+/* ══ Shared CTA button ══════════════════════════════════ */
+.route-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  padding: .6rem 1rem;
+  margin: 0 1.2rem 1.2rem;
+  border-radius: 30px;
+  background: linear-gradient(90deg, var(--gold-dk), var(--gold), var(--gold-dk));
+  background-size: 200% auto;
+  color: #fff;
+  font-family: var(--ff-disp);
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-position .4s, transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 16px rgba(201,164,71,.35);
+}
+.route-cta:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(201,164,71,.5);
+}
+.route-cta svg {
+  width: 14px; height: 14px;
+  fill: none; stroke: currentColor;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* vehicle track inside body */
+.route-track-wrap {
+  position: relative;
+  height: 24px;
+  overflow: hidden;
+  margin-bottom: .2rem;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .route-cards { grid-template-columns: 1fr 1fr; }
+  .route-air   { grid-column: 1 / -1; }       /* boarding pass full width */
+  .bp-main     { flex-direction: column; }
+  .bp-perf     {
+    width: auto; height: 1px;
+    background: repeating-linear-gradient(to right,
+      rgba(27,79,138,.35) 0, rgba(27,79,138,.35) 5px,
+      transparent 5px, transparent 11px);
+    margin: 0 .6rem;
+  }
+  .bp-perf::before, .bp-perf::after {
+    top: 50%; left: auto;
+    transform: translateY(-50%);
+  }
+  .bp-perf::before { left: -7px;  top: 50%; }
+  .bp-perf::after  { right: -7px; top: 50%; left: auto; }
+  .bp-stub {
+    width: auto; flex-direction: row;
+    padding: .65rem 1.2rem;
+    border-top: none;
+  }
+  .bp-barcode { height: 28px; }
+}
+@media (max-width: 600px) {
+  .route-cards { grid-template-columns: 1fr; }
+  .route-air   { grid-column: auto; }
+  .vgh-header  { flex-direction: column; gap: .4rem; }
+  .vgh-header-rule { max-width: 120px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .route-bus .route-vehicle-icon,
+  .route-train .route-vehicle-icon,
+  .route-air .route-vehicle-icon { animation: none; left: 10%; }
+}
