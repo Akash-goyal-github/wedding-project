@@ -378,6 +378,7 @@
         overlay.style.transition = 'opacity 1.4s ease';
         overlay.style.opacity    = '0';
         document.body.classList.remove('locked');
+        window.scrollTo({ top: 0, behavior: 'instant' }); /* always land at top */
         setTimeout(() => {
           overlay.hidden = true;
           overlay.remove();

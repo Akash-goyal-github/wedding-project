@@ -122,6 +122,7 @@ const ARMAAN = {
     this.injectHTML();
     this.bindEvents();
     this.setupViewport();
+    this.initEngagement();
   },
 
   /* ── DOM helpers ───────────────────────────────────────── */
@@ -139,6 +140,12 @@ const ARMAAN = {
         </svg>
         <span class="armaan-toggle-label">Ask</span>
       </button>
+
+      <div id="armaan-prompt" role="status" aria-live="polite" aria-label="Chat prompt" aria-hidden="true">
+        <span id="armaan-prompt-avatar" aria-hidden="true">🤵</span>
+        <span id="armaan-prompt-msg">Hi! I'm Armaan, can I help you with anything?</span>
+        <button id="armaan-prompt-close" aria-label="Dismiss prompt" type="button">&times;</button>
+      </div>
 
       <div id="armaan-chat" role="dialog" aria-modal="true" aria-label="Ask Armaan">
         <div id="armaan-header">
@@ -179,9 +186,10 @@ const ARMAAN = {
     const widget = document.getElementById('armaan-widget');
     const input  = document.getElementById('armaan-input');
     widget.addEventListener('click', (e) => {
-      if (e.target.closest('#armaan-toggle')) { this.toggleChat(); return; }
-      if (e.target.closest('#armaan-close'))  { this.closeChat();  return; }
-      if (e.target.closest('#armaan-send'))   { this.handleInput(); return; }
+      if (e.target.closest('#armaan-toggle'))       { this.toggleChat();      return; }
+      if (e.target.closest('#armaan-close'))        { this.closeChat();       return; }
+      if (e.target.closest('#armaan-send'))         { this.handleInput();     return; }
+      if (e.target.closest('#armaan-prompt-close')) { this._dismissPrompt();  return; }
     });
     input.addEventListener('keydown',    e => { if (e.key === 'Enter') this.handleInput(); });
     input.addEventListener('pointerdown', () => { this.stopHintCycle(); });
@@ -214,6 +222,7 @@ const ARMAAN = {
   /* ── Open / close ──────────────────────────────────────── */
   toggleChat() { this.state.open ? this.closeChat() : this.openChat(); },
   openChat() {
+    this._killEngagement();
     this.state.open = true;
     document.getElementById('armaan-widget').classList.add('armaan-open');
     document.getElementById('armaan-toggle').setAttribute('aria-expanded', 'true');
@@ -260,6 +269,14 @@ const ARMAAN = {
   /* ── Language picker — always first message ────────────── */
   pickLang() {
     this.addMsg('bot',
+      'Hi! I’m <strong>Armaan</strong> 🤵✨<br>' +
+      'My name is a little love story —<br>' +
+      '<span class="an-ar">AR</span><span class="an-rest">joo</span> + ' +
+      '<span class="an-maan">MAAN</span><span class="an-rest">ish</span> = ' +
+      '<span class="an-full">ARMAAN</span> 💛<br>' +
+      'I’m here to help you celebrate their special day!'
+    );
+    this.addMsg('bot',
       'Welcome! 👋 &nbsp;·&nbsp; नमस्ते! 🙏<br>' +
       'Please choose your language &nbsp;·&nbsp; कृपया अपनी भाषा चुनें'
     );
@@ -287,8 +304,8 @@ const ARMAAN = {
   /* ── Greeting ──────────────────────────────────────────── */
   greet() {
     this.addMsg('bot', this.state.lang === 'hi'
-      ? 'नमस्ते! मैं Armaan हूँ 🤵✨<br>मैं Arjoo & Manish की शादी से जुड़ी हर जानकारी देने के लिए यहाँ हूँ।<br>आज मैं आपकी कैसे मदद कर सकता हूँ?'
-      : "Hi! I'm Armaan 🤵✨<br>I'm here to help you with everything about Arjoo & Manish's wedding.<br>How can I help you today?"
+      ? 'नमस्ते! 🙏 आज मैं आपकी कैसे मदद कर सकता हूँ?'
+      : 'Great! How can I help you today? 😊'
     );
     this.showMainMenu();
   },
@@ -632,7 +649,117 @@ const ARMAAN = {
     this.addBackBtn('couple');
   },
 
-  /* ── Free-text handler ─────────────────────────────────── */
+  /* ── Engagement system ────────────────────────────────────── */
+  _engTimers:   [],
+  _engScrollFn: null,
+  _promptShown: false,   /* in-memory only — resets on every fresh page load */
+
+  initEngagement() {
+    /* If the gate overlay is present, wait for it to finish
+       before starting any engagement timers.              */
+    if (document.getElementById('gateOverlay')) {
+      document.addEventListener('gateOpened', () => this._startEngagement(), { once: true });
+    } else {
+      /* No gate (e.g. river.html or direct link) — small warmup delay */
+      setTimeout(() => this._startEngagement(), 800);
+    }
+  },
+
+  _startEngagement() {
+    const toggle = document.getElementById('armaan-toggle');
+
+    /* ─ Step 1: glow at 2 s after gate closes ─ */
+    this._engTimers.push(setTimeout(() => {
+      if (this.state.open) return;
+      toggle.classList.add('armaan--glow');
+      toggle.addEventListener('animationend', () => {
+        toggle.classList.remove('armaan--glow');
+
+        /* ─ Step 2: bounce 400 ms after glow ends ─ */
+        this._engTimers.push(setTimeout(() => {
+          if (this.state.open) return;
+          toggle.classList.add('armaan--bounce');
+          toggle.addEventListener('animationend', () => {
+            toggle.classList.remove('armaan--bounce');
+          }, { once: true });
+        }, 400));
+
+      }, { once: true });
+    }, 2000));
+
+    /* ─ Step 3a: scroll 45 % triggers prompt ─ */
+    this._engScrollFn = () => {
+      if (this.state.open || this._promptShown) return;
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollable < 100) return;
+      const pct = window.scrollY / scrollable;
+      if (pct >= 0.45) this._showPrompt();
+    };
+    window.addEventListener('scroll', this._engScrollFn, { passive: true });
+
+    /* ─ Step 3b: show prompt 4 s after gate closes (if no scroll) ─ */
+    this._engTimers.push(setTimeout(() => {
+      if (!this.state.open) this._showPrompt();
+    }, 4000));
+  },
+
+  _showPrompt() {
+    if (this._promptShown) return;
+    this._promptShown = true;
+    this._removeScrollListener();
+
+    const prompt = document.getElementById('armaan-prompt');
+    if (!prompt) return;
+
+    /* Step 1: make it flex so it exists in layout */
+    prompt.style.display = 'flex';
+
+    /* Step 2: double-rAF ensures the browser paints display:flex
+       before we trigger the opacity/transform transition */
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      prompt.classList.add('armaan-prompt--visible');
+      prompt.removeAttribute('aria-hidden');
+    }));
+
+    /* Auto-dismiss after 12 s */
+    this._engTimers.push(setTimeout(() => this._hidePrompt(), 12000));
+  },
+
+  _dismissPrompt() {
+    this._promptShown = true;
+    this._hidePrompt();
+  },
+
+  _hidePrompt() {
+    const prompt = document.getElementById('armaan-prompt');
+    if (!prompt) return;
+    prompt.classList.remove('armaan-prompt--visible');
+    prompt.classList.add('armaan-prompt--hiding');
+    prompt.setAttribute('aria-hidden', 'true');
+    /* Restore display:none after fade-out animation (.35 s) */
+    setTimeout(() => {
+      prompt.classList.remove('armaan-prompt--hiding');
+      prompt.style.display = 'none';
+    }, 380);
+  },
+
+  _removeScrollListener() {
+    if (this._engScrollFn) {
+      window.removeEventListener('scroll', this._engScrollFn);
+      this._engScrollFn = null;
+    }
+  },
+
+  _killEngagement() {
+    this._engTimers.forEach(clearTimeout);
+    this._engTimers = [];
+    this._removeScrollListener();
+    this._hidePrompt();
+    const toggle = document.getElementById('armaan-toggle');
+    if (toggle) toggle.classList.remove('armaan--glow', 'armaan--bounce');
+  },
+
+  /* ── Free-text handler ──────────────────────────────────────── */
   handleInput() {
     const input = this.$('#armaan-input');
     const text  = input.value.trim();
@@ -680,6 +807,16 @@ const ARMAAN = {
       );
       return this.showMainMenu();
     }
+
+    /* ─ Easter egg: name origin ─ */
+    if (/(who are you|your name|armaan mean|why armaan|name mean|what.*armaan|armaan.*name|नाम|आप कौन|armaan कौन)/.test(t)) {
+      this.addMsg('bot', this.state.lang === 'hi'
+        ? '🤵 मैं <strong>Armaan</strong> हूँ!<br>मेरा नाम दो नामों से बना है —<br>💛 <span class="an-ar">AR</span><span class="an-rest">joo</span> + <span class="an-maan">MAAN</span><span class="an-rest">ish</span> = <span class="an-full">ARMAAN</span><br>जब दो दिल मिलते हैं, तो एक नया नाम जन्म लेता है! 🥰'
+        : "🤵 I'm <strong>Armaan</strong>!<br>My name is made from two names —<br>💛 <span class=\"an-ar\">AR</span><span class=\"an-rest\">joo</span> + <span class=\"an-maan\">MAAN</span><span class=\"an-rest\">ish</span> = <span class=\"an-full\">ARMAAN</span><br>When two hearts meet, a new name is born! 🥰"
+      );
+      return this.showMainMenu();
+    }
+
     this.fallback();
   },
 

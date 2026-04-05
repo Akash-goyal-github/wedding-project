@@ -28,6 +28,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
 body { font-family: var(--ff-serif); background: var(--off-white); color: var(--text); line-height: 1.78; overflow-x: hidden; max-width: 100%; }
+body.locked { overflow: hidden; }   /* gate overlay active — block all page scroll */
 img { display: block; width: 100%; height: 100%; object-fit: cover; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -2102,6 +2103,103 @@ ul { list-style: none; }
 #armaan-toggle svg         { width: 18px; height: 18px; stroke: var(--plum-dp); flex-shrink: 0; }
 .armaan-toggle-label       { pointer-events: none; }
 
+/* ─ Engagement: glow → bounce ─ */
+@keyframes armaanGlowPulse {
+  0%,100% { box-shadow: 0 4px 20px rgba(201,164,71,.45); }
+  50%     { box-shadow: 0 4px 32px rgba(201,164,71,.85), 0 0 0 7px rgba(201,164,71,.15); }
+}
+@keyframes armaanBounce {
+  0%,100% { transform: translateY(0); }
+  25%     { transform: translateY(-7px); }
+  55%     { transform: translateY(-3px); }
+  75%     { transform: translateY(-5px); }
+}
+#armaan-toggle.armaan--glow   { animation: armaanGlowPulse .85s ease-in-out 2; }
+#armaan-toggle.armaan--bounce { animation: armaanBounce .55s ease 2; }
+
+/* ─ Prompt bubble ─ */
+@keyframes armaanPromptPop {
+  0%   { opacity: 0; transform: scale(0.55) translateY(14px); }
+  60%  { opacity: 1; transform: scale(1.07) translateY(-4px); }
+  80%  {             transform: scale(0.97) translateY( 2px); }
+  100% { opacity: 1; transform: scale(1)    translateY( 0);   }
+}
+#armaan-prompt {
+  display: none;
+  position: relative;
+  align-items: center;
+  gap: .55rem;
+  background: linear-gradient(135deg, var(--plum-dp) 0%, #3d0e65 100%);
+  border: 1px solid rgba(201,164,71,.45);
+  border-radius: 22px 22px 22px 5px;
+  padding: .7rem .9rem .7rem .8rem;
+  box-shadow:
+    0 10px 32px rgba(42,8,69,.55),
+    0 0 0 1px rgba(201,164,71,.10),
+    0 2px 10px rgba(201,164,71,.20);
+  max-width: 230px;
+  opacity: 0;
+  pointer-events: none;
+  font-family: var(--ff-serif);    /* override Cinzel Decorative — use Cormorant Garamond */
+  font-size: .95rem;
+  font-weight: 400;
+  color: var(--gold-lt);
+  line-height: 1.5;
+  user-select: none;
+}
+/* speech-bubble tail — points toward the chat button */
+#armaan-prompt::after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  right: 18px;
+  width: 0; height: 0;
+  border-top:  10px solid #3d0e65;
+  border-left: 10px solid transparent;
+}
+#armaan-prompt.armaan-prompt--visible {
+  pointer-events: auto;
+  animation: armaanPromptPop .65s cubic-bezier(.34,1.56,.64,1) both;
+}
+/* avatar circle */
+#armaan-prompt-avatar {
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  background: rgba(245,215,142,.13);
+  border: 1px solid rgba(245,215,142,.28);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .88rem;
+  line-height: 1;
+}
+#armaan-prompt-msg  { flex: 1; font-style: italic; }
+#armaan-prompt-close {
+  flex-shrink: 0;
+  align-self: flex-start;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 0 0 .1rem;
+  color: rgba(245,215,142,.45);
+  font-size: 1rem;
+  line-height: 1;
+  transition: color .15s;
+}
+#armaan-prompt-close:hover { color: var(--gold-lt); }
+#armaan-prompt.armaan-prompt--hiding {
+  animation: armaanPromptFade .35s ease forwards;
+}
+@keyframes armaanPromptFade {
+  from { opacity: 1; transform: scale(1)    translateY(0); }
+  to   { opacity: 0; transform: scale(0.88) translateY(6px); }
+}
+@media (max-width: 480px) {
+  #armaan-prompt { max-width: 210px; }   /* wider on mobile to fit bigger text */
+  #armaan-prompt-avatar { width: 28px; height: 28px; font-size: .85rem; }
+}
+
 /* ─ Chat window: hidden by default; visible when widget has .armaan-open ─ */
 #armaan-chat {
   display: none;
@@ -2206,6 +2304,11 @@ ul { list-style: none; }
   font-size: .76rem;
 }
 .armaan-msg--user .armaan-link { color: var(--gold-dk); }
+/* name-origin highlight spans ─ AR (gold) + MAAN (plum) = ARMAAN */
+.an-ar   { color: var(--gold-dk);  font-weight: 700; }
+.an-maan { color: var(--plum);     font-weight: 700; }
+.an-full { color: var(--gold-dk);  font-weight: 700; letter-spacing: .04em; }
+.an-rest { font-weight: 400; opacity: .85; }
 .armaan-link--wa {
   background: #25D366;
   color: #fff !important;

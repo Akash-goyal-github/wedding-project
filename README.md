@@ -26,7 +26,7 @@ A bespoke, hand-crafted wedding website for the celebration of
 | 3 | 📖 **Our Story** | Mughal arch photo frame, blessing text, seven-vows quote |
 | 4 | 🤝 **Two States, One Love** | Split card — Rajasthan (Arjoo) vs Haryana (Manish), parents, grandparents, hometowns |
 | 5 | 📅 **Royal Celebrations** | Vertical tree timeline — all 8 events across 2 days with styled image-bg cards, meal chips & food-break markers |
-| 6 | 🖼️ **Gallery** | Mosaic photo grid with lightbox viewer |
+| 6 | 🖼️ **Gallery** | Slider with 38 `wa` photos, dot nav, progress bar, fullscreen lightbox, gold corner ornaments, live `01/38` counter |
 | 7 | 🏛️ **Venue** | Anant Mahal details, Google Maps embed, parking info, QR code |
 | 8 | 💌 **Welcome Vlog** | Shayari scroll cards + WhatsApp photo carousel + video films |
 | 9 | 🏡 **Family Invitation** | Full Goyal family listing — 6 categories from the invite card |
@@ -191,14 +191,15 @@ Wedding-Project/
 │
 └── assets/
     ├── images/
-    │   ├── _DSC3765.JPG    ← Gallery photo
-    │   ├── _DSC3966.JPG    ← Gallery photo
-    │   ├── _DSC3973.JPG    ← Gallery photo (wide)
-    │   ├── _DSC4015.JPG    ← Gallery photo
-    │   ├── _DSC4029.JPG    ← Gallery photo
-    │   ├── _DSC4058.JPG    ← Gallery photo
-    │   ├── _DSC4062.JPG    ← Gallery photo
-    │   ├── _DSC4085.JPG    ← Gallery photo (wide)
+    │   ├── wa01–wa38.jpeg  ← Gallery slider photos (38 total)
+    │   ├── _DSC3765.JPG    ← DSC photos (assets only, not in gallery)
+    │   ├── _DSC3966.JPG
+    │   ├── _DSC3973.JPG
+    │   ├── _DSC4015.JPG
+    │   ├── _DSC4029.JPG
+    │   ├── _DSC4058.JPG
+    │   ├── _DSC4062.JPG
+    │   ├── _DSC4085.JPG
     │   ├── bride.jpeg      ← Bride portrait (gate + river)
     │   ├── groom.jpeg      ← Groom portrait (gate + river)
     │   ├── couple1.jpg     ← Hero couple photo
@@ -288,7 +289,9 @@ Then visit `http://localhost:8000` in your browser.
 | Event timings | `index.html` → `#events` section + `js/armaan.js` → `ARMAAN.data.dates` |
 | Meal timings | `index.html` → food-break chips + `js/armaan.js` → `ARMAAN.data.meals` |
 | Family member names | `index.html` → `#family` section |
-| Gallery photos | Drop JPGs in `assets/images/`, update `#gallery` grid in `index.html` |
+| Gallery photos | Drop JPEGs in `assets/images/` as `wa##.jpeg`, update `#gallery` slides in `index.html`, update `<span class="g-total">` counter |
+| Chatbot prompt text | `js/armaan.js` → `#armaan-prompt-msg` span in `injectHTML()` |
+| Armaan name origin text | `js/armaan.js` → `pickLang()` first `addMsg` + easter-egg block in `parseText()` |
 | Hero video | Replace `assets/videos/film1.mp4` |
 | Venue map embed | `index.html` → `#venue` section `<iframe>` src |
 | Countdown target date | `js/main.js` → `weddingDate` variable |
@@ -305,6 +308,23 @@ Then visit `http://localhost:8000` in your browser.
 |---|---|---|
 | Father of Bride | Shri Akhlesh Kumar Goyal | +91 94143 11762 |
 | Brother of Bride | Akash Goyal | +91 94608 14437 |
+
+---
+
+---
+
+## 📄 Changelog
+
+### Session — Apr 2025
+
+| Change | Files |
+|---|---|
+| **Armaan engagement system** — glow+bounce animation on Ask button, dark plum prompt bubble with spring pop-in, speech-bubble tail, avatar, auto-dismiss, `gateOpened`-event triggered timing | `js/armaan.js`, `css/styles.css` |
+| **Prompt bubble** — `display:none` initially (no layout ghost); double-rAF show; in-memory flag instead of `sessionStorage`; 1.5 s show / 0.35 s hide animations | `js/armaan.js`, `css/styles.css` |
+| **Prompt timing** — waits for `gateOpened` event; glow at +2 s, prompt at +4 s after gate fully closes | `js/armaan.js` |
+| **Armaan name origin** — AR (gold) + MAAN (plum) = ARMAAN story shown before language selection; easter egg on "who are you" / "your name" | `js/armaan.js`, `css/styles.css` |
+| **Gate scroll lock** — added missing `body.locked { overflow:hidden }` CSS; `scrollTo(top, instant)` on gate close | `css/styles.css`, `js/gate.js` |
+| **Gallery** — slider uses `wa01–wa38.jpeg` (38 photos); DSC files removed from gallery references | `index.html` |
 
 ---
 
