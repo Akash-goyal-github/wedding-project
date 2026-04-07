@@ -19,29 +19,29 @@ const ARMAAN = {
       day1: '25th April 2026',
       day2: '26th April 2026',
       events: [
-        { day:1, name:'Haldi Ceremony',           time:'12:00 PM – 2:00 PM',  loc:'Anant Mahal Courtyard',   emoji:'💛' },
-        { day:1, name:'Mayra',                     time:'4:00 PM – 5:30 PM',   loc:'Anant Mahal Courtyard',   emoji:'🎁' },
-        { day:1, name:'Sangeet Night',             time:'7:00 PM – 11:00 PM',  loc:'Anant Mahal Royal Lawns', emoji:'🎶' },
-        { day:2, name:'Pool Party',                time:'7:00 AM – 9:00 AM',   loc:'Anant Mahal Poolside',    emoji:'🌊' },
-        { day:2, name:'Lagan at Groom Side',       time:'11:00 AM – 1:00 PM',  loc:'Anant Mahal Hall',          emoji:'🪔' },
-        { day:2, name:'Baraat Procession',         time:'6:15 PM – 7:30 PM',   loc:'Anant Mahal Main Gate',   emoji:'🐎' },
-        { day:2, name:'Jai Mala & Varmala',        time:'8:00 PM – 11:30 PM',  loc:'Anant Mahal, Mandap',     emoji:'💍' },
-        { day:2, name:'Royal Wedding Ceremony',    time:'11:30 PM onwards',    loc:'Anant Mahal, Royal Mandap', emoji:'👑' },
+        { day:1, name:'Haldi Ceremony',           time:'12:00 PM Onwards',  loc:'Anant Mahal Courtyard',      emoji:'💛' },
+        { day:1, name:'Mayra',                     time:'4:00 PM Onwards',   loc:'Anant Mahal Banquet Hall',   emoji:'🎁' },
+        { day:1, name:'Sangeet Night',             time:'8:00 PM Onwards',   loc:'Anant Mahal Banquet Hall',   emoji:'🎶' },
+        { day:2, name:'Pool Party',                time:'7:00 AM Onwards',   loc:'Anant Mahal Poolside',       emoji:'🌊' },
+        { day:2, name:'Lagan at Groom Side',       time:'12:00 PM Onwards',  loc:'Anant Mahal Hall',           emoji:'🪔' },
+        { day:2, name:'Baraat Procession',         time:'6:00 PM Onwards',   loc:'Anant Mahal Main Gate',      emoji:'🐎' },
+        { day:2, name:'Jai Mala & Varmala',        time:'8:00 PM Onwards',   loc:'Anant Mahal, Mandap',        emoji:'💍' },
+        { day:2, name:'Royal Wedding Ceremony',    time:'8:30 PM Onwards',   loc:'Anant Mahal, Royal Mandap',  emoji:'👑' },
       ],
     },
     meals: {
       always: 'Juices, Cold Drinks, Chaach, Fresh Fruits & Snacks are available throughout all celebrations on both days.',
       day1: [
-        { meal:'Breakfast',         time:'Morning',             note:'Before Haldi begins',            emoji:'🌅' },
-        { meal:'Lunch',             time:'12:00 PM – 2:00 PM', note:'Served during Haldi Ceremony',   emoji:'🍽️' },
-        { meal:'High Tea & Snacks', time:'2:00 PM Onwards',    note:'Haldi Onwards · During Mayra',   emoji:'☕' },
-        { meal:'Dinner',            time:'7:00 PM – 11:00 PM', note:'Served during Sangeet Night',    emoji:'🌙' },
+        { meal:'Breakfast',         time:'Morning',           note:'Before Haldi begins',            emoji:'🌅' },
+        { meal:'Lunch',             time:'12:00 PM Onwards',  note:'Served during Haldi Ceremony',   emoji:'🍽️' },
+        { meal:'High Tea & Snacks', time:'2:00 PM Onwards',   note:'Haldi Onwards · During Mayra',   emoji:'☕' },
+        { meal:'Dinner',            time:'8:00 PM Onwards',   note:'Served during Sangeet Night',    emoji:'🌙' },
       ],
       day2: [
-        { meal:'Breakfast',         time:'9:00 AM Onwards',    note:'Pool Party Onwards',             emoji:'🍳' },
-        { meal:'Lunch',             time:'11:00 AM – 1:00 PM', note:'Served during Lagan',            emoji:'🍽️' },
-        { meal:'High Tea & Snacks', time:'1:00 PM Onwards',    note:'Lagan Onwards',                  emoji:'☕' },
-        { meal:'Dinner',            time:'7:00 PM Onwards',    note:'Before Jai Mala & Varmala',      emoji:'🌙' },
+        { meal:'Breakfast',         time:'7:00 AM Onwards',   note:'Pool Party Onwards',             emoji:'🍳' },
+        { meal:'Lunch',             time:'12:00 PM Onwards',  note:'Served during Lagan',            emoji:'🍽️' },
+        { meal:'High Tea & Snacks', time:'2:00 PM Onwards',   note:'Lagan Onwards',                  emoji:'☕' },
+        { meal:'Dinner',            time:'7:00 PM Onwards',   note:'Before Jai Mala & Varmala',      emoji:'🌙' },
       ],
     },
     train: [
@@ -779,6 +779,8 @@ const ARMAAN = {
     if (/(airport|fly|flight|air|plane|jai|sanganer|हवाई|एयरपोर्ट)/.test(t))                       return this.route('travel-airport');
     if (/(bus|stand|sindhi|bhankrota|civil lines|बस स्टैंड)/.test(t))                              return this.route('travel-bus');
     if (/(travel|reach|how to get|direction|commute|यात्रा|कैसे आएं|रास्ता)/.test(t))              return this.route('travel');
+    if (/(haldi|sangeet|baraat|varmala|jaimala|pool|mayra|ceremony|royal|lagan|हल्दी|संगीत|बारात|लग्न)/.test(t) &&
+        /(theme|color|colour|wear|dress|outfit|clothes|attire|रंग|पहन|कपड़)/.test(t))              return this.route('dress');
     if (/(haldi|sangeet|baraat|varmala|jaimala|pool|mayra|ceremony|royal|lagan|हल्दी|संगीत|बारात|लग्न)/.test(t)) return this.route('dates-all');
     if (/(breakfast|नाश्ता|morning meal|subah ka khana)/.test(t))                      return this.route('meals-day1');
     if (/(lunch|दोपहर का खाना|dopahar|dopaher|afternoon meal)/.test(t))             return this.route('meals-day1');
