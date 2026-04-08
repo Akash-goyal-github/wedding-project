@@ -228,34 +228,34 @@ ul { list-style: none; }
   .wa-eyebrow { justify-content: center; }
 }
 
-/* ── INSTAGRAM SECTION ─────────────────────────────────────── */
+/* ── INSTAGRAM SECTION ───────────────────────────────────────────── */
 .ig-section {
   padding: 70px 0;
   background: linear-gradient(135deg,
-    rgba(225,48,108,.06) 0%,
-    rgba(255,255,255,1) 40%,
-    rgba(131,58,180,.05) 100%);
-  border-top: 1px solid rgba(225,48,108,.15);
+    rgba(230,210,255,.40) 0%,
+    rgba(255,255,255,1)   45%,
+    rgba(255,248,220,.45) 100%);
+  border-top: 1px solid rgba(201,164,71,.22);
 }
-.ig-eyebrow { color: #833AB4; }
-.ig-icon    { color: #E1306C; }
+.ig-eyebrow { color: #7B4FA0; }
+.ig-icon    { color: #C9A447; }
 .ig-btn {
-  background: linear-gradient(90deg, #833AB4 0%, #E1306C 55%, #FCAF45 100%);
-  box-shadow: 0 4px 18px rgba(225,48,108,.35);
+  background: linear-gradient(90deg, #7B4FA0 0%, #B07FD0 50%, #C9A447 100%);
+  box-shadow: 0 4px 18px rgba(160,100,210,.30);
 }
 .ig-btn:hover {
-  background: linear-gradient(90deg, #6e2fa0 0%, #c01d54 55%, #e09d30 100%);
+  background: linear-gradient(90deg, #6a3d8f 0%, #9a6dc0 50%, #b08a30 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(225,48,108,.45);
+  box-shadow: 0 8px 24px rgba(160,100,210,.40);
 }
-.ig-link       { color: #833AB4; }
+.ig-link       { color: #7B4FA0; }
 .ig-qr-card    {
-  background: linear-gradient(145deg, #fce8f3 0%, #ede8ff 100%);
-  border-color: rgba(225,48,108,.28);
-  box-shadow: 0 8px 36px rgba(225,48,108,.14), 0 2px 16px rgba(131,58,180,.16);
+  background: linear-gradient(145deg, #f5eeff 0%, #fffbee 100%);
+  border-color: rgba(201,164,71,.30);
+  box-shadow: 0 8px 36px rgba(160,100,210,.12), 0 2px 16px rgba(201,164,71,.14);
 }
-.ig-qr-img     { box-shadow: 0 2px 12px rgba(225,48,108,.18); }
-.ig-qr-hint    { color: #833AB4; }
+.ig-qr-img     { box-shadow: 0 2px 12px rgba(201,164,71,.20); }
+.ig-qr-hint    { color: #7B4FA0; }
 @media (max-width: 700px) {
   .ig-section .wa-band    { grid-template-columns: 1fr; text-align: center; }
   .ig-section .wa-actions { align-items: center; }
