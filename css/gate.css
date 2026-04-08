@@ -811,24 +811,25 @@
 */
 @media (max-width: 600px) {
   .gate-top-info {
-    position: absolute;
-    top: auto; bottom: clamp(2rem, 5vh, 3.5rem); /* lifted off screen bottom */
+    position: fixed;
+    top: auto; bottom: 0;
     left: 0; right: 0;
     max-width: 100%;
-    height: auto; /* reset desktop full-height trick */
-    padding: 1.4rem 1.2rem calc(1.6rem + env(safe-area-inset-bottom, 0px));
+    height: auto;
+    padding: 1.4rem 1.2rem calc(1.2rem + env(safe-area-inset-bottom, 0px));
     background: linear-gradient(to top,
-      rgba(11,1,26,.97) 0%,
-      rgba(11,1,26,.88) 50%,
-      rgba(11,1,26,.40) 80%,
+      rgba(60,15,80,.95) 0%,
+      rgba(60,15,80,.85) 50%,
+      rgba(60,15,80,.45) 80%,
       transparent 100%);
     border-radius: 0;
     gap: .25rem;
   }
 
   /* reset auto-margin — mobile stacks naturally */
-  .gate-title { margin-top: 0; background: none; backdrop-filter: none; padding: .1rem .6rem; }
-  .gate-date  { margin-top: 0; }
+  .gate-title { margin-top: 0; background: none; backdrop-filter: none; padding: .1rem .6rem; color: #F5D78E; text-shadow: 0 0 18px rgba(201,164,71,.6); }
+  .gate-date  { margin-top: 0; color: rgba(245,215,142,.80); }
+  .gate-place { color: rgba(245,215,142,.80); }
 
   /* Hide desktop शुभ विवाह in info block — it lives in Ganesh element on mobile */
   .gate-pre          { display: none; }
