@@ -660,7 +660,7 @@ const ARMAAN = {
     if (document.getElementById('gateOverlay')) {
       document.addEventListener('gateOpened', () => this._startEngagement(), { once: true });
     } else {
-      /* No gate (e.g. river.html or direct link) — small warmup delay */
+      /* No gate (e.g. direct link / deep link) — small warmup delay */
       setTimeout(() => this._startEngagement(), 800);
     }
   },

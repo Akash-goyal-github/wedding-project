@@ -1,6 +1,7 @@
 /**
  * carousel.js — Horizontal snap carousel
  * Works for any .carousel-wrap > .carousel-track structure
+ * Supports data-autoplay="<ms>" for auto-advancing (pauses on hover/touch)
  */
 (function () {
   'use strict';
@@ -10,11 +11,14 @@
     const prev    = wrap.querySelector('.carousel-prev');
     const next    = wrap.querySelector('.carousel-next');
     const dotsEl  = wrap.querySelector('.carousel-dots');
+    const autoplayMs = parseInt(wrap.dataset.autoplay, 10) || 0;
     if (!track) return;
 
     const cards = Array.from(track.children);
     const N     = cards.length;
     if (N < 2) return;
+
+    let currentIdx = 0;
 
     /* ── Build dots ───────────────────────────────────────── */
     if (dotsEl) {
@@ -29,7 +33,8 @@
 
     /* ── Scroll to card index ─────────────────────────────── */
     function scrollTo(idx) {
-      const card   = cards[idx];
+      currentIdx = ((idx % N) + N) % N;
+      const card   = cards[currentIdx];
       const offset = card.offsetLeft - track.offsetLeft;
       track.scrollTo({ left: offset, behavior: 'smooth' });
     }
@@ -60,6 +65,7 @@
         const dist = Math.abs(c.offsetLeft - track.offsetLeft - sl);
         if (dist < minDist) { minDist = dist; closest = i; }
       });
+      currentIdx = closest;
       dotsEl.querySelectorAll('.carousel-dot').forEach((d, i) => {
         d.classList.toggle('active', i === closest);
       });
@@ -84,6 +90,37 @@
         track.style.userSelect = '';
       })
     );
+
+    /* ── Auto-play ────────────────────────────────────────── */
+    if (autoplayMs > 0) {
+      let timer = null;
+
+      function advance() {
+        scrollTo(currentIdx + 1);
+      }
+
+      function startTimer() {
+        timer = setInterval(advance, autoplayMs);
+      }
+
+      function stopTimer() {
+        clearInterval(timer);
+        timer = null;
+      }
+
+      /* pause on hover / touch */
+      wrap.addEventListener('mouseenter', stopTimer);
+      wrap.addEventListener('mouseleave', startTimer);
+      wrap.addEventListener('touchstart',  stopTimer, { passive: true });
+      wrap.addEventListener('touchend',    startTimer, { passive: true });
+
+      /* pause when tab is hidden, resume when visible */
+      document.addEventListener('visibilitychange', () => {
+        document.hidden ? stopTimer() : startTimer();
+      });
+
+      startTimer();
+    }
 
     /* ── Init disabled state ──────────────────────────────── */
     if (prev) prev.disabled = true;   // starts at beginning

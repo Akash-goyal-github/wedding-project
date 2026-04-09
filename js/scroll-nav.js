@@ -39,12 +39,6 @@
              <line x1="3"  y1="10" x2="21" y2="10"/>`
     },
     {
-      id: 'gallery', label: 'Gallery',
-      icon: `<rect x="3" y="3" width="18" height="18" rx="2"/>
-             <circle cx="8.5" cy="8.5" r="1.5"/>
-             <polyline points="21 15 16 10 5 21"/>`
-    },
-    {
       id: 'venue', label: 'Venue',
       icon: `<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
              <circle cx="12" cy="9" r="2.5"/>`
@@ -68,12 +62,6 @@
                       8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5
                       a8.48 8.48 0 0 1 8 8v.5z"/>`
     },
-    {
-      id: 'instagram', label: 'Instagram',
-      icon: `<rect x="2" y="2" width="20" height="20" rx="5"/>
-             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>`
-    }
   ];
 
   const sections = SECTIONS.filter(s => !!document.getElementById(s.id));
